@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OrdexAI — הזמנות חכמות דרך וואטסאפ</title>
+  <meta name="description" content="OrdexAI מאפשר ללקוחות שלך להזמין מוצרים בשפה חופשית, בקול, או בתמונה — ישירות בוואטסאפ.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Heebo:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --c1:#1a1a2e;--acc:#25d366;--acc2:#128c7e;
+      --txt:#f0f0f0;--txt2:#a0aab4;
+      --card:rgba(255,255,255,0.05);--border:rgba(255,255,255,0.08)
+    }
+    body{font-family:'Heebo',sans-serif;background:var(--c1);color:var(--txt);direction:rtl;overflow-x:hidden}
+    a{text-decoration:none}
+
+    /* NAV */
+    nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(26,26,46,0.95);backdrop-filter:blur(10px);z-index:100}
+    .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;color:var(--acc);letter-spacing:-1px}
+    .logo span{color:var(--txt)}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{color:var(--txt2);font-size:0.9rem;transition:color 0.2s}
+    .nav-links a:hover{color:var(--acc)}
+    .cta-nav{background:var(--acc);color:#fff !important;padding:0.5rem 1.2rem;border-radius:50px;font-size:0.85rem;font-weight:700;transition:opacity 0.2s}
+    .cta-nav:hover{opacity:0.85}
+
+    /* HERO */
+    .hero{min-height:90vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:4rem 2rem;position:relative;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(37,211,102,0.08) 0%,transparent 60%);pointer-events:none}
+    .hero-content{position:relative;z-index:1}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.2);border-radius:50px;padding:0.4rem 1rem;font-size:0.8rem;color:var(--acc);margin-bottom:1.5rem}
+    .wa-dot{width:8px;height:8px;border-radius:50%;background:var(--acc);animation:pulse 2s infinite;display:inline-block}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+    h1{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;line-height:1.1;margin-bottom:1.5rem}
+    h1 .accent{color:var(--acc)}
+    .hero-sub{font-size:1.15rem;color:var(--txt2);max-width:600px;margin:0 auto 2.5rem;line-height:1.7}
+    .cta-group{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .btn-primary{background:var(--acc);color:#fff;padding:0.85rem 2rem;border-radius:50px;font-size:1rem;font-weight:700;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
+    .btn-primary:hover{background:var(--acc2);transform:translateY(-2px)}
+    .btn-secondary{background:transparent;color:var(--txt);padding:0.85rem 2rem;border-radius:50px;font-size:1rem;border:1px solid var(--border);transition:all 0.2s;display:inline-flex;align-items:center}
+    .btn-secondary:hover{border-color:var(--acc);color:var(--acc)}
+
+    /* CHAT PREVIEW */
+    .chat-preview{margin-top:4rem;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:16px;padding:1.5rem;max-width:400px;margin-left:auto;margin-right:auto}
+    .chat-header{display:flex;align-items:center;gap:10px;margin-bottom:1rem;padding-bottom:0.8rem;border-bottom:1px solid var(--border)}
+    .wa-icon{width:32px;height:32px;border-radius:50%;background:var(--acc);display:flex;align-items:center;justify-content:center;font-size:16px}
+    .chat-name{font-weight:700;font-size:0.9rem}
+    .chat-status{font-size:0.75rem;color:var(--acc)}
+    .bubble{margin:6px 0;display:flex}
+    .bubble.in{justify-content:flex-start}
+    .bubble.out{justify-content:flex-end}
+    .bubble-text{padding:8px 12px;border-radius:12px;font-size:0.82rem;max-width:80%;line-height:1.5}
+    .bubble.in .bubble-text{background:rgba(255,255,255,0.07);border-radius:0 12px 12px 12px}
+    .bubble.out .bubble-text{background:rgba(37,211,102,0.15);border:1px solid rgba(37,211,102,0.2);border-radius:12px 0 12px 12px}
+    .bubble-time{font-size:0.65rem;color:var(--txt2);margin-top:2px;display:block;text-align:left}
+
+    /* SECTIONS */
+    section{padding:5rem 3rem}
+    .section-label{font-size:0.8rem;color:var(--acc);text-transform:uppercase;letter-spacing:2px;margin-bottom:0.8rem;font-family:'Syne',sans-serif}
+    h2{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;margin-bottom:1rem}
+    .section-sub{color:var(--txt2);max-width:600px;line-height:1.7;font-size:1rem}
+
+    /* FEATURES */
+    .features{background:rgba(255,255,255,0.02)}
+    .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:3rem}
+    .feature-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;transition:all 0.3s}
+    .feature-card:hover{border-color:rgba(37,211,102,0.3);transform:translateY(-4px)}
+    .feature-icon{width:44px;height:44px;border-radius:12px;background:rgba(37,211,102,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:20px}
+    .feature-title{font-weight:700;margin-bottom:0.5rem;font-size:1rem}
+    .feature-desc{color:var(--txt2);font-size:0.88rem;line-height:1.6}
+
+    /* HOW */
+    .how{text-align:center}
+    .steps{display:flex;flex-direction:column;max-width:680px;margin:3rem auto 0}
+    .step{display:flex;align-items:flex-start;gap:1.5rem;padding:1.5rem;background:var(--card);border:1px solid var(--border);border-radius:16px;margin-bottom:1rem;text-align:right;transition:all 0.3s}
+    .step:hover{border-color:rgba(37,211,102,0.3)}
+    .step-num{width:40px;height:40px;border-radius:50%;background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.3);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:700;color:var(--acc);flex-shrink:0;font-size:1rem}
+    .step-content h3{font-weight:700;margin-bottom:0.3rem;font-size:1rem}
+    .step-content p{color:var(--txt2);font-size:0.88rem;line-height:1.6}
+
+    /* CONTACT */
+    .contact{background:rgba(37,211,102,0.03);border-top:1px solid var(--border);text-align:center}
+    .contact-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:3rem 2rem;max-width:560px;margin:3rem auto 0}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
+    .contact-item{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:1rem}
+    .contact-label{font-size:0.75rem;color:var(--txt2);margin-bottom:0.3rem}
+    .contact-value{font-size:0.9rem;font-weight:700;color:var(--acc)}
+
+    /* FOOTER */
+    footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    .footer-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:var(--acc)}
+    .footer-copy{color:var(--txt2);font-size:0.8rem}
+    .privacy-link{color:var(--txt2);font-size:0.8rem;transition:color 0.2s}
+    .privacy-link:hover{color:var(--acc)}
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      nav{padding:1rem 1.5rem}
+      .nav-links{display:none}
+      section{padding:3rem 1.5rem}
+      footer{padding:1.5rem;flex-direction:column;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Ordex<span>AI</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">מה זה</a></li>
+    <li><a href="#features">יתרונות</a></li>
+    <li><a href="#how">איך זה עובד</a></li>
+    <li><a href="#contact">צור קשר</a></li>
+  </ul>
+  <a href="https://wa.me/972556654664" class="cta-nav" target="_blank">התחל עכשיו</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="wa-dot"></span>
+      מופעל על ידי WhatsApp Business API
+    </div>
+    <h1>הזמנות חכמות<br><span class="accent">דרך וואטסאפ</span></h1>
+    <p class="hero-sub">
+      OrdexAI מאפשר ללקוחות שלך להזמין מוצרים בשפה חופשית, בקול, או בתמונה — ישירות בוואטסאפ.<br>
+      <span style="font-size:0.9rem;color:var(--txt2)">AI-powered order management for food distributors.</span>
+    </p>
+    <div class="cta-group">
+      <a href="https://wa.me/972556654664" class="btn-primary" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.121.554 4.11 1.523 5.836L.057 23.625a.75.75 0 00.921.921l5.772-1.466A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.943 0-3.773-.524-5.349-1.437l-.383-.228-3.977 1.01 1.033-3.85-.249-.396A9.961 9.961 0 012 12C2 6.478 6.478 2 12 2s10 4.478 10 10-4.478 10-10 10z"/></svg>
+        שלח הודעה
+      </a>
+      <a href="#how" class="btn-secondary">איך זה עובד</a>
+    </div>
+
+    <div class="chat-preview">
+      <div class="chat-header">
+        <div class="wa-icon">🛒</div>
+        <div>
+          <div class="chat-name">הספק שלך — OrdexAI</div>
+          <div class="chat-status">מחובר</div>
+        </div>
+      </div>
+      <div class="bubble out">
+        <div>
+          <div class="bubble-text">תביא לי 3 קילו גבינה לבנה ו-2 שמנת</div>
+          <span class="bubble-time">09:14</span>
+        </div>
+      </div>
+      <div class="bubble in">
+        <div>
+          <div class="bubble-text">✅ קיבלנו! אישרנו אוטומטית:<br>🧀 גבינה לבנה × 3 ק"ג<br>🥛 שמנת × 2 יח'<br><br>הזמנה #2847 תגיע מחר.</div>
+          <span class="bubble-time">09:14</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="section-label">מה זה OrdexAI</div>
+  <h2>ניהול הזמנות חכם<br>למפיצי מזון</h2>
+  <p class="section-sub">OrdexAI הוא מערכת AI לניהול הזמנות דרך WhatsApp. לקוחות מזמינים בשפה חופשית — טקסט, קול או תמונה — והמערכת מבינה, מאשרת ושומרת אוטומטית.</p>
+</section>
+
+<section id="features" class="features">
+  <div class="section-label">יתרונות</div>
+  <h2>כל מה שצריך<br>במקום אחד</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">💬</div>
+      <div class="feature-title">עברית חופשית</div>
+      <div class="feature-desc">הלקוח כותב כמו שהוא מדבר. המערכת מבינה כינויים, קיצורים ואפילו שגיאות כתיב.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎙️</div>
+      <div class="feature-title">הזמנות קוליות</div>
+      <div class="feature-desc">מספיק לשלוח הודעה קולית — OrdexAI מתמלל ומפרסר אוטומטית.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📸</div>
+      <div class="feature-title">תמונות וטפסים</div>
+      <div class="feature-desc">צלם טופס הזמנה מודפס — המערכת קוראת את הפריטים והכמויות ישירות.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-title">אישור אוטומטי</div>
+      <div class="feature-desc">הזמנות ברורות מאושרות מיידית. רק מקרים לא ברורים עוברים לאישור ידני.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🧠</div>
+      <div class="feature-title">למידה חכמה</div>
+      <div class="feature-desc">המערכת לומדת את הכינויים של כל לקוח ומשפרת את הדיוק עם הזמן.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📋</div>
+      <div class="feature-title">רשימת פיקינג</div>
+      <div class="feature-desc">בסוף יום — PDF אוטומטי למחסן עם כל ההזמנות מסוכמות לפי לקוח.</div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="how">
+  <div class="section-label">איך זה עובד</div>
+  <h2>פשוט כמו לשלוח הודעה</h2>
+  <p class="section-sub" style="margin:0 auto">ארבעה שלבים מההזמנה ועד האספקה</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>הלקוח שולח הזמנה בוואטסאפ</h3>
+        <p>טקסט חופשי, הודעה קולית, או צילום של טופס הזמנה — הכל עובד.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>AI מפרסר ומתאים לקטלוג המוצרים</h3>
+        <p>המערכת מבינה את ההזמנה, מתאימה לרשימת המוצרים ומחזירה ציון ביטחון לכל פריט.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>אישור אוטומטי או בקשת אישור</h3>
+        <p>פריטים ברורים — מאושרים מיידית. פריטים לא ברורים — שאלה ממוקדת ללקוח.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>PDF לפיקינג נשלח אוטומטית</h3>
+        <p>בשעת הסגירה — רשימת פיקינג מסוכמת נשלחת למפיץ ישירות לוואטסאפ.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="section-label">צור קשר</div>
+  <h2>מוכן להתחיל?</h2>
+  <p class="section-sub" style="margin:0 auto">צור איתנו קשר ונקים לך את המערכת תוך ימים ספורים.</p>
+  <div class="contact-card">
+    <p style="color:var(--txt2);font-size:0.9rem;margin-bottom:1rem">פרטי התקשרות</p>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-label">וואטסאפ</div>
+        <div class="contact-value">055-665-4664</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">אימייל</div>
+        <div class="contact-value" style="font-size:0.82rem"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="95f9fce6fdf4fcf7e6d5f2f8f4fcf9bbf6faf8">[email&#160;protected]</a></div>
+      </div>
+      <div class="contact-item" style="grid-column:1/-1">
+        <div class="contact-label">מדיניות פרטיות</div>
+        <div class="contact-value" style="font-size:0.8rem">
+          <a href="https://lishaibs.github.io/Aisale-public/privacy-policy.html" style="color:var(--acc)" target="_blank">privacy-policy.html</a>
+        </div>
+      </div>
+    </div>
+    <a href="https://wa.me/972556654664" class="btn-primary" style="margin-top:1.5rem;justify-content:center;width:100%" target="_blank">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.121.554 4.11 1.523 5.836L.057 23.625a.75.75 0 00.921.921l5.772-1.466A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.943 0-3.773-.524-5.349-1.437l-.383-.228-3.977 1.01 1.033-3.85-.249-.396A9.961 9.961 0 012 12C2 6.478 6.478 2 12 2s10 4.478 10 10-4.478 10-10 10z"/></svg>
+      שלח הודעה בוואטסאפ
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">OrdexAI</div>
+  <div class="footer-copy">© 2026 OrdexAI. כל הזכויות שמורות.</div>
+  <a href="https://lishaibs.github.io/Aisale-pub
