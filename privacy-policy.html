@@ -22,11 +22,20 @@
     ul{padding-right:1.5rem;margin-bottom:0.8rem}
     li{color:#444;font-size:0.95rem;margin-bottom:0.4rem}
     .highlight{background:#f0fff4;border-right:3px solid #25d366;padding:0.8rem 1rem;border-radius:0 8px 8px 0;margin:1rem 0;font-size:0.9rem;color:#333}
+    .highlight-warn{background:#fffbf0;border-right:3px solid #f59e0b;padding:0.8rem 1rem;border-radius:0 8px 8px 0;margin:1rem 0;font-size:0.9rem;color:#333}
+    table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.88rem}
+    th{background:#f0f4f8;color:#1a1a2e;font-weight:700;padding:0.6rem 0.8rem;text-align:right;border:1px solid #e0e8ef}
+    td{padding:0.6rem 0.8rem;border:1px solid #e0e8ef;color:#444;vertical-align:top}
+    tr:nth-child(even) td{background:#fafbfc}
     .contact-box{background:#1a1a2e;color:#fff;border-radius:12px;padding:1.5rem;margin-top:2rem;text-align:center}
     .contact-box a{color:#25d366;text-decoration:none;font-weight:700}
     footer{text-align:center;padding:2rem;color:#999;font-size:0.82rem}
     .en-section{display:none;direction:ltr;text-align:left}
     .he-section{display:block}
+    .en-section th{text-align:left}
+    .en-section ul{padding-right:0;padding-left:1.5rem}
+    .en-section .highlight{border-right:none;border-left:3px solid #25d366}
+    .en-section .highlight-warn{border-right:none;border-left:3px solid #f59e0b}
   </style>
 </head>
 <body>
@@ -42,112 +51,174 @@
 <div class="container">
   <div class="policy-card">
 
-    <!-- HEBREW -->
+    <!-- ═══════════════ HEBREW ═══════════════ -->
     <div class="he-section" id="he">
       <h1>מדיניות פרטיות</h1>
-      <p class="updated">עודכן לאחרונה: מרץ 2026 | OrdexAI</p>
+      <p class="updated">עודכן לאחרונה: יוני 2026 | OrdexAI — מופעל על ידי לישי שמעון בן שושן</p>
 
-      <h2>1. כללי</h2>
-      <p>מדיניות פרטיות זו מתארת כיצד OrdexAI (להלן: "החברה") אוספת, משתמשת ומגינה על המידע שלך בעת השימוש באתר שלנו ובשירותינו. השימוש באתר ובשירותינו מהווה הסכמה לתנאים המפורטים להלן.</p>
-
-      <h2>2. המידע שאנו אוספים</h2>
+      <h2>1. מהי OrdexAI ועל מי חלה מדיניות זו</h2>
+      <p>OrdexAI היא מערכת B2B לניהול הזמנות דרך WhatsApp, המיועדת למפיצי מזון. המערכת מאפשרת ללקוחות העסקיים של המפיץ לשלוח הזמנות בשפה חופשית — טקסט, קול או תמונה — ישירות בוואטסאפ, ומעבדת אותן אוטומטית באמצעות בינה מלאכותית.</p>
+      <p>מדיניות זו חלה על:</p>
       <ul>
-        <li><strong>מידע אישי:</strong> מידע המסופק על ידיך באופן וולונטרי (כגון שם, כתובת אימייל ומספר טלפון) בעת יצירת קשר, הרשמה או שימוש בשירותים.</li>
-        <li><strong>תקשורת וואטסאפ:</strong> במידה ותבחר ליצור עמנו קשר או לקבל עדכונים בוואטסאפ, אנו נאסוף את מספר הטלפון והיסטוריית הצ'אט שלך לצורך מתן השירות ושיפור המערכת.</li>
-        <li><strong>הודעות קוליות:</strong> הודעות קוליות מעובדות על ידי Soniox לצורך תמלול בלבד ואינן נשמרות לאחר העיבוד.</li>
-        <li><strong>מידע טכני:</strong> נתונים הנאספים באופן אוטומטי כגון כתובת IP, סוג דפדפן ודפוסי שימוש באמצעות עוגיות (Cookies).</li>
+        <li><strong>מפיצים</strong> — עסקים הנרשמים ל-OrdexAI ומשתמשים במערכת לקבלת הזמנות.</li>
+        <li><strong>לקוחות המפיץ</strong> — עסקים המזמינים מוצרים דרך WhatsApp.</li>
+        <li><strong>משתמשי דף ההזמנות</strong> — מי שניגש לדף ההזמנה המקוון בכתובת order.ordexai.com.</li>
+      </ul>
+      <div class="highlight-warn">
+        OrdexAI פועלת כמעבד נתונים (Data Processor) עבור המפיץ, אשר הוא בעל הנתונים (Data Controller) מול לקוחותיו.
+      </div>
+
+      <h2>2. המידע שאנו אוספים ומעבדים</h2>
+      <table>
+        <tr><th>סוג מידע</th><th>פרטים</th><th>נשמר?</th></tr>
+        <tr><td>מספר טלפון</td><td>נאסף בעת שליחת ההודעה הראשונה לבוט</td><td>כן</td></tr>
+        <tr><td>שם עסק ופרטי קשר</td><td>שם העסק, כתובת, סוג שוק — מוזן על ידי המפיץ</td><td>כן</td></tr>
+        <tr><td>תוכן הזמנות</td><td>טקסט ההודעה הגולמית, פריטים, כמויות, ציוני ביטחון</td><td>כן</td></tr>
+        <tr><td>כינויים אישיים למוצרים</td><td>שמות שלקוח משתמש בהם לתיאור מוצרים ספציפיים — נלמדים ומאוחסנים לשיפור דיוק עתידי</td><td>כן</td></tr>
+        <tr><td>קובצי שמע (הודעות קוליות)</td><td>מועברים ל-Soniox לתמלול בלבד</td><td>לא — נמחקים לאחר תמלול</td></tr>
+        <tr><td>תמונות וסריקות טפסים</td><td>מועברות ל-Azure Document Intelligence לחילוץ טקסט בלבד</td><td>לא — נמחקות לאחר עיבוד</td></tr>
+        <tr><td>נתוני דף ההזמנות</td><td>הזמנות שנשלחו דרך order.ordexai.com, כולל מוצרים, כמויות ופריטים שלא נמצאו בקטלוג</td><td>כן</td></tr>
+        <tr><td>נתונים טכניים</td><td>כתובת IP, סוג דפדפן — בעת גלישה באתר ordexai.com בלבד</td><td>זמנית</td></tr>
+      </table>
+
+      <h2>3. כיצד המערכת מעבדת הזמנות</h2>
+      <p>כאשר לקוח שולח הזמנה:</p>
+      <ul>
+        <li><strong>טקסט:</strong> תוכן ההודעה נשלח ל-Claude (Anthropic) לניתוח שפה טבעית וחילוץ פריטים וכמויות.</li>
+        <li><strong>קול:</strong> קובץ השמע נשלח ל-Soniox לתמלול בעברית, ולאחר מכן הטקסט המתומלל מעובד כמו הזמנת טקסט. הקובץ המקורי אינו נשמר.</li>
+        <li><strong>תמונה / טופס:</strong> התמונה נשלחת ל-Azure Document Intelligence לחילוץ טקסט (OCR), ולאחר מכן הטקסט מעובד כמו הזמנת טקסט. התמונה המקורית אינה נשמרת.</li>
+        <li>תוצאות ההזמנה המאושרת נשמרות במסד הנתונים ומרוכזות ב<strong>רשימת פיקינג PDF</strong> הנשלחת למפיץ בסוף כל יום דרך WhatsApp ואימייל.</li>
       </ul>
 
-      <h2>3. השימוש במידע</h2>
-      <p>אנו משתמשים במידע שלך כדי:</p>
+      <h2>4. שיתוף מידע עם גורמים חיצוניים</h2>
+      <table>
+        <tr><th>גורם</th><th>מטרה</th><th>מה משותף</th></tr>
+        <tr><td>Meta / WhatsApp</td><td>תשתית ההודעות</td><td>תוכן ההודעות, מספרי טלפון</td></tr>
+        <tr><td>Anthropic (Claude AI)</td><td>ניתוח הזמנות ושפה טבעית</td><td>טקסט ההזמנה ורשימת המוצרים</td></tr>
+        <tr><td>Soniox</td><td>תמלול הודעות קוליות בעברית</td><td>קובץ השמע בלבד — לא נשמר לאחר תמלול</td></tr>
+        <tr><td>Azure Document Intelligence</td><td>חילוץ טקסט מתמונות וטפסים</td><td>התמונה בלבד — לא נשמרת לאחר עיבוד</td></tr>
+        <tr><td>AWS (Amazon Web Services)</td><td>תשתית שרתים ושליחת אימיילים (SES)</td><td>נתוני ההפעלה, PDF רשימת פיקינג</td></tr>
+        <tr><td>Supabase</td><td>מסד נתונים מאובטח</td><td>כל נתוני ההזמנות והלקוחות</td></tr>
+        <tr><td>המפיץ</td><td>קבלת ההזמנות וניהולן</td><td>כל פרטי ההזמנה של לקוחותיו</td></tr>
+        <tr><td>רשויות משפטיות</td><td>עמידה בדרישות חוק</td><td>לפי הנדרש בחוק בלבד</td></tr>
+      </table>
+      <p>אנו לא מוכרים מידע אישי ולא משתמשים בו לצרכי פרסום.</p>
+
+      <h2>5. אחסון ושמירת מידע</h2>
       <ul>
-        <li>לספק ולתחזק את שירותי המערכת (כולל שירותי AI ומענה אוטומטי).</li>
-        <li>לשפר את חווית המשתמש וביצועי האתר.</li>
-        <li>לשלוח עדכונים שיווקיים (ניתן לבטל את ההסכמה בכל עת).</li>
+        <li>נתוני הזמנות נשמרים לצורך תפעול שוטף ושיפור המערכת.</li>
+        <li>קבצי שמע ותמונות אינם נשמרים — מעובדים ונמחקים.</li>
+        <li>קובצי PDF של רשימות פיקינג נוצרים בזיכרון ואינם מאוחסנים בשרתים.</li>
+        <li>מסד הנתונים מאוחסן ב-AWS אזור אירופה (פרנקפורט) ומוגן בהצפנה.</li>
       </ul>
 
-      <h2>4. שיתוף מידע עם צדדים שלישיים</h2>
-      <p>אנו לא מוכרים את המידע האישי שלך. אנו עשויים לשתף נתונים עם:</p>
-      <ul>
-        <li>ספקי שירות צד שלישי המטפלים בתשתית האתר והתקשורת (כולל Meta/WhatsApp לצורך העברת הודעות).</li>
-        <li>Soniox לצורך תמלול הודעות קוליות — הקבצים אינם נשמרים לאחר העיבוד.</li>
-        <li>רשויות משפטיות במידה ונדרש על פי חוק או כדי להגן על זכויותינו.</li>
-      </ul>
+      <h2>6. אבטחת מידע</h2>
+      <p>אנו מיישמים אמצעי אבטחה הכוללים: הצפנת תקשורת (HTTPS/TLS), אימות HMAC על כל הודעות WhatsApp, בקרת גישה לפי ארגון (Row-Level Security), ומפתחות API מוגנים ב-AWS SSM. עם זאת, אף מערכת אינה מאובטחת ב-100%.</p>
 
-      <h2>5. אבטחת מידע</h2>
-      <p>אנו מיישמים אמצעים ארגוניים וטכניים לאבטחת המידע שלך. עם זאת, יש לזכור כי אף שיטת שידור באינטרנט אינה מאובטחת ב-100%.</p>
-
-      <h2>6. הזכויות שלך והסרה מרשימת תפוצה</h2>
+      <h2>7. הזכויות שלך</h2>
       <ul>
-        <li>הנך רשאי לעיין, לעדכן או לבקש את מחיקת המידע האישי שלך המאוחסן אצלנו.</li>
-        <li><strong>ביטול שירות וואטסאפ:</strong> ניתן להפסיק קבלת הודעות בכל עת על ידי שליחת המילה "הסר" (או "STOP") בהודעה חוזרת, או בפנייה למייל התמיכה שלנו.</li>
+        <li>לעיין במידע שנשמר עליך.</li>
+        <li>לבקש תיקון או מחיקת המידע שלך.</li>
+        <li><strong>הסרה מהמערכת:</strong> שלח "הסר" או "STOP" בוואטסאפ, או פנה ל-info@ordexai.com.</li>
+        <li>לקוחות המפיץ רשאים לפנות גם ישירות למפיץ שלהם בנושא נתוניהם.</li>
       </ul>
 
       <div class="highlight">
-        הודעות קוליות מעובדות אך אינן נשמרות — הפרטיות שלך מוגנת.
+        קבצי שמע ותמונות מעובדים ולא נשמרים. רק הטקסט המחולץ מהם נשמר כחלק מרשומת ההזמנה.
       </div>
 
-      <h2>7. שינויים במדיניות זו</h2>
-      <p>החברה שומרת לעצמה את הזכות לעדכן מדיניות זו. השינויים ייכנסו לתוקף מיד עם פרסומם באתר.</p>
+      <h2>8. שינויים במדיניות זו</h2>
+      <p>OrdexAI שומרת על הזכות לעדכן מדיניות זו. עדכונים מהותיים יפורסמו באתר ויכנסו לתוקף 14 ימים לאחר פרסומם.</p>
 
-      <h2>8. צור קשר</h2>
+      <h2>9. צור קשר</h2>
       <div class="contact-box">
-        <p style="color:#a0aab4;font-size:0.9rem;margin-bottom:0.5rem">לכל שאלה או בקשה בנושא פרטיות ומחיקת נתונים</p>
+        <p style="color:#a0aab4;font-size:0.9rem;margin-bottom:0.5rem">לשאלות, בקשות עיון או מחיקת נתונים</p>
         <a href="mailto:info@ordexai.com">info@ordexai.com</a>
       </div>
     </div>
 
-    <!-- ENGLISH -->
+    <!-- ═══════════════ ENGLISH ═══════════════ -->
     <div class="en-section" id="en">
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: March 2026 | OrdexAI</p>
+      <p class="updated">Last updated: June 2026 | OrdexAI — Operated by Lishai Shimon Ben Shoshan</p>
 
-      <h2>1. General</h2>
-      <p>This Privacy Policy describes how OrdexAI (hereinafter: "the Company") collects, uses, and protects your information when you use our website and services. By using the site or our services, you agree to the terms described herein.</p>
-
-      <h2>2. Information We Collect</h2>
+      <h2>1. What is OrdexAI and who this policy applies to</h2>
+      <p>OrdexAI is a B2B WhatsApp-based order management system for food distributors. The system enables a distributor's business customers to send orders in free-form language — text, voice, or photos — directly via WhatsApp, which are then processed automatically using AI.</p>
+      <p>This policy applies to:</p>
       <ul>
-        <li><strong>Personal Information:</strong> Provided by you voluntarily (e.g., name, email, phone number) when contacting us, registering, or using our services.</li>
-        <li><strong>WhatsApp Communication:</strong> If you choose to contact us or receive updates via WhatsApp, we collect your phone number and chat history to provide the service and improve the system.</li>
-        <li><strong>Voice Messages:</strong> Voice messages are processed by Soniox for transcription purposes only and are not retained after processing.</li>
-        <li><strong>Technical Information:</strong> Automatically collected data such as IP address, browser type, and usage patterns via cookies.</li>
+        <li><strong>Distributors</strong> — businesses that sign up to OrdexAI and use the system to receive orders.</li>
+        <li><strong>Distributor's customers</strong> — businesses that place orders via WhatsApp.</li>
+        <li><strong>Order page users</strong> — anyone accessing the online ordering page at order.ordexai.com.</li>
       </ul>
-
-      <h2>3. Use of Information</h2>
-      <p>We use your information to:</p>
-      <ul>
-        <li>Provide and maintain our system services (including AI services and automated responses).</li>
-        <li>Improve user experience and website performance.</li>
-        <li>Send marketing updates (you may opt-out at any time).</li>
-      </ul>
-
-      <h2>4. Data Sharing</h2>
-      <p>We do not sell your personal information. We may share data with:</p>
-      <ul>
-        <li>Trusted third-party service providers who assist in site operations and communication infrastructure (including Meta/WhatsApp for messaging purposes).</li>
-        <li>Soniox for voice message transcription — files are not retained after processing.</li>
-        <li>Legal authorities if required by law or to protect our rights.</li>
-      </ul>
-
-      <h2>5. Data Security</h2>
-      <p>We implement organizational and technical measures to protect your data. However, please note that no method of transmission over the internet or electronic storage is 100% secure.</p>
-
-      <h2>6. Your Rights and Opt-Out</h2>
-      <ul>
-        <li>You have the right to review, update, or request the deletion of your personal information stored in our systems.</li>
-        <li><strong>WhatsApp Opt-Out:</strong> You may stop receiving messages at any time by replying "STOP" (or "הסר") to any message, or by contacting our support email.</li>
-      </ul>
-
-      <div class="highlight" style="border-right:none;border-left:3px solid #25d366;text-align:left">
-        Voice messages are processed but never stored — your privacy is protected.
+      <div class="highlight-warn">
+        OrdexAI acts as a Data Processor on behalf of the distributor, who is the Data Controller with respect to their customers' data.
       </div>
 
-      <h2>7. Changes to This Policy</h2>
-      <p>The Company reserves the right to update this policy. Changes will take effect immediately upon being posted on the site.</p>
+      <h2>2. Data we collect and process</h2>
+      <table>
+        <tr><th>Data type</th><th>Details</th><th>Retained?</th></tr>
+        <tr><td>Phone number</td><td>Collected when a first message is sent to the bot</td><td>Yes</td></tr>
+        <tr><td>Business name &amp; contact details</td><td>Business name, address, market type — entered by the distributor</td><td>Yes</td></tr>
+        <tr><td>Order content</td><td>Raw message text, items, quantities, confidence scores</td><td>Yes</td></tr>
+        <tr><td>Personal product nicknames</td><td>Names a customer uses for specific products — learned and stored to improve future accuracy</td><td>Yes</td></tr>
+        <tr><td>Audio files (voice messages)</td><td>Sent to Soniox for transcription only</td><td>No — deleted after transcription</td></tr>
+        <tr><td>Photos &amp; scanned forms</td><td>Sent to Azure Document Intelligence for text extraction only</td><td>No — deleted after processing</td></tr>
+        <tr><td>Order page data</td><td>Orders placed via order.ordexai.com, including items, quantities, and unmatched catalog items</td><td>Yes</td></tr>
+        <tr><td>Technical data</td><td>IP address, browser type — only when browsing ordexai.com</td><td>Temporarily</td></tr>
+      </table>
 
-      <h2>8. Contact Us</h2>
+      <h2>3. How the system processes orders</h2>
+      <p>When a customer sends an order:</p>
+      <ul>
+        <li><strong>Text:</strong> The message content is sent to Claude (Anthropic) for natural language processing and extraction of items and quantities.</li>
+        <li><strong>Voice:</strong> The audio file is sent to Soniox for Hebrew transcription, after which the transcribed text is processed like a text order. The original audio file is not retained.</li>
+        <li><strong>Photo / Form:</strong> The image is sent to Azure Document Intelligence for OCR text extraction, after which the text is processed like a text order. The original image is not retained.</li>
+        <li>Confirmed order results are stored in the database and compiled into a <strong>daily PDF picking list</strong> sent to the distributor via WhatsApp and email.</li>
+      </ul>
+
+      <h2>4. Data sharing with third parties</h2>
+      <table>
+        <tr><th>Party</th><th>Purpose</th><th>What is shared</th></tr>
+        <tr><td>Meta / WhatsApp</td><td>Messaging infrastructure</td><td>Message content, phone numbers</td></tr>
+        <tr><td>Anthropic (Claude AI)</td><td>Order analysis and natural language processing</td><td>Order text and product catalog</td></tr>
+        <tr><td>Soniox</td><td>Hebrew voice transcription</td><td>Audio file only — not retained after transcription</td></tr>
+        <tr><td>Azure Document Intelligence</td><td>Text extraction from photos and forms</td><td>Image only — not retained after processing</td></tr>
+        <tr><td>AWS (Amazon Web Services)</td><td>Server infrastructure and email delivery (SES)</td><td>Operational data, picking list PDFs</td></tr>
+        <tr><td>Supabase</td><td>Secure database hosting</td><td>All order and customer data</td></tr>
+        <tr><td>The distributor</td><td>Order receipt and management</td><td>All order details of their customers</td></tr>
+        <tr><td>Legal authorities</td><td>Legal compliance</td><td>Only as required by law</td></tr>
+      </table>
+      <p>We do not sell personal data or use it for advertising purposes.</p>
+
+      <h2>5. Data storage and retention</h2>
+      <ul>
+        <li>Order data is retained for ongoing operations and system improvement.</li>
+        <li>Audio files and images are not retained — processed and deleted.</li>
+        <li>Picking list PDFs are generated in-memory and are not stored on servers.</li>
+        <li>The database is hosted on AWS in the EU (Frankfurt) region and protected with encryption.</li>
+      </ul>
+
+      <h2>6. Data security</h2>
+      <p>We implement security measures including: encrypted communications (HTTPS/TLS), HMAC verification on all WhatsApp messages, per-organization access controls (Row-Level Security), and API keys protected via AWS SSM. No system is 100% secure.</p>
+
+      <h2>7. Your rights</h2>
+      <ul>
+        <li>To review the data stored about you.</li>
+        <li>To request correction or deletion of your data.</li>
+        <li><strong>Opt-out:</strong> Reply "STOP" (or "הסר") to any WhatsApp message, or email info@ordexai.com.</li>
+        <li>Distributor customers may also contact their distributor directly regarding their data.</li>
+      </ul>
+
+      <div class="highlight">
+        Audio files and images are processed but never stored. Only the extracted text is retained as part of the order record.
+      </div>
+
+      <h2>8. Changes to this policy</h2>
+      <p>OrdexAI reserves the right to update this policy. Material changes will be posted on the website and will take effect 14 days after publication.</p>
+
+      <h2>9. Contact us</h2>
       <div class="contact-box">
-        <p style="color:#a0aab4;font-size:0.9rem;margin-bottom:0.5rem">For any questions regarding this policy or to request data deletion</p>
+        <p style="color:#a0aab4;font-size:0.9rem;margin-bottom:0.5rem">For questions, data access requests, or deletion requests</p>
         <a href="mailto:info@ordexai.com">info@ordexai.com</a>
       </div>
     </div>
@@ -156,7 +227,7 @@
 </div>
 
 <footer>
-  © 2026 OrdexAI. כל הזכויות שמורות. |
+  © 2026 OrdexAI — מופעל על ידי לישי שמעון בן שושן | Operated by Lishai Shimon Ben Shoshan |
   <a href="index.html" style="color:#25d366;text-decoration:none">חזור לדף הבית</a>
 </footer>
 
