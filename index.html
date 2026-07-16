@@ -34,8 +34,8 @@
       --shadow-lg:0 22px 60px rgba(12,59,43,.18);
       --radius:20px;
     }
-    html{scroll-behavior:smooth}
-    body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.6}
+    html{scroll-behavior:smooth;overflow-x:clip}
+    body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--ink);overflow-x:clip;line-height:1.6}
     a{text-decoration:none}
     ::selection{background:rgba(37,211,102,.25)}
 
@@ -314,8 +314,10 @@
       .vs-word{transform:rotate(90deg)}
     }
     @media(max-width:768px){
-      nav{padding:.8rem 1.2rem}
+      nav{padding:.8rem 1.1rem}
       .nav-links{display:none}
+      .nav-right{gap:.7rem}
+      .cta-nav{padding:.5rem .95rem}
       section{padding:3.2rem 1.4rem}
       .hero{padding:3.2rem 1.4rem 3rem}
       .value-band{padding:1.4rem}
