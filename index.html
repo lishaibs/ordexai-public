@@ -6,9 +6,9 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src https://formsubmit.co; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>OrdexAI — הזמנות חכמות בוואטסאפ | ניהול הזמנות למפיצי מזון</title>
-  <meta name="description" content="OrdexAI — הלקוחות שלכם מזמינים בוואטסאפ בטקסט, בהקלטה או בתמונה, ואתם מקבלים רשימת ליקוט אחת נקייה ואוטומטית. בלי אפליקציה, בלי סיסמה, בלי הקלדה ידנית.">
+  <meta name="description" content="OrdexAI — הלקוחות שלכם מזמינים בוואטסאפ בטקסט, בהקלטה או בתמונה, ואתם מקבלים רשימת הזמנות אחת, מרוכזת ונקייה — שאפשר לשדר ישר למערכת ה-ERP. בלי אפליקציה, בלי סיסמה, בלי הקלדה ידנית.">
   <meta property="og:title" content="OrdexAI — הזמנות חכמות בוואטסאפ">
-  <meta property="og:description" content="ההזמנות שלך. בוואטסאפ. בלי אפליקציה. מנוע AI שמבין עברית אמיתית ומרכיב לבד את רשימת הליקוט.">
+  <meta property="og:description" content="ההזמנות שלכם. בוואטסאפ. בלי אפליקציה. מנוע AI שמבין עברית אמיתית ומרכיב לבד את רשימת ההזמנות המרוכזת.">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -82,6 +82,7 @@
     .hero-phone .wa{display:flex;flex-direction:column;height:100%}
     .hero-phone .wahdr{background:var(--wa);color:#fff;display:flex;align-items:center;gap:10px;padding:38px 14px 11px;flex:0 0 auto}
     .hero-phone .wback{opacity:.9}
+    .lang-he .hero-phone .wback{transform:scaleX(-1)}  /* RTL: back chevron points right */
     .hero-phone .wav{width:38px;height:38px;border-radius:50%;background:#cfe9e2;color:var(--wa);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex:0 0 auto}
     .hero-phone .whn{flex:1;line-height:1.25}
     .hero-phone .whn b{font-size:15px;display:block}
@@ -129,7 +130,7 @@
     .hero-phone .sheet-hd{font-weight:700;text-align:center;padding-bottom:6px;border-bottom:1.5px solid #c9c0ad;margin-bottom:6px;color:#3a3a2e;font-size:11px}
     .hero-phone .sheet table{width:100%;border-collapse:collapse}
     .hero-phone .sheet th{font-size:10px;color:#7a7360;border-bottom:1px solid #d8d0bd;padding:2px 3px}
-    .hero-phone .sheet td{font-size:11px;padding:3px;border-bottom:1px dashed #e3dcc9;text-align:right}
+    .hero-phone .sheet td{font-size:11px;padding:3px;border-bottom:1px dashed #e3dcc9;text-align:start}
     .hero-phone .sheet td.qty{text-align:center}
     .hero-phone .sheet .hw{display:inline-block;font-family:'Caveat','Comic Sans MS',cursive;font-weight:700;color:#1a3a72;font-size:18px;line-height:1}
     @keyframes pop{from{opacity:0;transform:translateY(9px) scale(.96)}to{opacity:1;transform:none}}
@@ -150,27 +151,6 @@
     .hero-chips{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center}
     .hero-chip{font-size:.8rem;color:rgba(255,255,255,.85);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);padding:.35rem .85rem;border-radius:50px;display:inline-flex;align-items:center;gap:6px}
     .hero-chip svg{width:13px;height:13px;color:var(--wa)}
-
-    /* ===== PHONE MOCKUP ===== */
-    .chat-wrap{display:flex;justify-content:center}
-    .chat-phone{background:#0b1512;border-radius:34px;padding:8px;width:310px;box-shadow:var(--shadow-lg),0 0 0 1px rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08)}
-    .chat-screen{border-radius:27px;overflow:hidden;background:#e5ddd5}
-    .phone-top{background:linear-gradient(180deg,#075e54,#128c7e);padding:.85rem 1rem;display:flex;align-items:center;gap:10px}
-    .phone-avatar{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:17px}
-    .phone-info .name{color:#fff;font-weight:700;font-size:.88rem}
-    .phone-info .status{color:rgba(255,255,255,.8);font-size:.68rem}
-    .chat-body{padding:.9rem;background:#e5ddd5;display:flex;flex-direction:column;gap:8px;min-height:220px;background-image:radial-gradient(rgba(0,0,0,.03) 1px,transparent 1px);background-size:16px 16px}
-    .msg{padding:8px 11px;border-radius:11px;font-size:.76rem;max-width:88%;line-height:1.5;box-shadow:0 1px 1px rgba(0,0,0,.08)}
-    .msg-out{background:#dcf8c6;align-self:flex-end;border-radius:11px 3px 11px 11px}
-    .msg-in{background:#fff;align-self:flex-start;border-radius:3px 11px 11px 11px}
-    .msg-time{font-size:.6rem;color:#8a8a8a;margin-top:3px;text-align:left}
-    .order-card{background:#fff;border-radius:10px;padding:0;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.12);align-self:stretch;font-size:.74rem}
-    .oc-head{background:#f0f2f5;padding:6px 11px;font-weight:700;color:#075e54;font-size:.72rem;text-align:center}
-    .oc-row{display:flex;align-items:center;gap:8px;padding:7px 11px;border-bottom:1px solid #f0f2f5}
-    .oc-check{width:17px;height:17px;border-radius:5px;background:var(--wa);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
-    .oc-name{flex:1;font-weight:600;color:#222}
-    .oc-qty{color:#667;font-weight:700;font-size:.72rem}
-    .oc-send{padding:8px;text-align:center;color:var(--wa-dark);font-weight:700;font-size:.74rem}
 
     /* ===== VALUE BAND ===== */
     .value-band{background:#fff;border-bottom:1px solid var(--border);padding:1.6rem 3rem}
@@ -237,14 +217,6 @@
     .card h3{font-weight:800;margin-bottom:.5rem;font-size:1.08rem;color:var(--brand)}
     .card p{color:var(--ink2);font-size:.92rem;line-height:1.65}
 
-    /* ===== HOW (steps) ===== */
-    .steps{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:1rem}
-    .step{display:flex;align-items:flex-start;gap:1.3rem;padding:1.5rem 1.7rem;background:var(--bg-tint);border:1px solid var(--border);border-radius:18px;transition:all .3s}
-    .step:hover{border-color:rgba(37,211,102,.35);background:#f0fbf5;box-shadow:0 6px 22px rgba(37,211,102,.1)}
-    .step-num{min-width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--wa),var(--wa-dark));display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;color:#fff;font-size:1rem;box-shadow:0 4px 12px rgba(37,211,102,.3)}
-    .step-c h3{font-weight:800;margin-bottom:.25rem;font-size:1.05rem;color:var(--brand)}
-    .step-c p{color:var(--ink2);font-size:.92rem}
-
     /* ===== FINAL CTA (dark) ===== */
     .cta-section{background:radial-gradient(100% 130% at 50% 0%,#12503a,var(--brand) 55%,var(--brand2));color:#fff;text-align:center}
     .cta-section h2{color:#fff}
@@ -271,7 +243,8 @@
     .form-status.ok{display:block;background:#e8f9ef;color:var(--wa-dark);border:1px solid rgba(37,211,102,.3)}
     .form-status.err{display:block;background:#fdecec;color:#c0392b;border:1px solid rgba(192,57,43,.25)}
     .form-status a{color:inherit;text-decoration:underline;font-weight:700}
-    .form-hp{position:absolute;left:-9999px;opacity:0;height:0;width:0;overflow:hidden}
+    /* honeypot — hidden WITHOUT off-screen positioning (left:-9999px caused RTL horizontal overflow) */
+    .form-hp{position:absolute;width:1px;height:1px;padding:0;margin:-1px;border:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);opacity:0;pointer-events:none}
 
     .contact-info{display:flex;flex-direction:column;gap:1rem}
     .info-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.4rem;display:flex;align-items:center;gap:1rem;transition:all .3s}
@@ -298,8 +271,8 @@
     body.no-motion *,body.no-motion *::before,body.no-motion *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition:none!important;scroll-behavior:auto!important}
     body.ul-links a{text-decoration:underline!important}
     body.hc{--ink:#000;--ink2:#141414;--ink3:#2b2b2b;--bg:#fff;--bg-tint:#fff;--card:#fff;--surface:#fff;--border:#111;--border-strong:#000}
-    body.hc .card,body.hc .step,body.hc .pain-card,body.hc .contact-form,body.hc .info-card,body.hc .value-pill,body.hc .field input,body.hc .field textarea{border-color:#000;border-width:1.5px}
-    body.hc .sec-sub,body.hc .card p,body.hc .pain-card p,body.hc .step-c p,body.hc .feature-desc{color:#111}
+    body.hc .card,body.hc .pain-card,body.hc .contact-form,body.hc .info-card,body.hc .value-pill,body.hc .field input,body.hc .field textarea{border-color:#000;border-width:1.5px}
+    body.hc .sec-sub,body.hc .card p,body.hc .pain-card p{color:#111}
     body.hc a:not(.btn-primary):not(.btn-ghost):not(.cta-nav):not(.a11y-opt){text-decoration:underline}
     /* consent block */
     .consent-field{margin-bottom:1rem}
@@ -329,14 +302,14 @@
 
     /* ===== RESPONSIVE ===== */
     @media(max-width:940px){
-      .hero-inner{grid-template-columns:1fr;gap:2.5rem}
-      .chat-wrap{order:-1}
       .contact-grid{grid-template-columns:1fr}
     }
     @media(max-width:820px){
       .pain-grid,.grid3,.cta-steps{grid-template-columns:1fr 1fr}
       .flow{grid-template-columns:1fr;gap:.8rem}
-      .flow-arrow{transform:rotate(90deg);justify-content:center}
+      .flow-arrow{justify-content:center}
+      .lang-he .flow-arrow{transform:rotate(-90deg)}  /* ← rotated to point DOWN */
+      .lang-en .flow-arrow{transform:rotate(90deg)}   /* → rotated to point DOWN */
       .vs-grid{grid-template-columns:1fr;gap:1.8rem}
       .vs-word{transform:rotate(90deg)}
     }
@@ -373,7 +346,6 @@
     <ul class="nav-links">
       <li><a href="#solution"><span data-inline="he">הפתרון</span><span data-inline="en">Solution</span></a></li>
       <li><a href="#features"><span data-inline="he">יכולות</span><span data-inline="en">Features</span></a></li>
-      <li><a href="#how"><span data-inline="he">איך זה עובד</span><span data-inline="en">How it works</span></a></li>
       <li><a href="#contact"><span data-inline="he">צור קשר</span><span data-inline="en">Contact</span></a></li>
     </ul>
     <div class="lang-toggle">
@@ -396,12 +368,12 @@
         <span data-inline="en">Powered by WhatsApp Business API</span>
       </div>
       <div data-lang="he">
-        <h1>ההזמנות שלך.<br><span class="accent">בוואטסאפ.</span><br>בלי אפליקציה.</h1>
-        <p class="hero-sub">לקוחות מזמינים איך שנוח להם — בטקסט, בהקלטה או בתמונה. אתם מקבלים רשימת ליקוט אחת, נקייה, אוטומטית. פשוט כמו לשלוח הודעה.</p>
+        <h1>ההזמנות שלכם.<br><span class="accent">בוואטסאפ.</span><br>בלי אפליקציה.</h1>
+        <p class="hero-sub">לקוחות מזמינים איך שנוח להם — בטקסט, בהקלטה או בתמונה. אתם מקבלים רשימת הזמנות אחת, מרוכזת ונקייה. פשוט כמו לשלוח הודעה.</p>
       </div>
       <div data-lang="en">
         <h1>Your orders.<br><span class="accent">On WhatsApp.</span><br>No app.</h1>
-        <p class="hero-sub">Customers order however suits them — text, voice, or photo. You get one clean picking list, automatically. As simple as sending a message.</p>
+        <p class="hero-sub">Customers order however suits them — text, voice, or photo. You get one clean, consolidated order list. As simple as sending a message.</p>
       </div>
       <div class="cta-group">
         <a href="https://wa.me/972556654664" class="btn-primary" target="_blank" rel="noopener noreferrer">
@@ -415,7 +387,7 @@
       <div class="hero-chips">
         <span class="hero-chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 00-2 2v16l4-4h14a2 2 0 002-2V6a2 2 0 00-2-2z"/></svg><span data-inline="he">וואטסאפ</span><span data-inline="en">WhatsApp</span></span>
         <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span data-inline="he">הבנת שפה טבעית</span><span data-inline="en">Natural language</span></span>
-        <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span data-inline="he">ליקוט אוטומטי</span><span data-inline="en">Auto picking list</span></span>
+        <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="8" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><path d="M7 8h.01M7 17h.01"/></svg><span data-inline="he">ישר למערכות שלכם</span><span data-inline="en">Into your systems</span></span>
       </div>
     </div>
 
@@ -442,8 +414,8 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="kicker"><span class="num">01</span><span data-inline="he">הכאב</span><span data-inline="en">The problem</span></div>
-      <div data-lang="he"><h2>כל הזמנה מגיעה אחרת.<br>וכולן נופלות עליכם.</h2><p class="sec-sub">מפיצים חיים בין וואטסאפ, טלפון, הקלטות ופתקים — ומרכיבים כל בוקר את רשימת הליקוט ביד. זמן שנשרף, טעויות, ולקוחות שנשכחים.</p></div>
-      <div data-lang="en"><h2>Every order arrives differently.<br>And they all land on you.</h2><p class="sec-sub">Distributors juggle WhatsApp, phone calls, voice notes and scraps of paper — assembling the picking list by hand every single morning. Wasted time, mistakes, forgotten customers.</p></div>
+      <div data-lang="he"><h2>כל הזמנה מגיעה אחרת.<br>וכולן נופלות עליכם.</h2><p class="sec-sub">מפיצים חיים בין וואטסאפ, טלפון, הקלטות ופתקים — ומרכיבים כל בוקר את רשימת ההזמנות ביד. זמן שנשרף, טעויות, ולקוחות שנשכחים.</p></div>
+      <div data-lang="en"><h2>Every order arrives differently.<br>And they all land on you.</h2><p class="sec-sub">Distributors juggle WhatsApp, phone calls, voice notes and scraps of paper — assembling the order list by hand every single morning. Wasted time, mistakes, forgotten customers.</p></div>
     </div>
     <div class="pain-grid">
       <div class="pain-card reveal"><span class="pain-emoji">💬</span><p data-lang="he">הזמנה מפוזרת על פני 5 הודעות נפרדות</p><p data-lang="en">An order scattered across 5 separate messages</p></div>
@@ -451,7 +423,7 @@
       <div class="pain-card reveal"><span class="pain-emoji">📞</span><p data-lang="he">שיחה ב-23:40: ״תוסיף לי עוד 3 גבינות״</p><p data-lang="en">A call at 23:40: "add me 3 more cheeses"</p></div>
       <div class="pain-card reveal"><span class="pain-emoji">🎙️</span><p data-lang="he">הקלטה של 40 שניות שצריך לשמוע פעמיים</p><p data-lang="en">A 40-second recording you replay twice</p></div>
       <div class="pain-card reveal"><span class="pain-emoji">📝</span><p data-lang="he">פתק בכתב יד שאי אפשר לפענח</p><p data-lang="en">A handwritten note you can't decipher</p></div>
-      <div class="pain-card reveal"><span class="pain-emoji">📋</span><p data-lang="he">שעה של הקלדה ידנית לרשימת ליקוט אחת</p><p data-lang="en">An hour of manual typing for a single picking list</p></div>
+      <div class="pain-card reveal"><span class="pain-emoji">📋</span><p data-lang="he">שעה של הקלדה ידנית לרשימת הזמנות אחת</p><p data-lang="en">An hour of manual typing for a single order list</p></div>
     </div>
   </div>
 </section>
@@ -461,8 +433,8 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="kicker"><span class="num">02</span><span data-inline="he">בלי אפליקציה</span><span data-inline="en">No app</span></div>
-      <div data-lang="he"><h2>הם כבר לא פותחים אפליקציה.<br>הם מזמינים בוואטסאפ.</h2><p class="sec-sub">אפליקציות הזמנה מותקנות פעם אחת — ונשכחות. וואטסאפ פתוח אצל הלקוחות שלכם כל היום. שם הם כבר נמצאים, ושם הם יזמינו.</p></div>
-      <div data-lang="en"><h2>They don't open apps anymore.<br>They order on WhatsApp.</h2><p class="sec-sub">Ordering apps get installed once — then forgotten. WhatsApp is open on your customers' phones all day. That's where they already are, and that's where they'll order.</p></div>
+      <div data-lang="he"><h2>הלקוחות שלכם כבר לא פותחים אפליקציה.<br>הם מזמינים בוואטסאפ.</h2><p class="sec-sub">אפליקציות הזמנה מותקנות פעם אחת — ונשכחות. וואטסאפ פתוח אצל הלקוחות שלכם כל היום. שם הם כבר נמצאים, ושם הם יזמינו.</p></div>
+      <div data-lang="en"><h2>Your customers don't open apps.<br>They order on WhatsApp.</h2><p class="sec-sub">Ordering apps get installed once — then forgotten. WhatsApp is open on your customers' phones all day. That's where they already are, and that's where they'll order.</p></div>
     </div>
     <div class="vs-grid reveal">
       <div class="vs-card vs-good">
@@ -490,8 +462,8 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="kicker"><span class="num">03</span><span data-inline="he">הפתרון</span><span data-inline="en">The solution</span></div>
-      <div data-lang="he"><h2>OrdexAI הופך כל שיחה<br>להזמנה מסודרת.</h2><p class="sec-sub">מנוע שמבין עברית אמיתית, מזהה כל מוצר במדויק, ומרכיב לבד את רשימת הליקוט — בזמן שאתם עסוקים בעסק.</p></div>
-      <div data-lang="en"><h2>OrdexAI turns every chat<br>into a clean order.</h2><p class="sec-sub">An engine that understands real Hebrew, identifies every product precisely, and builds the picking list on its own — while you run your business.</p></div>
+      <div data-lang="he"><h2>OrdexAI הופך כל שיחה<br>להזמנה מסודרת.</h2><p class="sec-sub">מנוע שמבין עברית אמיתית, מזהה כל מוצר במדויק, ומרכיב לבד את רשימת ההזמנות המרוכזת — בזמן שאתם עסוקים בעסק.</p></div>
+      <div data-lang="en"><h2>OrdexAI turns every chat<br>into a clean order.</h2><p class="sec-sub">An engine that understands real Hebrew, identifies every product precisely, and builds the consolidated order list on its own — while you run your business.</p></div>
     </div>
     <div class="flow reveal">
       <div class="flow-card">
@@ -499,20 +471,20 @@
         <h3><span data-inline="he">הלקוח מזמין</span><span data-inline="en">Customer orders</span></h3>
         <p><span data-inline="he">טקסט · קול · תמונה</span><span data-inline="en">Text · voice · photo</span></p>
       </div>
-      <div class="flow-arrow">←</div>
+      <div class="flow-arrow"><span data-inline="he">←</span><span data-inline="en">→</span></div>
       <div class="flow-card">
         <div class="flow-emoji">🧠</div>
         <h3><span data-inline="he">OrdexAI מבין</span><span data-inline="en">OrdexAI understands</span></h3>
         <p><span data-inline="he">ומדייק כל פריט</span><span data-inline="en">and pinpoints every item</span></p>
       </div>
-      <div class="flow-arrow">←</div>
+      <div class="flow-arrow"><span data-inline="he">←</span><span data-inline="en">→</span></div>
       <div class="flow-card">
         <div class="flow-emoji">📦</div>
         <h3><span data-inline="he">אתם מקבלים</span><span data-inline="en">You receive</span></h3>
-        <p><span data-inline="he">רשימת ליקוט אחת</span><span data-inline="en">one picking list</span></p>
+        <p><span data-inline="he">רשימת הזמנות מרוכזת</span><span data-inline="en">one consolidated list</span></p>
       </div>
     </div>
-    <div class="flow-note reveal"><span data-inline="he">בלי אפליקציה · בלי סיסמה · בלי הקלדה ידנית — הכול קורה בוואטסאפ שהלקוח כבר משתמש בו כל יום.</span><span data-inline="en">No app · no password · no manual typing — it all happens in the WhatsApp your customer already uses every day.</span></div>
+    <div class="flow-note reveal"><span data-inline="he">הכול קורה בוואטסאפ שהלקוח כבר משתמש בו כל יום — בלי הורדות ובלי הקלדה.</span><span data-inline="en">It all happens in the WhatsApp your customer already uses every day — no downloads, no typing.</span></div>
   </div>
 </section>
 
@@ -521,27 +493,15 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="kicker"><span data-inline="he">יכולות</span><span data-inline="en">Features</span></div>
-      <div data-lang="he"><h2>כל מה שצריך במקום אחד</h2><p class="sec-sub">מזמינים בשפה של החיים — והמערכת עושה את השאר.</p></div>
-      <div data-lang="en"><h2>Everything you need in one place</h2><p class="sec-sub">Order in everyday language — the system does the rest.</p></div>
+      <div data-lang="he"><h2>כל מה שצריך — במקום אחד</h2><p class="sec-sub">מזמינים בשפה של החיים, והמערכת עושה את השאר — מהקליטה ועד המחסן.</p></div>
+      <div data-lang="en"><h2>Everything you need — in one place</h2><p class="sec-sub">Order in everyday language; the system does the rest — from the message to the warehouse.</p></div>
     </div>
     <div class="grid3">
       <div class="card reveal">
         <div class="card-icon">💬</div>
-        <h3><span data-inline="he">עברית אמיתית</span><span data-inline="en">Real Hebrew</span></h3>
-        <p data-lang="he">כמויות, אחוזי שומן, וריאציות וקיצורים — הבוט מבין בדיוק מה התכוון הלקוח, גם בשפת הרחוב. 5% מול 3% מול 9% — לא מתבלבל.</p>
-        <p data-lang="en">Quantities, fat %, variations and abbreviations — it understands exactly what the customer meant, even in street language. 5% vs 3% vs 9% — never confused.</p>
-      </div>
-      <div class="card reveal">
-        <div class="card-icon">🎙️</div>
-        <h3><span data-inline="he">הזמנות קוליות</span><span data-inline="en">Voice orders</span></h3>
-        <p data-lang="he">מקליטים תוך כדי נהיגה וזה כבר בהזמנה. תמלול חכם מותאם למונחי חלב וגבינות, שרץ דרך אותו מנוע בדיוק. אין הבדל בין מדובר לכתוב.</p>
-        <p data-lang="en">Record while driving — it's already an order. Smart transcription tuned to dairy terms, run through the exact same engine. No difference between spoken and typed.</p>
-      </div>
-      <div class="card reveal">
-        <div class="card-icon">📸</div>
-        <h3><span data-inline="he">צילום דף הזמנה</span><span data-inline="en">Photograph a form</span></h3>
-        <p data-lang="he">טופס מודפס או כתב יד, כולל טבלאות מק״ט — OCR מזהה כל שורה והופך אותה להזמנה מדויקת. הלקוח רק מצלם ושולח.</p>
-        <p data-lang="en">Printed or handwritten, including SKU tables — OCR reads every line and turns it into a precise order. The customer just snaps a photo and sends.</p>
+        <h3><span data-inline="he">כל דרך להזמין</span><span data-inline="en">Order any way</span></h3>
+        <p data-lang="he">טקסט, קול או תמונה — בעברית של החיים, כולל כמויות, אחוזי שומן וקיצורים. גם צילום טופס עם מק״טים נקרא אוטומטית (OCR). הכול נכנס לאותו מנוע.</p>
+        <p data-lang="en">Text, voice, or a photo — in everyday Hebrew, including quantities, fat % and shorthand. Even a photo of a form with SKUs is read automatically (OCR). All into one engine.</p>
       </div>
       <div class="card reveal">
         <div class="card-icon">👆</div>
@@ -551,95 +511,30 @@
       </div>
       <div class="card reveal">
         <div class="card-icon">🧠</div>
-        <h3><span data-inline="he">לומד את הלקוחות</span><span data-inline="en">Learns your customers</span></h3>
-        <p data-lang="he">המערכת זוכרת את הכינויים והקיצורים של כל לקוח, ומזהה אותם אוטומטית בפעם הבאה — הדיוק משתפר עם הזמן.</p>
-        <p data-lang="en">It remembers each customer's nicknames and shorthand, auto-recognizing them next time — accuracy improves over time.</p>
+        <h3><span data-inline="he">לומדת את הלקוחות ומקצרת את ההזמנה</span><span data-inline="en">Learns your customers, speeds up ordering</span></h3>
+        <p data-lang="he">המערכת זוכרת את הכינויים והקיצורים של כל לקוח ומזהה אותם אוטומטית בפעם הבאה — כל הזמנה מהירה יותר מהקודמת.</p>
+        <p data-lang="en">It remembers each customer's nicknames and shorthand and recognizes them automatically next time — every order is faster than the last.</p>
       </div>
       <div class="card reveal">
         <div class="card-icon">📦</div>
-        <h3><span data-inline="he">רשימת ליקוט אוטומטית</span><span data-inline="en">Automatic picking list</span></h3>
-        <p data-lang="he">בשעת הקאט-אוף נשלח PDF מסודר למחסן ולמייל — מרוכז לפי לקוח וסוג שוק. בלי הקלדה, בלי טעויות.</p>
-        <p data-lang="en">At cutoff, a tidy PDF is sent to the warehouse and inbox — grouped by customer and market type. No typing, no mistakes.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PLATFORM / JOURNEY ===== -->
-<section class="tint" id="platform">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="kicker"><span data-inline="he">הפלטפורמה</span><span data-inline="en">The platform</span></div>
-      <div data-lang="he"><h2>לא רק מפענח — מנהל את כל המסע</h2><p class="sec-sub">מהצטרפות הלקוח ועד רשימת הליקוט של המפיץ, מקצה לקצה.</p></div>
-      <div data-lang="en"><h2>Not just parsing — it runs the whole journey</h2><p class="sec-sub">From customer onboarding to the distributor's picking list, end to end.</p></div>
-    </div>
-    <div class="grid3">
-      <div class="card reveal">
-        <div class="card-icon">⚡</div>
-        <h3><span data-inline="he">הצטרפות ב-30 שניות</span><span data-inline="en">Onboard in 30 seconds</span></h3>
-        <p data-lang="he">טופס וואטסאפ מובנה בתוך הצ׳אט — שם העסק, כתובת ואיש קשר. בלי אפליקציה, בלי סיסמה, וזיהוי עסק אוטומטי. אפס חיכוך.</p>
-        <p data-lang="en">A built-in WhatsApp form right inside the chat — business name, address, contact. No app, no password, automatic business detection. Zero friction.</p>
-      </div>
-      <div class="card reveal">
-        <div class="card-icon">✅</div>
-        <h3><span data-inline="he">אישור בלחיצה, היסטוריה לתמיד</span><span data-inline="en">One-tap approval, history forever</span></h3>
-        <p data-lang="he">המפיץ מקבל כרטיס לקוח מסודר ומאשר או דוחה בלחיצה. אפשר גם להשהות לקוח בלי לאבד את ההיסטוריה שלו.</p>
-        <p data-lang="en">The distributor gets an organized customer card and approves or rejects with a tap. You can even pause a customer without losing their history.</p>
-      </div>
-      <div class="card reveal">
-        <div class="card-icon">🖥️</div>
-        <h3><span data-inline="he">דף הזמנה בלינק</span><span data-inline="en">An order page in a link</span></h3>
-        <p data-lang="he">מעדיפים מסך? לינק אחד פותח דף הזמנה נקי — בלי אפליקציה, מסונכרן לאותו קטלוג ומנוע כמו הצ׳אט. אפשר לערוך גם אחרי השליחה.</p>
-        <p data-lang="en">Prefer a screen? One link opens a clean order page — no app, synced to the same catalog and engine as the chat. Editable even after sending.</p>
+        <h3><span data-inline="he">רשימה מרוכזת — ישר למערכות שלכם</span><span data-inline="en">Consolidated list — into your systems</span></h3>
+        <p data-lang="he">בשעת הקאט-אוף נשלחת רשימת הזמנות מרוכזת (PDF) לוואטסאפ ולמייל, מקובצת לפי לקוח — וניתן לשדר אותה ישירות למערכת ה-ERP שלכם.</p>
+        <p data-lang="en">At cutoff, a consolidated order list (PDF) is sent to WhatsApp and email, grouped by customer — and can be transmitted straight into your company's ERP.</p>
       </div>
       <div class="card reveal">
         <div class="card-icon">📅</div>
-        <h3><span data-inline="he">תאריך אספקה חכם</span><span data-inline="en">Smart delivery date</span></h3>
-        <p data-lang="he">יום האספקה מחושב לפי ימי המשלוח של הלקוח, שעת הקאט-אוף וחגי ישראל. הזמנה מאוחרת משובצת ליום התקף הבא.</p>
-        <p data-lang="en">The delivery day is computed from the customer's delivery days, the cutoff time and Israeli holidays. A late order is slotted to the next valid day.</p>
-      </div>
-      <div class="card reveal">
-        <div class="card-icon">🔔</div>
-        <h3><span data-inline="he">שום הזמנה לא נשכחת</span><span data-inline="en">No order slips through</span></h3>
-        <p data-lang="he">תזכורת עדינה לפני הקאט-אוף למי שעוד לא הזמין, ותזכורת למי שהתחיל ולא סיים — עובד גם מחוץ לחלון 24 השעות, דרך תבניות מאושרות.</p>
-        <p data-lang="en">A gentle reminder before cutoff for those who haven't ordered, and a nudge for anyone who started but didn't finish — working even outside the 24-hour window via approved templates.</p>
+        <h3><span data-inline="he">תאריך אספקה ותזכורות</span><span data-inline="en">Delivery date & reminders</span></h3>
+        <p data-lang="he">יום האספקה מחושב לפי ימי המשלוח של הלקוח, שעת הקאט-אוף וחגי ישראל. תזכורת עדינה לפני הקאט-אוף דואגת ששום הזמנה לא תישכח.</p>
+        <p data-lang="en">The delivery day is computed from the customer's delivery days, the cutoff and Israeli holidays. A gentle pre-cutoff reminder makes sure no order slips through.</p>
       </div>
       <div class="card reveal">
         <div class="card-icon">🔒</div>
-        <h3><span data-inline="he">אמין ובר-בקרה</span><span data-inline="en">Reliable & auditable</span></h3>
-        <p data-lang="he">הבנה בשתי שכבות: ה-AI מזהה כוונה, וקוד דטרמיניסטי מתאים את המק״ט המדויק — אמין ובר-בקרה, לא ניחוש.</p>
-        <p data-lang="en">Two-layer understanding: the AI detects intent, and deterministic code matches the exact SKU — reliable and auditable, not guesswork.</p>
+        <h3><span data-inline="he">אמין ובר-בקרה</span><span data-inline="en">Reliable &amp; auditable</span></h3>
+        <p data-lang="he">הבנה בשתי שכבות: ה-AI מזהה כוונה, וקוד מדויק מתאים בדיוק את המק״ט — אמין, לא ניחוש.</p>
+        <p data-lang="en">Two-layer understanding: the AI detects intent, and precise matching logic locks onto the exact SKU — reliable, not guesswork.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ===== HOW IT WORKS ===== -->
-<section class="white" id="how">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="kicker"><span data-inline="he">איך זה עובד</span><span data-inline="en">How it works</span></div>
-      <div data-lang="he"><h2>פשוט כמו לשלוח הודעה</h2><p class="sec-sub">ארבעה שלבים מהזמנה ועד אספקה.</p></div>
-      <div data-lang="en"><h2>As simple as sending a message</h2><p class="sec-sub">Four steps from order to delivery.</p></div>
-    </div>
-    <div class="steps">
-      <div class="step reveal"><div class="step-num">1</div><div class="step-c">
-        <h3><span data-inline="he">הלקוח שולח הזמנה בוואטסאפ</span><span data-inline="en">Customer sends an order on WhatsApp</span></h3>
-        <p><span data-inline="he">טקסט חופשי, הודעה קולית או צילום של דף הזמנה — הכול נתמך.</span><span data-inline="en">Free text, a voice message, or a photo of an order form — all supported.</span></p>
-      </div></div>
-      <div class="step reveal"><div class="step-num">2</div><div class="step-c">
-        <h3><span data-inline="he">ה-AI מפרסר ומתאים לקטלוג</span><span data-inline="en">The AI parses and matches the catalog</span></h3>
-        <p><span data-inline="he">המערכת מבינה את ההזמנה, מתאימה לרשימת המוצרים ומחזירה ציון ביטחון לכל פריט.</span><span data-inline="en">It understands the order, matches it to your product list, and returns a confidence score per item.</span></p>
-      </div></div>
-      <div class="step reveal"><div class="step-num">3</div><div class="step-c">
-        <h3><span data-inline="he">אישור אוטומטי או שאלה ממוקדת</span><span data-inline="en">Auto-confirm or a targeted question</span></h3>
-        <p><span data-inline="he">פריטים ברורים מאושרים מיד. פריט לא ברור → שאלה קצרה ללקוח, בלחיצה.</span><span data-inline="en">Clear items are confirmed instantly. An unclear item → a short question to the customer, one tap away.</span></p>
-      </div></div>
-      <div class="step reveal"><div class="step-num">4</div><div class="step-c">
-        <h3><span data-inline="he">רשימת ליקוט נשלחת אוטומטית</span><span data-inline="en">Picking list sent automatically</span></h3>
-        <p><span data-inline="he">בשעת הקאט-אוף — רשימת ליקוט מסוכמת נשלחת למפיץ בוואטסאפ ובמייל.</span><span data-inline="en">At cutoff — a summarized picking list is sent to the distributor via WhatsApp and email.</span></p>
-      </div></div>
-    </div>
+    <div class="flow-note reveal"><span data-inline="he">וגם: הצטרפות בוואטסאפ ב-30 שניות · אישור לקוח בלחיצה · דף הזמנה בלינק לכל מי שמעדיף מסך.</span><span data-inline="en">Also: WhatsApp onboarding in 30 seconds · one-tap customer approval · an order page via a link for anyone who prefers a screen.</span></div>
   </div>
 </section>
 
@@ -654,7 +549,7 @@
     <div class="cta-steps reveal">
       <div class="cta-step"><div class="n">1</div><p><span data-inline="he">חיבור מספר וטעינת קטלוג</span><span data-inline="en">Connect a number & load the catalog</span></p></div>
       <div class="cta-step"><div class="n">2</div><p><span data-inline="he">הלקוחות מתחילים להזמין</span><span data-inline="en">Customers start ordering</span></p></div>
-      <div class="cta-step"><div class="n">3</div><p><span data-inline="he">רשימת ליקוט אוטומטית בקאט-אוף</span><span data-inline="en">Automatic picking list at cutoff</span></p></div>
+      <div class="cta-step"><div class="n">3</div><p><span data-inline="he">רשימת הזמנות מרוכזת בקאט-אוף</span><span data-inline="en">Consolidated order list at cutoff</span></p></div>
     </div>
     <div class="cta-actions reveal">
       <a href="https://wa.me/972556654664" class="btn-primary" target="_blank" rel="noopener noreferrer">
@@ -735,10 +630,6 @@
           <div class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div>
           <div><div class="info-label">Email</div><div class="info-val" dir="ltr">info@ordexai.com</div></div>
         </a>
-        <a class="info-card reveal" href="privacy-policy.html" target="_blank" rel="noopener noreferrer">
-          <div class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <div><div class="info-label"><span data-inline="he">פרטיות</span><span data-inline="en">Privacy</span></div><div class="info-val"><span data-inline="he">מדיניות פרטיות</span><span data-inline="en">Privacy Policy</span></div></div>
-        </a>
       </div>
     </div>
   </div>
@@ -753,7 +644,6 @@
     <div class="footer-links">
       <a href="#solution"><span data-inline="he">הפתרון</span><span data-inline="en">Solution</span></a>
       <a href="#features"><span data-inline="he">יכולות</span><span data-inline="en">Features</span></a>
-      <a href="#how"><span data-inline="he">איך זה עובד</span><span data-inline="en">How it works</span></a>
       <a href="#contact"><span data-inline="he">צור קשר</span><span data-inline="en">Contact</span></a>
       <a href="privacy-policy.html" target="_blank" rel="noopener noreferrer"><span data-inline="he">מדיניות פרטיות</span><span data-inline="en">Privacy Policy</span></a>
       <a href="accessibility.html" target="_blank" rel="noopener noreferrer"><span data-inline="he">הצהרת נגישות</span><span data-inline="en">Accessibility</span></a>
@@ -768,14 +658,14 @@
 <!-- Accessibility widget (IS 5568 / WCAG AA) -->
 <div class="a11y">
   <button class="a11y-toggle" id="a11yToggle" aria-expanded="false" aria-controls="a11yPanel" aria-label="תפריט נגישות / Accessibility menu">♿</button>
-  <div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="הגדרות נגישות" hidden>
+  <div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="הגדרות נגישות / Accessibility settings" hidden>
     <div class="a11y-title"><span data-inline="he">נגישות</span><span data-inline="en">Accessibility</span></div>
     <div class="a11y-row">
       <span><span data-inline="he">גודל טקסט</span><span data-inline="en">Text size</span></span>
       <div class="a11y-btns">
-        <button type="button" data-a11y="font-dec" aria-label="הקטן טקסט">A−</button>
-        <button type="button" data-a11y="font-reset" aria-label="איפוס גודל">A</button>
-        <button type="button" data-a11y="font-inc" aria-label="הגדל טקסט">A+</button>
+        <button type="button" data-a11y="font-dec" aria-label="הקטן טקסט / Decrease text size">A−</button>
+        <button type="button" data-a11y="font-reset" aria-label="איפוס גודל / Reset text size">A</button>
+        <button type="button" data-a11y="font-inc" aria-label="הגדל טקסט / Increase text size">A+</button>
       </div>
     </div>
     <button type="button" class="a11y-opt" data-a11y="contrast" aria-pressed="false"><span data-inline="he">ניגודיות גבוהה</span><span data-inline="en">High contrast</span></button>
@@ -792,11 +682,16 @@ function setLang(lang){
   document.body.className = 'lang-' + lang;
   document.documentElement.lang = lang;
   document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
+  document.title = lang === 'he'
+    ? 'OrdexAI — הזמנות חכמות בוואטסאפ | ניהול הזמנות למפיצי מזון'
+    : 'OrdexAI — Smart WhatsApp ordering | Order management for food distributors';
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active', b.dataset.setLang === lang));
   // swap input placeholders
   document.querySelectorAll('[data-ph-he]').forEach(el=>{
     el.placeholder = lang === 'he' ? el.dataset.phHe : el.dataset.phEn;
   });
+  // re-render the hero WhatsApp demo in the selected language
+  if(window.OrdexChat) window.OrdexChat.setLang(lang);
 }
 document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.setLang)));
 setLang('he');
@@ -879,6 +774,12 @@ function showStatus(type, html){
   if(!host) return;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var curChat=null, typingEl=null, timers=[];
+  var lang = document.body.classList.contains('lang-en') ? 'en' : 'he';
+  var UI = {
+    he:{ online:'מקוון', typing:'מקליד…', message:'הודעה', sendChoice:'שליחת בחירה', voiceAva:'ק' },
+    en:{ online:'online', typing:'typing…', message:'Message', sendChoice:'Send selection', voiceAva:'C' }
+  };
+  function ui(){ return UI[lang]; }
 
   var esc = function(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
   function ticks(){ return '<svg viewBox="0 0 18 12" width="16" height="11" style="vertical-align:middle"><path d="M1 6.5 4 9.5 9.5 3" fill="none" stroke="#53bdeb" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 6.5 9.5 9.5 15 3" fill="none" stroke="#53bdeb" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'; }
@@ -888,12 +789,12 @@ function showStatus(type, html){
   function mkList(title,head,rows,side,time){
     var r=''; rows.forEach(function(row){ var a=row[0],b=row[1],on=row[2];
       r+='<div class="lrow"><div class="lchk '+(on?'':'off')+'">'+(on?'✓':'')+'</div><div class="ltxt"><b>'+esc(a)+'</b>'+(b?'<span>'+esc(b)+'</span>':'')+'</div></div>'; });
-    var inner=(title?'<span>'+esc(title)+'</span>':'')+'<div class="lcard"><div class="lhead">'+esc(head)+'</div>'+r+'<div class="lsend">שליחת בחירה</div></div>';
+    var inner=(title?'<span>'+esc(title)+'</span>':'')+'<div class="lcard"><div class="lhead">'+esc(head)+'</div>'+r+'<div class="lsend">'+esc(ui().sendChoice)+'</div></div>';
     return wrap(inner,side,time,'wide');
   }
   function mkVoice(dur,side,time){
     var bars=''; [6,11,17,9,20,13,7,15,22,10,16,8,13,6,18,9,12,7,15,5,11,8].forEach(function(hh){ bars+='<i style="height:'+hh+'px"></i>'; });
-    var inner='<div class="voice"><div class="vava">ק</div><div class="vplay"><svg viewBox="0 0 24 24" width="21" height="21"><path d="M8 5v14l11-7z" fill="#54656f"/></svg></div><div class="vwave">'+bars+'</div><div class="vdur">'+esc(dur)+'</div></div>';
+    var inner='<div class="voice"><div class="vava">'+esc(ui().voiceAva)+'</div><div class="vplay"><svg viewBox="0 0 24 24" width="21" height="21"><path d="M8 5v14l11-7z" fill="#54656f"/></svg></div><div class="vwave">'+bars+'</div><div class="vdur">'+esc(dur)+'</div></div>';
     return wrap(inner,side,time,'wide');
   }
   function mkButtons(title,btns,side,time){
@@ -903,13 +804,19 @@ function showStatus(type, html){
   }
   function mkSys(t){ return '<div class="sys">'+esc(t)+'</div>'; }
   function mkSheet(side,time){
-    var inner='<div class="sheet"><div class="sheet-hd">טופס הזמנה שבועי — מעדניית שקד</div>'+
-      '<table><tr><th>מק״ט</th><th>מוצר</th><th>כמות</th></tr>'+
-      '<tr><td>1042</td><td>קוטג׳ 5%</td><td class="qty"><span class="hw">12</span></td></tr>'+
-      '<tr><td>1108</td><td>שמנת מתוקה 38%</td><td class="qty"><span class="hw">6</span></td></tr>'+
-      '<tr><td>2231</td><td>גבינה בולגרית 16%</td><td class="qty"><span class="hw">4</span></td></tr>'+
-      '<tr><td>3390</td><td>לבן נגב מארז</td><td class="qty"><span class="hw">3</span></td></tr>'+
-      '<tr><td>4417</td><td>לאבנה 500ג׳</td><td class="qty"><span class="hw">8</span></td></tr></table></div>';
+    var he = lang==='he';
+    var hd = he ? 'טופס הזמנה שבועי — מעדניית שקד' : 'Weekly order form — Shaked Deli';
+    var cols = he ? ['מק״ט','מוצר','כמות'] : ['SKU','Product','Qty'];
+    var rows = he ? [
+      ['1042','קוטג׳ 5%','12'],['1108','שמנת מתוקה 38%','6'],['2231','גבינה בולגרית 16%','4'],
+      ['3390','לבן נגב מארז','3'],['4417','לאבנה 500ג׳','8']
+    ] : [
+      ['1042','Cottage 5%','12'],['1108','Sweet cream 38%','6'],['2231','Bulgarian cheese 16%','4'],
+      ['3390','Negev leben pack','3'],['4417','Labneh 500g','8']
+    ];
+    var body = rows.map(function(r){ return '<tr><td>'+esc(r[0])+'</td><td>'+esc(r[1])+'</td><td class="qty"><span class="hw">'+esc(r[2])+'</span></td></tr>'; }).join('');
+    var inner='<div class="sheet"><div class="sheet-hd">'+esc(hd)+'</div>'+
+      '<table><tr><th>'+esc(cols[0])+'</th><th>'+esc(cols[1])+'</th><th>'+esc(cols[2])+'</th></tr>'+body+'</table></div>';
     return wrap(inner,side,time,'img');
   }
 
@@ -923,7 +830,7 @@ function showStatus(type, html){
           '<div class="wicons">⋮</div>'+
         '</div>'+
         '<div class="chat" id="heroChatBody"></div>'+
-        '<div class="wabar"><div class="wain"><span>הודעה</span><span>＋</span></div>'+
+        '<div class="wabar"><div class="wain"><span>'+esc(ui().message)+'</span><span>＋</span></div>'+
           '<div class="wamic"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3z" fill="#fff"/><path d="M6 11a6 6 0 0 0 12 0M12 18v3" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></div>'+
         '</div>'+
       '</div>';
@@ -934,12 +841,12 @@ function showStatus(type, html){
   function showTyping(){ if(typingEl) return;
     typingEl=document.createElement('div'); typingEl.className='b in typing';
     typingEl.innerHTML='<div class="bc"><div class="dots"><i></i><i></i><i></i></div></div>';
-    curChat.appendChild(typingEl); scrollChat(); setSub('מקליד…'); }
-  function hideTyping(){ if(typingEl){ typingEl.remove(); typingEl=null; } setSub('מקוון'); }
+    curChat.appendChild(typingEl); scrollChat(); setSub(ui().typing); }
+  function hideTyping(){ if(typingEl){ typingEl.remove(); typingEl=null; } setSub(ui().online); }
   function addHTML(html){ var d=document.createElement('div'); d.innerHTML=html.trim(); curChat.appendChild(d.firstElementChild); scrollChat(); }
 
-  /* ---- scenes (ported from the OrdexAI story slides) ---- */
-  var SCENES = [
+  /* ---- scenes (ported from the OrdexAI story slides) — bilingual ---- */
+  function heScenes(){ return [
     { name:'OrdexAI', sub:'מקוון', caption:'הזמנה בטקסט · שפה טבעית', steps:[
       {who:'out', html:mkText('בוקר טוב 🙂 תכין לי בבקשה:\n10 קוטג׳ 5%\n6 שמנת מתוקה\nו-2 מארז לבן נגב','out','08:12'), hold:1400},
       {who:'in', typing:1200, html:mkText('קיבלתי 👍 ככה הבנתי אותך:','in','08:12'), hold:800},
@@ -974,7 +881,46 @@ function showStatus(type, html){
       {who:'out', html:mkText('✓ מאשרת','out','08:15'), hold:800},
       {who:'in', typing:800, html:mkText('מעולה, נקלט! נתראה ביום ה׳ 🚚','in','08:15'), hold:2000}
     ]}
-  ];
+  ]; }
+
+  function enScenes(){ return [
+    { name:'OrdexAI', sub:'online', caption:'Text order · natural language', steps:[
+      {who:'out', html:mkText('Morning 🙂 please get these ready for me:\n10 cottage 5%\n6 sweet cream\nand 2 packs of Negev leben','out','08:12'), hold:1400},
+      {who:'in', typing:1200, html:mkText('Got it 👍 here\'s what I understood:','in','08:12'), hold:800},
+      {who:'in', typing:1400, html:mkList('','Your order · in the order you wrote',[
+        ['Cottage 5%','10 units',true],['Sweet cream','6 units',true],['Negev leben · pack','2 units',true]],'in','08:13'), hold:1800}
+    ]},
+    { name:'OrdexAI', sub:'online', caption:'Voice order · auto-transcribed', steps:[
+      {who:'out', html:mkVoice('0:14','out','09:41'), hold:1300},
+      {who:'in', typing:1300, html:mkText('Transcription 🎧\n"eight cottage nine percent, two sour cream, and a pack of sliced yellow cheese"','in','09:41'), hold:1200},
+      {who:'in', typing:1300, html:mkList('Sorted for you:','Your order',[
+        ['Cottage 9%','8 units',true],['Sour cream','2 units',true],['Sliced yellow cheese · pack','1 unit',true]],'in','09:42'), hold:1800}
+    ]},
+    { name:'OrdexAI', sub:'online', caption:'Photo order · form OCR', steps:[
+      {who:'out', html:mkSheet('out','07:30'), hold:1500},
+      {who:'in', typing:1300, html:mkText('Read the form 📸 pulled 5 lines by SKU:','in','07:31'), hold:900},
+      {who:'in', typing:1400, html:mkList('','From the photo',[
+        ['1042 · Cottage 5%','12',true],['1108 · Sweet cream','6',true],['2231 · Bulgarian cheese','4',true],
+        ['3390 · Negev leben pack','3',true],['4417 · Labneh 500g','8',true]],'in','07:31'), hold:1900}
+    ]},
+    { name:'OrdexAI', sub:'online', caption:'Clarify & "Any type" · one tap', steps:[
+      {who:'out', html:mkText('add yellow cheese too\nand cottage of every kind','out','10:20'), hold:1200},
+      {who:'in', typing:1200, html:mkButtons('Which yellow cheese?',['Emek sliced','Gilboa block','Skip / other'],'in','10:20'), hold:1400},
+      {who:'in', typing:1300, html:mkList('Cottage — I ticked all, untick what you don\'t need:','Pick variants',[
+        ['Cottage 3%','',true],['Cottage 5%','',true],['Cottage 9%','',false]],'in','10:20'), hold:1500},
+      {who:'sys', text:'Learning your preferences · next orders are faster', hold:1000}
+    ]},
+    { name:'OrdexAI', sub:'online', caption:'Confirm & smart delivery date', steps:[
+      {who:'in', typing:1000, html:mkList('Your order summary:','22 items · 4 lines',[
+        ['Cottage 5%','10',true],['Sweet cream','6',true],['Negev leben pack','2',true],['Labneh','4',true]],'in','08:14'), hold:1100},
+      {who:'in', typing:1000, html:mkText('📅 Delivery: Thu, Jul 10\n(today is past cutoff — slotted to your next delivery day)','in','08:14'), hold:1200},
+      {who:'in', typing:900, html:mkButtons('Confirm the order?',['✓ Confirm','✎ Edit','✕ Cancel'],'in','08:14'), hold:1200},
+      {who:'out', html:mkText('✓ Confirmed','out','08:15'), hold:800},
+      {who:'in', typing:800, html:mkText('Great, received! See you Thursday 🚚','in','08:15'), hold:2000}
+    ]}
+  ]; }
+
+  function currentScenes(){ return lang === 'en' ? enScenes() : heScenes(); }
 
   function clearTimers(){ timers.forEach(clearTimeout); timers=[]; }
   function setCap(t){ if(cap) cap.textContent=t; }
@@ -983,7 +929,8 @@ function showStatus(type, html){
   function playScene(i){
     clearTimers();
     curIdx = i;
-    var sc = SCENES[i];
+    var scenes = currentScenes();
+    var sc = scenes[i];
     setCap(sc.caption);
     newChat(sc.name, sc.sub);
     // Freeze the demo statically under OS reduced-motion OR the in-page "stop animations" control.
@@ -1006,7 +953,7 @@ function showStatus(type, html){
         t+=s.hold||950;
       }
     });
-    timers.push(setTimeout(function(){ playScene((i+1)%SCENES.length); }, t+2200)); // next slide
+    timers.push(setTimeout(function(){ playScene((i+1)%scenes.length); }, t+2200)); // next slide
   }
 
   var cap = document.getElementById('heroCap');
@@ -1015,8 +962,12 @@ function showStatus(type, html){
     entries.forEach(function(en){ if(en.isIntersecting && !started){ started=true; playScene(0); } });
   },{threshold:0.2});
   io.observe(host);
-  // Exposed so the accessibility "stop animations" control can freeze/resume the demo.
-  window.OrdexChat = { refresh: function(){ playScene(curIdx); } };
+  // Exposed so the accessibility "stop animations" control can freeze/resume the demo,
+  // and so the language toggle can re-render the demo in Hebrew/English.
+  window.OrdexChat = {
+    refresh: function(){ playScene(curIdx); },
+    setLang: function(L){ lang = (L === 'en' ? 'en' : 'he'); playScene(curIdx); }
+  };
 })();
 
 /* ===== Accessibility widget (text size · contrast · motion · links) — IS 5568 / WCAG AA ===== */
