@@ -3,15 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>מדיניות פרטיות — OrdexAI</title>
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     body{font-family:'Helvetica Neue',Arial,sans-serif;background:#f9f9f9;color:#222;line-height:1.8;direction:rtl}
+    a:focus-visible,button:focus-visible{outline:3px solid #25d366;outline-offset:2px;border-radius:5px}
     header{background:#1a1a2e;color:#fff;padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center}
     .logo{font-size:1.4rem;font-weight:800;color:#25d366;letter-spacing:-1px}
     .logo span{color:#fff}
     .lang-toggle{display:flex;gap:1rem}
-    .lang-btn{background:transparent;border:1px solid rgba(255,255,255,0.3);color:#fff;padding:0.3rem 0.8rem;border-radius:20px;cursor:pointer;font-size:0.85rem;transition:all 0.2s}
+    .lang-btn{background:transparent;border:1px solid rgba(255,255,255,0.3);color:#fff;padding:0.3rem 0.8rem;border-radius:20px;cursor:pointer;font-size:0.85rem;transition:all 0.2s;font-family:inherit}
     .lang-btn.active{background:#25d366;border-color:#25d366}
     .container{max-width:860px;margin:3rem auto;padding:0 2rem}
     .policy-card{background:#fff;border-radius:16px;padding:3rem;box-shadow:0 2px 20px rgba(0,0,0,0.06)}
@@ -23,6 +26,7 @@
     li{color:#444;font-size:0.95rem;margin-bottom:0.4rem}
     .highlight{background:#f0fff4;border-right:3px solid #25d366;padding:0.8rem 1rem;border-radius:0 8px 8px 0;margin:1rem 0;font-size:0.9rem;color:#333}
     .highlight-warn{background:#fffbf0;border-right:3px solid #f59e0b;padding:0.8rem 1rem;border-radius:0 8px 8px 0;margin:1rem 0;font-size:0.9rem;color:#333}
+    .tbl-wrap{overflow-x:auto}
     table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.88rem}
     th{background:#f0f4f8;color:#1a1a2e;font-weight:700;padding:0.6rem 0.8rem;text-align:right;border:1px solid #e0e8ef}
     td{padding:0.6rem 0.8rem;border:1px solid #e0e8ef;color:#444;vertical-align:top}
@@ -30,6 +34,7 @@
     .contact-box{background:#1a1a2e;color:#fff;border-radius:12px;padding:1.5rem;margin-top:2rem;text-align:center}
     .contact-box a{color:#25d366;text-decoration:none;font-weight:700}
     footer{text-align:center;padding:2rem;color:#999;font-size:0.82rem}
+    footer a{color:#25d366;text-decoration:none}
     .en-section{display:none;direction:ltr;text-align:left}
     .he-section{display:block}
     .en-section th{text-align:left}
@@ -43,8 +48,8 @@
 <header>
   <div class="logo">Ordex<span>AI</span></div>
   <div class="lang-toggle">
-    <button class="lang-btn active" onclick="showLang('he')">עברית</button>
-    <button class="lang-btn" onclick="showLang('en')">English</button>
+    <button class="lang-btn active" onclick="showLang('he', this)">עברית</button>
+    <button class="lang-btn" onclick="showLang('en', this)">English</button>
   </div>
 </header>
 
@@ -54,7 +59,7 @@
     <!-- ═══════════════ HEBREW ═══════════════ -->
     <div class="he-section" id="he">
       <h1>מדיניות פרטיות</h1>
-      <p class="updated">עודכן לאחרונה: יוני 2026 | OrdexAI — מופעל על ידי לישי שמעון בן שושן</p>
+      <p class="updated">עודכן לאחרונה: יולי 2026 · בהתאם לחוק הגנת הפרטיות, התשמ"א-1981 ותיקון 13 (בתוקף מאוגוסט 2025) | OrdexAI — מופעל על ידי לישי שמעון בן שושן</p>
 
       <h2>1. מהי OrdexAI ועל מי חלה מדיניות זו</h2>
       <p>OrdexAI היא מערכת B2B לניהול הזמנות דרך WhatsApp, המיועדת למפיצי מזון. המערכת מאפשרת ללקוחות העסקיים של המפיץ לשלוח הזמנות בשפה חופשית — טקסט, קול או תמונה — ישירות בוואטסאפ, ומעבדת אותן אוטומטית באמצעות בינה מלאכותית.</p>
@@ -63,12 +68,14 @@
         <li><strong>מפיצים</strong> — עסקים הנרשמים ל-OrdexAI ומשתמשים במערכת לקבלת הזמנות.</li>
         <li><strong>לקוחות המפיץ</strong> — עסקים המזמינים מוצרים דרך WhatsApp.</li>
         <li><strong>משתמשי דף ההזמנות</strong> — מי שניגש לדף ההזמנה המקוון בכתובת order.ordexai.com.</li>
+        <li><strong>מבקרים באתר</strong> — מי שגולש באתר השיווקי ordexai.com או משאיר פרטים בטופס "צור קשר".</li>
       </ul>
       <div class="highlight-warn">
         OrdexAI פועלת כמעבד נתונים (Data Processor) עבור המפיץ, אשר הוא בעל הנתונים (Data Controller) מול לקוחותיו.
       </div>
 
       <h2>2. המידע שאנו אוספים ומעבדים</h2>
+      <div class="tbl-wrap">
       <table>
         <tr><th>סוג מידע</th><th>פרטים</th><th>נשמר?</th></tr>
         <tr><td>מספר טלפון</td><td>נאסף בעת שליחת ההודעה הראשונה לבוט</td><td>כן</td></tr>
@@ -78,10 +85,15 @@
         <tr><td>קובצי שמע (הודעות קוליות)</td><td>מועברים ל-Soniox לתמלול בלבד</td><td>לא — נמחקים לאחר תמלול</td></tr>
         <tr><td>תמונות וסריקות טפסים</td><td>מועברות ל-Azure Document Intelligence לחילוץ טקסט בלבד</td><td>לא — נמחקות לאחר עיבוד</td></tr>
         <tr><td>נתוני דף ההזמנות</td><td>הזמנות שנשלחו דרך order.ordexai.com, כולל מוצרים, כמויות ופריטים שלא נמצאו בקטלוג</td><td>כן</td></tr>
+        <tr><td>טופס יצירת קשר באתר</td><td>שם, שם עסק, טלפון, אימייל, תוכן ההודעה והסכמותיך — בעת שליחת טופס "צור קשר" ב-ordexai.com</td><td>כן</td></tr>
         <tr><td>נתונים טכניים</td><td>כתובת IP, סוג דפדפן — בעת גלישה באתר ordexai.com בלבד</td><td>זמנית</td></tr>
       </table>
+      </div>
 
-      <h2>3. כיצד המערכת מעבדת הזמנות</h2>
+      <h2>3. עוגיות וטכנולוגיות מעקב</h2>
+      <p>אתר OrdexAI <strong>אינו משתמש בעוגיות פרסום, בפיקסלים או בכלי מעקב</strong> (כגון Google Analytics או Meta Pixel). נעשה שימוש באחסון מקומי (localStorage) לצרכים פונקציונליים בלבד — לדוגמה שמירת העדפות נגישות. דף ההזמנה משתמש ב"אסימון" (token) חתום המוטמע בקישור, לצורך אימות ההזמנה בלבד. חלק מעמודי האתר טוענים גופני תצוגה משירות Google Fonts, ולכן כתובת ה-IP שלך עשויה להיחשף ל-Google בעת טעינת העמוד.</p>
+
+      <h2>4. כיצד המערכת מעבדת הזמנות</h2>
       <p>כאשר לקוח שולח הזמנה:</p>
       <ul>
         <li><strong>טקסט:</strong> תוכן ההודעה נשלח ל-Claude (Anthropic) לניתוח שפה טבעית וחילוץ פריטים וכמויות.</li>
@@ -90,7 +102,8 @@
         <li>תוצאות ההזמנה המאושרת נשמרות במסד הנתונים ומרוכזות ב<strong>רשימת פיקינג PDF</strong> הנשלחת למפיץ בסוף כל יום דרך WhatsApp ואימייל.</li>
       </ul>
 
-      <h2>4. שיתוף מידע עם גורמים חיצוניים</h2>
+      <h2>5. שיתוף מידע עם גורמים חיצוניים</h2>
+      <div class="tbl-wrap">
       <table>
         <tr><th>גורם</th><th>מטרה</th><th>מה משותף</th></tr>
         <tr><td>Meta / WhatsApp</td><td>תשתית ההודעות</td><td>תוכן ההודעות, מספרי טלפון</td></tr>
@@ -99,12 +112,16 @@
         <tr><td>Azure Document Intelligence</td><td>חילוץ טקסט מתמונות וטפסים</td><td>התמונה בלבד — לא נשמרת לאחר עיבוד</td></tr>
         <tr><td>AWS (Amazon Web Services)</td><td>תשתית שרתים ושליחת אימיילים (SES)</td><td>נתוני ההפעלה, PDF רשימת פיקינג</td></tr>
         <tr><td>Supabase</td><td>מסד נתונים מאובטח</td><td>כל נתוני ההזמנות והלקוחות</td></tr>
+        <tr><td>FormSubmit.co</td><td>עיבוד טופס יצירת הקשר באתר והעברתו לתיבת המייל שלנו</td><td>שם, טלפון, אימייל ותוכן ההודעה</td></tr>
+        <tr><td>Google Fonts</td><td>אספקת גופני תצוגה לעמודי האתר</td><td>כתובת IP בלבד (בעת טעינת העמוד)</td></tr>
         <tr><td>המפיץ</td><td>קבלת ההזמנות וניהולן</td><td>כל פרטי ההזמנה של לקוחותיו</td></tr>
         <tr><td>רשויות משפטיות</td><td>עמידה בדרישות חוק</td><td>לפי הנדרש בחוק בלבד</td></tr>
       </table>
-      <p>אנו לא מוכרים מידע אישי ולא משתמשים בו לצרכי פרסום.</p>
+      </div>
+      <p>אנו לא מוכרים מידע אישי ולא משתמשים בו לצרכי פרסום. תוכן שיווקי יישלח רק אם סימנת הסכמה מפורשת ונפרדת, וניתן לבטלה בכל עת.</p>
+      <p>חלק מהספקים לעיל (כגון Anthropic, Soniox, FormSubmit ו-Google) פועלים מחוץ לישראל ולאיחוד האירופי, ולכן ייתכן שהמידע יעובד בארה"ב. אנו נעזרים בספקים מוכרים ומהימנים בלבד.</p>
 
-      <h2>5. אחסון ושמירת מידע</h2>
+      <h2>6. אחסון ושמירת מידע</h2>
       <ul>
         <li>נתוני הזמנות נשמרים לצורך תפעול שוטף ושיפור המערכת.</li>
         <li>קבצי שמע ותמונות אינם נשמרים — מעובדים ונמחקים.</li>
@@ -112,10 +129,10 @@
         <li>מסד הנתונים מאוחסן ב-AWS אזור אירופה (פרנקפורט) ומוגן בהצפנה.</li>
       </ul>
 
-      <h2>6. אבטחת מידע</h2>
+      <h2>7. אבטחת מידע</h2>
       <p>אנו מיישמים אמצעי אבטחה הכוללים: הצפנת תקשורת (HTTPS/TLS), אימות HMAC על כל הודעות WhatsApp, בקרת גישה לפי ארגון (Row-Level Security), ומפתחות API מוגנים ב-AWS SSM. עם זאת, אף מערכת אינה מאובטחת ב-100%.</p>
 
-      <h2>7. הזכויות שלך</h2>
+      <h2>8. הזכויות שלך</h2>
       <ul>
         <li>לעיין במידע שנשמר עליך.</li>
         <li>לבקש תיקון או מחיקת המידע שלך.</li>
@@ -124,15 +141,15 @@
       </ul>
 
       <div class="highlight">
-        קבצי שמע ותמונות מעובדים ולא נשמרים. רק הטקסט המחולץ מהם נשמר כחלק מרשומת ההזמנה.
+        קבצי שמע ותמונות מעובדים ולא נשמרים. רק הטקסט המחולץ מהם נשמר כחלק מרשומת ההזמנה, והאתר אינו עוקב אחריך בעוגיות פרסום.
       </div>
 
-      <h2>8. שינויים במדיניות זו</h2>
+      <h2>9. שינויים במדיניות זו</h2>
       <p>OrdexAI שומרת על הזכות לעדכן מדיניות זו. עדכונים מהותיים יפורסמו באתר ויכנסו לתוקף 14 ימים לאחר פרסומם.</p>
 
-      <h2>9. צור קשר</h2>
+      <h2>10. צור קשר</h2>
       <div class="contact-box">
-        <p style="color:#a0aab4;font-size:0.9rem;margin-bottom:0.5rem">לשאלות, בקשות עיון או מחיקת נתונים</p>
+        <p style="color:#a0aab4;font-size:0.9rem;margin-bottom:0.5rem">לשאלות, בקשות עיון או מחיקת נתונים · אחראי פרטיות: לישי שמעון בן שושן</p>
         <a href="mailto:info@ordexai.com">info@ordexai.com</a>
       </div>
     </div>
@@ -140,7 +157,7 @@
     <!-- ═══════════════ ENGLISH ═══════════════ -->
     <div class="en-section" id="en">
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: June 2026 | OrdexAI — Operated by Lishai Shimon Ben Shoshan</p>
+      <p class="updated">Last updated: July 2026 · In line with Israel's Privacy Protection Law (1981) and Amendment 13 (effective August 2025) | OrdexAI — Operated by Lishai Shimon Ben Shoshan</p>
 
       <h2>1. What is OrdexAI and who this policy applies to</h2>
       <p>OrdexAI is a B2B WhatsApp-based order management system for food distributors. The system enables a distributor's business customers to send orders in free-form language — text, voice, or photos — directly via WhatsApp, which are then processed automatically using AI.</p>
@@ -149,12 +166,14 @@
         <li><strong>Distributors</strong> — businesses that sign up to OrdexAI and use the system to receive orders.</li>
         <li><strong>Distributor's customers</strong> — businesses that place orders via WhatsApp.</li>
         <li><strong>Order page users</strong> — anyone accessing the online ordering page at order.ordexai.com.</li>
+        <li><strong>Site visitors</strong> — anyone browsing the marketing site ordexai.com or submitting the "Contact" form.</li>
       </ul>
       <div class="highlight-warn">
         OrdexAI acts as a Data Processor on behalf of the distributor, who is the Data Controller with respect to their customers' data.
       </div>
 
       <h2>2. Data we collect and process</h2>
+      <div class="tbl-wrap">
       <table>
         <tr><th>Data type</th><th>Details</th><th>Retained?</th></tr>
         <tr><td>Phone number</td><td>Collected when a first message is sent to the bot</td><td>Yes</td></tr>
@@ -164,10 +183,15 @@
         <tr><td>Audio files (voice messages)</td><td>Sent to Soniox for transcription only</td><td>No — deleted after transcription</td></tr>
         <tr><td>Photos &amp; scanned forms</td><td>Sent to Azure Document Intelligence for text extraction only</td><td>No — deleted after processing</td></tr>
         <tr><td>Order page data</td><td>Orders placed via order.ordexai.com, including items, quantities, and unmatched catalog items</td><td>Yes</td></tr>
+        <tr><td>Website contact form</td><td>Name, business name, phone, email, message and your consents — when you submit the "Contact" form on ordexai.com</td><td>Yes</td></tr>
         <tr><td>Technical data</td><td>IP address, browser type — only when browsing ordexai.com</td><td>Temporarily</td></tr>
       </table>
+      </div>
 
-      <h2>3. How the system processes orders</h2>
+      <h2>3. Cookies &amp; tracking</h2>
+      <p>The OrdexAI website uses <strong>no advertising cookies, pixels, or tracking tools</strong> (such as Google Analytics or Meta Pixel). We use localStorage only for functional purposes — for example, saving accessibility preferences. The order page uses a signed token embedded in the link, solely to authorise the order. Some site pages load display fonts from Google Fonts, so your IP address may be exposed to Google when the page loads.</p>
+
+      <h2>4. How the system processes orders</h2>
       <p>When a customer sends an order:</p>
       <ul>
         <li><strong>Text:</strong> The message content is sent to Claude (Anthropic) for natural language processing and extraction of items and quantities.</li>
@@ -176,7 +200,8 @@
         <li>Confirmed order results are stored in the database and compiled into a <strong>daily PDF picking list</strong> sent to the distributor via WhatsApp and email.</li>
       </ul>
 
-      <h2>4. Data sharing with third parties</h2>
+      <h2>5. Data sharing with third parties</h2>
+      <div class="tbl-wrap">
       <table>
         <tr><th>Party</th><th>Purpose</th><th>What is shared</th></tr>
         <tr><td>Meta / WhatsApp</td><td>Messaging infrastructure</td><td>Message content, phone numbers</td></tr>
@@ -185,12 +210,16 @@
         <tr><td>Azure Document Intelligence</td><td>Text extraction from photos and forms</td><td>Image only — not retained after processing</td></tr>
         <tr><td>AWS (Amazon Web Services)</td><td>Server infrastructure and email delivery (SES)</td><td>Operational data, picking list PDFs</td></tr>
         <tr><td>Supabase</td><td>Secure database hosting</td><td>All order and customer data</td></tr>
+        <tr><td>FormSubmit.co</td><td>Processes the website contact form and forwards it to our inbox</td><td>Name, phone, email, message</td></tr>
+        <tr><td>Google Fonts</td><td>Serves display fonts for the site pages</td><td>IP address only (on page load)</td></tr>
         <tr><td>The distributor</td><td>Order receipt and management</td><td>All order details of their customers</td></tr>
         <tr><td>Legal authorities</td><td>Legal compliance</td><td>Only as required by law</td></tr>
       </table>
-      <p>We do not sell personal data or use it for advertising purposes.</p>
+      </div>
+      <p>We do not sell personal data or use it for advertising. Marketing content is sent only if you gave explicit, separate consent, which is revocable at any time.</p>
+      <p>Some of the providers above (e.g., Anthropic, Soniox, FormSubmit, and Google) operate outside Israel and the EU, so data may be processed in the USA. We rely only on recognised, reputable providers.</p>
 
-      <h2>5. Data storage and retention</h2>
+      <h2>6. Data storage and retention</h2>
       <ul>
         <li>Order data is retained for ongoing operations and system improvement.</li>
         <li>Audio files and images are not retained — processed and deleted.</li>
@@ -198,10 +227,10 @@
         <li>The database is hosted on AWS in the EU (Frankfurt) region and protected with encryption.</li>
       </ul>
 
-      <h2>6. Data security</h2>
+      <h2>7. Data security</h2>
       <p>We implement security measures including: encrypted communications (HTTPS/TLS), HMAC verification on all WhatsApp messages, per-organization access controls (Row-Level Security), and API keys protected via AWS SSM. No system is 100% secure.</p>
 
-      <h2>7. Your rights</h2>
+      <h2>8. Your rights</h2>
       <ul>
         <li>To review the data stored about you.</li>
         <li>To request correction or deletion of your data.</li>
@@ -210,15 +239,15 @@
       </ul>
 
       <div class="highlight">
-        Audio files and images are processed but never stored. Only the extracted text is retained as part of the order record.
+        Audio files and images are processed but never stored. Only the extracted text is retained as part of the order record, and the site does not track you with advertising cookies.
       </div>
 
-      <h2>8. Changes to this policy</h2>
+      <h2>9. Changes to this policy</h2>
       <p>OrdexAI reserves the right to update this policy. Material changes will be posted on the website and will take effect 14 days after publication.</p>
 
-      <h2>9. Contact us</h2>
+      <h2>10. Contact us</h2>
       <div class="contact-box">
-        <p style="color:#a0aab4;font-size:0.9rem;margin-bottom:0.5rem">For questions, data access requests, or deletion requests</p>
+        <p style="color:#a0aab4;font-size:0.9rem;margin-bottom:0.5rem">For questions, data access or deletion requests · Privacy contact: Lishai Shimon Ben Shoshan</p>
         <a href="mailto:info@ordexai.com">info@ordexai.com</a>
       </div>
     </div>
@@ -228,15 +257,17 @@
 
 <footer>
   © 2026 OrdexAI — מופעל על ידי לישי שמעון בן שושן | Operated by Lishai Shimon Ben Shoshan |
-  <a href="index.html" style="color:#25d366;text-decoration:none">חזור לדף הבית</a>
+  <a href="index.html">חזור לדף הבית</a> ·
+  <a href="accessibility.html">הצהרת נגישות</a>
 </footer>
 
 <script>
-  function showLang(lang) {
+  function showLang(lang, btn) {
     document.getElementById('he').style.display = lang === 'he' ? 'block' : 'none';
     document.getElementById('en').style.display = lang === 'en' ? 'block' : 'none';
-    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
   }
 </script>
