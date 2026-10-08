@@ -168,6 +168,7 @@
     .lang-he .demo-tab::after{transform-origin:right}
     .lang-en .demo-tab::after{transform-origin:left}
     .demo-tab.run::after{animation:demoProg var(--dur,8s) linear forwards}  /* time left before the next scene */
+    .demo-tab.run.hold::after,.wa-screen.is-paused .dots i{animation-play-state:paused}  /* frozen with the demo */
     @keyframes demoProg{to{transform:scaleX(1)}}
     .demo-pause{flex:0 0 auto;width:31px;height:31px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.17);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s}
     .demo-pause:hover{background:rgba(255,255,255,.16)}
@@ -381,7 +382,15 @@
     /* ===== REVEAL ANIM (only with JS — content is never hidden if the script fails) ===== */
     .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
     .js .reveal.in{opacity:1;transform:none}
-    @media(prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}.wa-dot{animation:none}.demo-tab.run::after{animation:none}}
+    /* Reduced motion: the demo still plays (it has a pause button), but messages appear without slide/bounce */
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .js .reveal{opacity:1;transform:none;transition:none}
+      .wa-dot{animation:none}
+      .demo-tab.run::after{animation:none}
+      .hero-phone .b,.hero-phone .sys{animation:none}
+      .hero-phone .dots i{animation:none;opacity:.75}
+    }
 
     /* ===== RESPONSIVE ===== */
     @media(max-width:940px){
@@ -1009,7 +1018,7 @@ function showStatus(type, html){
   hw.href = 'https://fonts.googleapis.com/css2?family=Caveat:wght@700&text=0123456789&display=swap';
   document.head.appendChild(hw);
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var curChat=null, typingEl=null, timers=[];
+  var curChat=null, typingEl=null;
   var lang = document.body.classList.contains('lang-en') ? 'en' : 'he';
   var UI = {
     he:{ online:'מקוון', typing:'מקליד…', message:'הודעה', sendChoice:'שליחת בחירה', voiceAva:'ק' },
@@ -1073,7 +1082,8 @@ function showStatus(type, html){
     curChat=document.getElementById('heroChatBody'); typingEl=null;
   }
   function setSub(t){ var s=document.getElementById('heroWasub'); if(s) s.textContent=t; }
-  function scrollChat(){ if(curChat) curChat.scrollTop=curChat.scrollHeight; }
+  // Follow the conversation down as messages arrive (instant when motion is reduced or stopped)
+  function scrollChat(){ if(curChat) curChat.scrollTo({ top:curChat.scrollHeight, behavior:(reduceMotion || stopped()) ? 'auto' : 'smooth' }); }
   function showTyping(){ if(typingEl) return;
     typingEl=document.createElement('div'); typingEl.className='b in typing';
     typingEl.innerHTML='<div class="bc"><div class="dots"><i></i><i></i><i></i></div></div>';
@@ -1163,80 +1173,99 @@ function showStatus(type, html){
 
   function currentScenes(){ return lang === 'en' ? enScenes() : heScenes(); }
 
-  function clearTimers(){ timers.forEach(clearTimeout); timers=[]; }
   function setCap(t){ if(cap) cap.textContent=t; }
 
-  var curIdx = 0;
-  // Highlight the scene button; `dur` (ms) drives its progress bar while the scene auto-plays.
+  /* ---- Player. Each scene is a timeline of steps that always auto-plays: the chat starts empty at
+     the top, follows the conversation down as messages arrive, then moves on to the next scene
+     (text -> voice -> photo -> clarify -> confirm -> text ...). Pause, scrolling the phone out of
+     view or hiding the tab freezes it in place; it resumes from the same point.
+     Only the a11y menu's "stop animations" shows a whole scene at once. ---- */
+  var curIdx = 0, queue = [], qi = 0, timer = null, dueAt = 0, remaining = 0;
+  var paused = false, visible = false, wasStopped = false;
+  var cap = document.getElementById('heroCap');
+  var tabs = [].slice.call(document.querySelectorAll('.demo-tab'));
+  var pauseBtn = document.getElementById('demoPause');
+
+  function stopped(){ return document.body.classList.contains('no-motion'); }
+  function shouldRun(){ return visible && !paused && !document.hidden && !stopped(); }
+
+  // A scene as timed actions [{wait, run}], keeping the story's original pacing.
+  function buildQueue(sc){
+    var q = [], gap = 350;
+    sc.steps.forEach(function(s){
+      if(s.who==='in'){
+        q.push({ wait:gap, run:showTyping });
+        q.push({ wait:s.typing||1000, run:function(){ hideTyping(); addHTML(s.html); } });
+        gap = s.hold||1100;
+      } else {
+        q.push({ wait:gap, run:function(){ addHTML(s.who==='sys' ? mkSys(s.text) : s.html); } });
+        gap = s.hold||(s.who==='sys' ? 800 : 950);
+      }
+    });
+    q.push({ wait:gap+2200, run:function(){ startScene((curIdx+1) % tabs.length); } });  // next scene
+    return q;
+  }
+  function schedule(ms){ clearTimeout(timer); remaining = ms; dueAt = Date.now()+ms; timer = setTimeout(tick, ms); }
+  function tick(){
+    timer = null;
+    var q = queue, a = q[qi++];
+    if(!a) return;
+    a.run();                                          // the last action starts the next scene
+    if(q === queue && qi < queue.length) schedule(queue[qi].wait);
+  }
+  function freeze(){
+    if(timer){ remaining = Math.max(0, dueAt-Date.now()); clearTimeout(timer); timer = null; }
+    host.classList.add('is-paused');
+    if(tabs[curIdx]) tabs[curIdx].classList.add('hold');
+  }
+  function resume(){
+    host.classList.remove('is-paused');
+    if(tabs[curIdx]) tabs[curIdx].classList.remove('hold');
+    if(!timer && qi < queue.length) schedule(remaining);
+  }
+  function sync(){ if(shouldRun()) resume(); else freeze(); }
+
+  // Highlight the scene button; `dur` (ms) drives its progress bar (paused together with the scene).
   function markTab(i, dur){
     tabs.forEach(function(b, k){
       var on = k === i;
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
-      b.classList.remove('run');
+      b.classList.remove('run', 'hold');
       if(on && dur){ b.style.setProperty('--dur', dur + 'ms'); void b.offsetWidth; b.classList.add('run'); }
     });
   }
-  function noMotion(){ return reduceMotion || document.body.classList.contains('no-motion'); }
-  function playScene(i){
-    clearTimers();
+  function startScene(i){
+    clearTimeout(timer); timer = null;
     curIdx = i;
-    var scenes = currentScenes();
-    var sc = scenes[i];
+    wasStopped = stopped();
+    var sc = currentScenes()[i];
     setCap(sc.caption);
     newChat(sc.name, sc.sub);
-    if(pauseBtn) pauseBtn.hidden = noMotion();  // nothing moves in that mode, so nothing to pause
-    // Show the whole scene at once (no auto-advance) when paused, off-screen, under OS reduced-motion,
-    // or with the in-page "stop animations" control. The scene buttons still switch scenes.
-    if(paused || !visible || noMotion()){
+    if(pauseBtn) pauseBtn.hidden = wasStopped;          // nothing moves in that mode, so nothing to pause
+    if(wasStopped){                                     // whole scene at once; scene buttons still switch
       sc.steps.forEach(function(s){ addHTML(s.who==='sys' ? mkSys(s.text) : s.html); });
-      markTab(i, 0);
+      queue = []; qi = 0; markTab(i, 0);
       return;
     }
-    var t=350;
-    sc.steps.forEach(function(s){
-      if(s.who==='in'){
-        var tp=s.typing||1000;
-        timers.push(setTimeout(showTyping,t)); t+=tp;
-        timers.push(setTimeout(function(){ hideTyping(); addHTML(s.html); },t));
-        t+=s.hold||1100;
-      } else if(s.who==='sys'){
-        timers.push(setTimeout(function(){ addHTML(mkSys(s.text)); },t));
-        t+=s.hold||800;
-      } else {
-        timers.push(setTimeout(function(){ addHTML(s.html); },t));
-        t+=s.hold||950;
-      }
-    });
-    timers.push(setTimeout(function(){ playScene((i+1)%scenes.length); }, t+2200)); // next slide
-    markTab(i, t+2200);
+    queue = buildQueue(sc); qi = 0; remaining = queue[0].wait;
+    markTab(i, queue.reduce(function(t, a){ return t + a.wait; }, 0));
+    sync();
   }
+  function setPaused(p){ paused = p; if(pauseBtn) pauseBtn.setAttribute('aria-pressed', p ? 'true' : 'false'); }
 
-  var cap = document.getElementById('heroCap');
-  var tabs = [].slice.call(document.querySelectorAll('.demo-tab'));
-  var pauseBtn = document.getElementById('demoPause');
-  var paused = false, visible = false, seen = false;
-  tabs.forEach(function(b){ b.addEventListener('click', function(){ playScene(+b.dataset.scene); }); });
-  if(pauseBtn) pauseBtn.addEventListener('click', function(){
-    paused = !paused;
-    pauseBtn.setAttribute('aria-pressed', paused ? 'true' : 'false');
-    playScene(curIdx);  // paused: the full scene stays on screen; resumed: the scene replays
-  });
-  // Run only while the phone is on screen: no timers or DOM churn after scrolling past the hero.
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-      var was = visible;
-      visible = en.isIntersecting;
-      if(!seen){ seen = true; playScene(0); }
-      else if(visible && !was){ playScene(curIdx); }
-      else if(!visible && was){ clearTimers(); markTab(curIdx, 0); }
-    });
-  },{threshold:0.2});
-  io.observe(host);
-  // Exposed so the accessibility "stop animations" control can freeze/resume the demo,
+  tabs.forEach(function(b){ b.addEventListener('click', function(){ setPaused(false); startScene(+b.dataset.scene); }); });
+  if(pauseBtn) pauseBtn.addEventListener('click', function(){ setPaused(!paused); sync(); });
+  startScene(0);                                        // waits on an empty chat until the phone is in view
+  new IntersectionObserver(function(entries){
+    visible = entries[entries.length-1].isIntersecting;
+    sync();
+  },{threshold:0.2}).observe(host);
+  document.addEventListener('visibilitychange', sync);
+  // Exposed so the a11y "stop animations" control can switch modes,
   // and so the language toggle can re-render the demo in Hebrew/English.
   window.OrdexChat = {
-    refresh: function(){ if(seen) playScene(curIdx); },
-    setLang: function(L){ lang = (L === 'en' ? 'en' : 'he'); if(seen) playScene(curIdx); }
+    refresh: function(){ if(stopped() !== wasStopped) startScene(curIdx); },
+    setLang: function(L){ lang = (L === 'en' ? 'en' : 'he'); startScene(curIdx); }
   };
 })();
 

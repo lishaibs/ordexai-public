@@ -21,7 +21,7 @@ All pages are **self-contained**: inline CSS/JS, no build step, no external runt
 ## How the home page works
 - **Language:** Hebrew by default. `?lang=en` opens English, and the visitor's last choice is remembered (`localStorage` key `ordex_lang`, shared with the privacy page). Switching language rewrites the URL, so an English link can be shared.
 - **WhatsApp buttons:** every link marked `data-wa` is rebuilt per language with a pre-filled first message (`WA_TEXT` in the script). The number is `WA_NUMBER`.
-- **Demo:** five scenes (text, voice, photo, clarifications, confirmation). Visitors can jump between scenes or pause; the demo stops while off-screen and is static under reduced motion. The delivery date in the last scene is always an upcoming Thursday.
+- **Demo:** five scenes (text, voice, photo, clarifications, confirmation) that always auto-play: each conversation starts at the top, the chat follows it down, then the next scene starts. Visitors can jump between scenes or pause; pausing, scrolling it out of view or hiding the tab freezes it in place and it resumes from the same point. With the OS "reduce motion" setting it still plays, just without slide/bounce effects; only the a11y menu's "stop animations" shows a whole scene at once. The delivery date in the last scene is always an upcoming Thursday.
 - **Colors:** use the design-system tokens. For text on light backgrounds use `--teal-ink` (not `--wa-dark`, which fails AA as small text); for text on the green buttons use `--on-wa` (white on `#25d366` is 2:1).
 
 ## Deploy (GitHub Pages)
