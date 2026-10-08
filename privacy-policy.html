@@ -3,57 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; base-uri 'self'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; base-uri 'self'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>מדיניות פרטיות — OrdexAI</title>
+  <meta name="description" content="מדיניות הפרטיות של OrdexAI — אילו נתונים נאספים, איך הם מעובדים ומי הספקים, בהתאם לחוק הגנת הפרטיות ותיקון 13. Privacy Policy in Hebrew and English.">
+  <meta name="theme-color" content="#0c3b2b">
+  <link rel="canonical" href="https://www.ordexai.com/privacy-policy.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Brand font loads without blocking the first paint: the policy text shows at once, then switches to Heebo -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap"></noscript>
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Helvetica Neue',Arial,sans-serif;background:#f9f9f9;color:#222;line-height:1.8;direction:rtl}
-    a:focus-visible,button:focus-visible{outline:3px solid #25d366;outline-offset:2px;border-radius:5px}
-    header{background:#1a1a2e;color:#fff;padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center}
-    .logo{font-size:1.4rem;font-weight:800;color:#25d366;letter-spacing:-1px}
-    .logo span{color:#fff}
-    .lang-toggle{display:flex;gap:1rem}
-    .lang-btn{background:transparent;border:1px solid rgba(255,255,255,0.3);color:#fff;padding:0.3rem 0.8rem;border-radius:20px;cursor:pointer;font-size:0.85rem;transition:all 0.2s;font-family:inherit}
-    .lang-btn.active{background:#25d366;border-color:#25d366}
-    .container{max-width:860px;margin:3rem auto;padding:0 2rem}
-    .policy-card{background:#fff;border-radius:16px;padding:3rem;box-shadow:0 2px 20px rgba(0,0,0,0.06)}
-    h1{font-size:1.6rem;color:#1a1a2e;margin-bottom:0.3rem}
-    .updated{font-size:0.85rem;color:#888;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid #eee}
-    h2{font-size:1.05rem;color:#1a1a2e;margin:1.8rem 0 0.6rem;font-weight:700}
-    p{color:#444;font-size:0.95rem;margin-bottom:0.8rem}
-    ul{padding-right:1.5rem;margin-bottom:0.8rem}
-    li{color:#444;font-size:0.95rem;margin-bottom:0.4rem}
-    .highlight{background:#f0fff4;border-right:3px solid #25d366;padding:0.8rem 1rem;border-radius:0 8px 8px 0;margin:1rem 0;font-size:0.9rem;color:#333}
-    .highlight-warn{background:#fffbf0;border-right:3px solid #f59e0b;padding:0.8rem 1rem;border-radius:0 8px 8px 0;margin:1rem 0;font-size:0.9rem;color:#333}
+    :root{
+      --wa:#25d366; --brand:#0c3b2b; --brand2:#082419;
+      --ink:#0d1f18; --ink2:#3f574c; --ink3:#536b60;
+      --teal-ink:#0f7166;    /* teal for small text on light surfaces (AA) */
+      --on-wa:#052a1c;       /* text on WhatsApp-green fills (AA) */
+      --bg:#f5f8f6; --bg-tint:#edf5f0; --card:#fff; --border:#dde8e2;
+      --amber:#e8a53a; --amber-soft:#fdf4e3;
+    }
+    body{font-family:'Heebo',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8}
+    a:focus-visible,button:focus-visible,.tbl-wrap:focus-visible{outline:3px solid var(--wa);outline-offset:2px;border-radius:5px}
+    .top{background:linear-gradient(160deg,#12503a,var(--brand) 60%,var(--brand2));padding:1.1rem 1.5rem}
+    .top-inner{max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+    .brand img{height:48px;width:auto;display:block;filter:drop-shadow(0 2px 7px rgba(0,0,0,.3))}
+    .lang-toggle{display:flex;gap:3px;background:rgba(255,255,255,.1);border-radius:20px;padding:3px}
+    .lang-btn{background:transparent;border:none;color:rgba(255,255,255,.85);padding:.3rem .85rem;border-radius:16px;cursor:pointer;font-size:.85rem;font-weight:700;transition:all .2s;font-family:inherit}
+    .lang-btn.active{background:#fff;color:var(--brand);box-shadow:0 1px 6px rgba(0,0,0,.2)}
+    .container{max-width:860px;margin:2.6rem auto 3rem;padding:0 1.5rem}
+    .policy-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2.8rem;box-shadow:0 4px 24px rgba(12,59,43,.07)}
+    h1{font-size:1.8rem;font-weight:800;color:var(--brand);margin-bottom:.3rem;letter-spacing:-.3px}
+    .updated{font-size:.85rem;color:var(--ink3);margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+    h2{font-size:1.1rem;color:var(--brand);margin:1.9rem 0 .6rem;font-weight:800}
+    p{color:var(--ink2);font-size:.95rem;margin-bottom:.8rem}
+    ul{padding-inline-start:1.5rem;margin-bottom:.8rem}
+    li{color:var(--ink2);font-size:.95rem;margin-bottom:.4rem}
+    strong{color:var(--ink)}
+    .highlight{background:#f0f9f4;border-inline-start:3px solid var(--wa);padding:.8rem 1rem;border-radius:8px;margin:1rem 0;font-size:.9rem;color:var(--ink)}
+    .highlight-warn{background:var(--amber-soft);border-inline-start:3px solid var(--amber);padding:.8rem 1rem;border-radius:8px;margin:1rem 0;font-size:.9rem;color:var(--ink)}
     .tbl-wrap{overflow-x:auto}
-    table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.88rem}
-    th{background:#f0f4f8;color:#1a1a2e;font-weight:700;padding:0.6rem 0.8rem;text-align:right;border:1px solid #e0e8ef}
-    td{padding:0.6rem 0.8rem;border:1px solid #e0e8ef;color:#444;vertical-align:top}
-    tr:nth-child(even) td{background:#fafbfc}
-    .contact-box{background:#1a1a2e;color:#fff;border-radius:12px;padding:1.5rem;margin-top:2rem;text-align:center}
-    .contact-box a{color:#25d366;text-decoration:none;font-weight:700}
-    footer{text-align:center;padding:2rem;color:#999;font-size:0.82rem}
-    footer a{color:#25d366;text-decoration:none}
+    table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.88rem}
+    th{background:var(--bg-tint);color:var(--brand);font-weight:700;padding:.6rem .8rem;text-align:start;border:1px solid var(--border)}
+    td{padding:.6rem .8rem;border:1px solid var(--border);color:var(--ink2);vertical-align:top}
+    tr:nth-child(even) td{background:#fafcfb}
+    .contact-box{background:linear-gradient(160deg,#12503a,var(--brand) 60%,var(--brand2));color:#fff;border-radius:14px;padding:1.5rem;margin-top:2rem;text-align:center}
+    .contact-box p{color:rgba(255,255,255,.82)!important}
+    .contact-box a{color:var(--wa);text-decoration:none;font-weight:700}
+    .contact-box a:hover{text-decoration:underline}
+    footer{text-align:center;padding:0 1.5rem 2.5rem;color:var(--ink3);font-size:.82rem}
+    footer a{color:var(--teal-ink);text-decoration:underline;font-weight:600}
     .en-section{display:none;direction:ltr;text-align:left}
     .he-section{display:block}
-    .en-section th{text-align:left}
-    .en-section ul{padding-right:0;padding-left:1.5rem}
-    .en-section .highlight{border-right:none;border-left:3px solid #25d366}
-    .en-section .highlight-warn{border-right:none;border-left:3px solid #f59e0b}
+    @media(max-width:600px){.policy-card{padding:1.6rem 1.25rem}.top{padding:.9rem 1rem}.brand img{height:42px}}
   </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">Ordex<span>AI</span></div>
-  <div class="lang-toggle">
-    <button class="lang-btn active" onclick="showLang('he', this)">עברית</button>
-    <button class="lang-btn" onclick="showLang('en', this)">English</button>
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="index.html" aria-label="OrdexAI — דף הבית / Home"><img src="assets/ordexai-logo.png" alt="OrdexAI" width="77" height="48"></a>
+    <div class="lang-toggle" role="group" aria-label="שפה / Language">
+      <button type="button" class="lang-btn active" data-lang-btn="he" lang="he" aria-pressed="true" onclick="showLang('he')">עברית</button>
+      <button type="button" class="lang-btn" data-lang-btn="en" lang="en" aria-pressed="false" onclick="showLang('en')">English</button>
+    </div>
   </div>
 </header>
 
-<div class="container">
+<main class="container" id="main">
   <div class="policy-card">
 
     <!-- ═══════════════ HEBREW ═══════════════ -->
@@ -75,7 +96,7 @@
       </div>
 
       <h2>2. המידע שאנו אוספים ומעבדים</h2>
-      <div class="tbl-wrap">
+      <div class="tbl-wrap" tabindex="0" role="region" aria-label="טבלת סוגי המידע">
       <table>
         <tr><th>סוג מידע</th><th>פרטים</th><th>נשמר?</th></tr>
         <tr><td>מספר טלפון</td><td>נאסף בעת שליחת ההודעה הראשונה לבוט</td><td>כן</td></tr>
@@ -103,7 +124,7 @@
       </ul>
 
       <h2>5. שיתוף מידע עם גורמים חיצוניים</h2>
-      <div class="tbl-wrap">
+      <div class="tbl-wrap" tabindex="0" role="region" aria-label="טבלת הגורמים החיצוניים">
       <table>
         <tr><th>גורם</th><th>מטרה</th><th>מה משותף</th></tr>
         <tr><td>Meta / WhatsApp</td><td>תשתית ההודעות</td><td>תוכן ההודעות, מספרי טלפון</td></tr>
@@ -173,7 +194,7 @@
       </div>
 
       <h2>2. Data we collect and process</h2>
-      <div class="tbl-wrap">
+      <div class="tbl-wrap" tabindex="0" role="region" aria-label="Data types table">
       <table>
         <tr><th>Data type</th><th>Details</th><th>Retained?</th></tr>
         <tr><td>Phone number</td><td>Collected when a first message is sent to the bot</td><td>Yes</td></tr>
@@ -201,7 +222,7 @@
       </ul>
 
       <h2>5. Data sharing with third parties</h2>
-      <div class="tbl-wrap">
+      <div class="tbl-wrap" tabindex="0" role="region" aria-label="Third parties table">
       <table>
         <tr><th>Party</th><th>Purpose</th><th>What is shared</th></tr>
         <tr><td>Meta / WhatsApp</td><td>Messaging infrastructure</td><td>Message content, phone numbers</td></tr>
@@ -253,23 +274,34 @@
     </div>
 
   </div>
-</div>
+</main>
 
 <footer>
   © 2026 OrdexAI — מופעל על ידי לישי שמעון בן שושן | Operated by Lishai Shimon Ben Shoshan |
-  <a href="index.html">חזור לדף הבית</a> ·
-  <a href="accessibility.html">הצהרת נגישות</a>
+  <a href="index.html">חזור לדף הבית / Home</a> ·
+  <a href="accessibility.html">הצהרת נגישות / Accessibility</a>
 </footer>
 
 <script>
-  function showLang(lang, btn) {
+  // Same language memory as the home page: an English visitor lands on the English policy.
+  function showLang(lang) {
     document.getElementById('he').style.display = lang === 'he' ? 'block' : 'none';
     document.getElementById('en').style.display = lang === 'en' ? 'block' : 'none';
-    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-    if (btn) btn.classList.add('active');
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      const on = b.dataset.langBtn === lang;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
+    document.title = lang === 'he' ? 'מדיניות פרטיות — OrdexAI' : 'Privacy Policy — OrdexAI';
+    try { localStorage.setItem('ordex_lang', lang); } catch (e) {}
   }
+  (function () {
+    let lang = 'he';
+    try { const q = new URLSearchParams(location.search).get('lang'); if (q === 'en' || q === 'he') lang = q; else if (localStorage.getItem('ordex_lang') === 'en') lang = 'en'; } catch (e) {}
+    if (lang !== 'he') showLang(lang);
+  })();
 </script>
 
 </body>
