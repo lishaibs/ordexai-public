@@ -2,17 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.ordexai.com/</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.ordexai.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.ordexai.com/?lang=en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ordexai.com/"/>
   </url>
   <url>
     <loc>https://www.ordexai.com/?lang=en</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.ordexai.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.ordexai.com/?lang=en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ordexai.com/"/>
+  </url>
+  <url>
+    <loc>https://www.ordexai.com/whatsapp-orders-guide.html</loc>
+    <lastmod>2026-10-11</lastmod>
   </url>
   <url>
     <loc>https://www.ordexai.com/privacy-policy.html</loc>

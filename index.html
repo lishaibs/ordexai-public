@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src https://formsubmit.co; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>OrdexAI — הזמנות חכמות בוואטסאפ | ניהול הזמנות למפיצי מזון</title>
-  <meta name="description" content="OrdexAI — הלקוחות שלכם מזמינים בוואטסאפ בטקסט, בהקלטה או בתמונה, ואתם מקבלים רשימת הזמנות אחת, מרוכזת ונקייה — שאפשר לשדר ישר למערכת ה-ERP. בלי אפליקציה, בלי סיסמה, בלי הקלדה ידנית.">
+  <title>OrdexAI — קליטת הזמנות מוואטסאפ בלי הקלדה ידנית | למפיצים</title>
+  <meta name="description" content="OrdexAI קולט הזמנות מלקוחות קבועים ישירות מוואטסאפ: טקסט חופשי, הקלטה או תמונה. כל פריט מותאם למק״ט, ואתם מקבלים רשימת הזמנות אחת מרוכזת. בלי אפליקציה ובלי הקלדה ידנית.">
   <meta name="theme-color" content="#0c3b2b">
   <!-- One page, two languages: English is the same page with ?lang=en (the script switches on it) -->
   <link rel="alternate" hreflang="he" href="https://www.ordexai.com/">
@@ -21,8 +21,8 @@
   <meta property="og:url" content="https://www.ordexai.com/">
   <meta property="og:locale" content="he_IL">
   <meta property="og:locale:alternate" content="en_US">
-  <meta property="og:title" content="OrdexAI — הזמנות חכמות בוואטסאפ">
-  <meta property="og:description" content="ההזמנות שלכם. בוואטסאפ. בלי אפליקציה. מנוע AI שמבין עברית אמיתית ומרכיב לבד את רשימת ההזמנות המרוכזת.">
+  <meta property="og:title" content="OrdexAI — קליטת הזמנות מוואטסאפ בלי הקלדה ידנית">
+  <meta property="og:description" content="הלקוחות ממשיכים להזמין בוואטסאפ, בטקסט, בהקלטה או בתמונה. OrdexAI מתאים כל פריט למק״ט ומרכז הכול לרשימת הזמנות אחת.">
   <meta property="og:image" content="https://www.ordexai.com/assets/og-image.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
@@ -32,20 +32,139 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "OrdexAI",
-    "url": "https://www.ordexai.com/",
-    "logo": "https://www.ordexai.com/assets/ordexai-icon-512.png",
-    "description": "AI WhatsApp ordering for food distributors: customers order by text, voice or photo and the distributor gets one consolidated order list.",
-    "email": "info@ordexai.com",
-    "contactPoint": [{
-      "@type": "ContactPoint",
-      "contactType": "sales",
-      "telephone": "+972-55-665-4664",
-      "email": "info@ordexai.com",
-      "areaServed": "IL",
-      "availableLanguage": ["Hebrew", "English"]
-    }]
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.ordexai.com/#organization",
+        "name": "OrdexAI",
+        "url": "https://www.ordexai.com/",
+        "logo": "https://www.ordexai.com/assets/ordexai-icon-512.png",
+        "description": "OrdexAI קולט הזמנות מלקוחות קבועים ישירות מוואטסאפ ומרכז אותן לרשימת הזמנות אחת למפיצי מזון.",
+        "email": "info@ordexai.com",
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "telephone": "+972-55-665-4664",
+            "email": "info@ordexai.com",
+            "areaServed": "IL",
+            "availableLanguage": [
+              "Hebrew",
+              "English"
+            ]
+          }
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.ordexai.com/#website",
+        "name": "OrdexAI",
+        "url": "https://www.ordexai.com/",
+        "inLanguage": "he",
+        "publisher": {
+          "@id": "https://www.ordexai.com/#organization"
+        }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://www.ordexai.com/#service",
+        "name": "OrdexAI — קליטת הזמנות מוואטסאפ למפיצים",
+        "serviceType": "קליטת הזמנות מוואטסאפ וניהול הזמנות למפיצי מזון",
+        "provider": {
+          "@id": "https://www.ordexai.com/#organization"
+        },
+        "areaServed": "IL",
+        "availableLanguage": [
+          "Hebrew",
+          "English"
+        ],
+        "audience": {
+          "@type": "BusinessAudience",
+          "audienceType": "מפיצי מזון, מחלבות, מאפיות וספקים סיטונאיים"
+        },
+        "description": "הלקוחות מזמינים בוואטסאפ בטקסט חופשי, בהקלטה או בתמונה. OrdexAI מבין כל פריט, מתאים אותו למק״ט של המפיץ, שואל כשמשהו לא ברור, ושולח בשעת הקאט-אוף רשימת הזמנות אחת מרוכזת. כולל דף הזמנה בלינק ותזכורת ללקוחות קבועים לפני הקאט-אוף. בלי אפליקציה ובלי הקלדה ידנית.",
+        "url": "https://www.ordexai.com/"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.ordexai.com/#faq",
+        "inLanguage": "he",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "למי OrdexAI מתאים?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "למפיצים ולספקי מזון שמקבלים הזמנות חוזרות מלקוחות עסקיים — מחלבות, מאפיות, מעדניות ומפיצים. אם הלקוחות שלכם כבר שולחים לכם הזמנות בוואטסאפ, זה בשבילכם."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "אפשר להמשיך לקבל הזמנות בוואטסאפ בלי לעבור על כל הודעה ולהקליד אותה?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "כן, זה בדיוק מה ש-OrdexAI עושה. הלקוחות ממשיכים לשלוח הזמנות בוואטסאפ, המערכת מבינה כל פריט ומתאימה אותו למק״ט שלכם, ובשעת הקאט-אוף אתם מקבלים רשימת הזמנות אחת מרוכזת במקום עשרות הודעות."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "הלקוחות שלי צריכים להוריד אפליקציה או להירשם?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "לא. הם מזמינים בוואטסאפ שכבר יש להם בטלפון — בלי אפליקציה ובלי סיסמה. בפעם הראשונה הם ממלאים טופס קצר אחד עם פרטי העסק, ואתם מאשרים אותם בלחיצה."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "באילו דרכים אפשר להזמין?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "בהודעת טקסט חופשית, בהקלטה קולית או בצילום — למשל של טופס הזמנה. אפשר לכתוב כמו שמדברים, עם קיצורים וכינויים. ומי שמעדיף מסך מקבל דף הזמנה בלינק."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "מה ההבדל בין OrdexAI לקטלוג הזמנות בלינק או לקטלוג של WhatsApp Business?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "בקטלוג, בלינק או בתוך WhatsApp Business, הלקוח צריך לבחור את המוצרים בעצמו, ומי שממשיך לכתוב הודעות נשאר אצלכם להקלדה. OrdexAI נותן גם דף הזמנה בלינק, אבל קולט גם הזמנות שנכתבות כרגיל, בטקסט, בהקלטה או בתמונה, ומתאים אותן למק״טים שלכם. השוואה מלאה במדריך."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ומה אם הבוט לא בטוח למה הלקוח התכוון?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "במקום לנחש — הוא שואל. הלקוח מקבל כפתורי בחירה מהירה (למשל איזה אחוז שומן), ותמיד אפשר לדלג. לפני שההזמנה נקלטת, הלקוח מקבל סיכום ומאשר אותו."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "איך ההזמנות מגיעות אליי?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "בשעת הקאט-אוף נשלחת אליכם רשימת הזמנות מרוכזת (PDF) לוואטסאפ ולמייל, מקובצת לפי לקוח. צריכים תמונת מצב באמצע היום? שלחו הודעה לבוט וקבלו רשימה עדכנית."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "כמה זמן לוקח להתחיל?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "בדרך כלל יום עבודה אחד. אנחנו מקימים את הבוט על מספר וואטסאפ עסקי, טוענים את הקטלוג שלכם ומגדירים ימי אספקה ושעת קאט-אוף — ואתם שולחים ללקוחות לינק הצטרפות."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "המידע שלי ושל הלקוחות שלי מוגן?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "OrdexAI פועל על WhatsApp Business Platform הרשמי של Meta. אנחנו לא מוכרים מידע ולא משתמשים בו לפרסום, וכל מפיץ רואה רק את הלקוחות וההזמנות שלו. כל הפרטים במדיניות הפרטיות."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
   <!-- Scroll-reveal hides sections only when JS runs, so the page never renders blank without it -->
@@ -365,6 +484,16 @@
     .a11y-reset{color:var(--ink3);font-weight:500}
     .footer-legal{max-width:1120px;margin:1.2rem auto 0;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem;color:rgba(255,255,255,.68);font-size:.78rem}
 
+    /* ===== WEEKLY CUSTOMERS (numbered steps) ===== */
+    .steps4{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+    .step-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.3rem;box-shadow:var(--shadow)}
+    .step-card .n{width:34px;height:34px;border-radius:50%;background:var(--wa);color:var(--on-wa);font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:.9rem;font-family:'Plus Jakarta Sans','Heebo',sans-serif}
+    .step-card h3{font-weight:800;font-size:1.05rem;color:var(--brand);margin-bottom:.4rem}
+    .step-card p{color:var(--ink2);font-size:.92rem;line-height:1.65}
+    .guide-link{margin-top:1.2rem;text-align:center;font-weight:700;font-size:1rem}
+    .guide-link a{color:var(--teal-ink);text-decoration:underline;text-underline-offset:3px}
+    body.hc .step-card{border-color:#000;border-width:1.5px}
+
     /* ===== FAQ ===== */
     .faq{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:.75rem}
     .faq details{background:#fff;border:1px solid var(--border);border-radius:16px;transition:border-color .2s,box-shadow .2s}
@@ -397,7 +526,7 @@
       .contact-grid{grid-template-columns:1fr}
     }
     @media(max-width:820px){
-      .pain-grid,.grid3,.cta-steps{grid-template-columns:1fr 1fr}
+      .pain-grid,.grid3,.cta-steps,.steps4{grid-template-columns:1fr 1fr}
       .flow{grid-template-columns:1fr;gap:.8rem}
       .flow-arrow{justify-content:center}
       .lang-he .flow-arrow{transform:rotate(-90deg)}  /* ← rotated to point DOWN */
@@ -422,7 +551,7 @@
       footer{padding:1.8rem 1.4rem}
     }
     @media(max-width:520px){
-      .pain-grid,.grid3,.cta-steps{grid-template-columns:1fr}
+      .pain-grid,.grid3,.cta-steps,.steps4{grid-template-columns:1fr}
       h1{font-size:2.1rem}
       /* pain points as compact rows: emoji beside the line */
       .pain-grid{gap:.7rem}
@@ -433,6 +562,10 @@
       .card-icon{margin:0;width:44px;height:44px;font-size:20px}
       .card h3{margin:0}
       .card p{grid-column:1/-1;margin-top:.7rem}
+      .step-card{display:grid;grid-template-columns:auto 1fr;column-gap:.9rem;align-items:center;padding:1.2rem 1.2rem 1.3rem}
+      .step-card .n{margin:0}
+      .step-card h3{margin:0}
+      .step-card p{grid-column:1/-1;margin-top:.6rem}
       .faq summary{padding:1rem 1.1rem;font-size:.98rem}
       .faq .ans{padding:0 1.1rem 1.1rem}
     }
@@ -483,11 +616,11 @@
       </div>
       <div data-lang="he">
         <h1>ההזמנות שלכם.<br><span class="accent">בוואטסאפ.</span><br>בלי אפליקציה.</h1>
-        <p class="hero-sub">לקוחות מזמינים איך שנוח להם — בטקסט, בהקלטה או בתמונה. אתם מקבלים רשימת הזמנות אחת, מרוכזת ונקייה. פשוט כמו לשלוח הודעה.</p>
+        <p class="hero-sub">OrdexAI קולט הזמנות מלקוחות קבועים ישר מהוואטסאפ: טקסט חופשי, הקלטה או תמונה. כל פריט מותאם למק״ט שלכם, ואתם מקבלים רשימת הזמנות אחת מרוכזת. בלי לעבור הודעה-הודעה ובלי להקליד.</p>
       </div>
       <div data-lang="en">
         <h1>Your orders.<br><span class="accent">On WhatsApp.</span><br>No app.</h1>
-        <p class="hero-sub">Customers order however suits them — text, voice, or photo. You get one clean, consolidated order list. As simple as sending a message.</p>
+        <p class="hero-sub">OrdexAI takes orders from your regular customers straight from WhatsApp: free text, voice notes or photos. Every item is matched to your SKU, and you get one consolidated order list. No going through messages, no typing.</p>
       </div>
       <div class="cta-group">
         <a href="https://wa.me/972556654664?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20OrdexAI%20%F0%9F%91%8B" data-wa class="btn-primary" target="_blank" rel="noopener noreferrer">
@@ -669,8 +802,47 @@
   </div>
 </section>
 
+<!-- ===== WEEKLY CUSTOMERS ===== -->
+<section class="tint" id="weekly">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker"><span data-inline="he">לקוחות קבועים</span><span data-inline="en">Regular customers</span></div>
+      <div data-lang="he"><h2>לקוחות שמזמינים כל שבוע?<br>ככה זה עובד עם OrdexAI</h2><p class="sec-sub">הלקוחות לא צריכים ללמוד שום דבר חדש, ואתם לא צריכים לרדוף אחריהם או להקליד את ההזמנות שלהם.</p></div>
+      <div data-lang="en"><h2>Customers who order every week?<br>Here's how it works with OrdexAI</h2><p class="sec-sub">Your customers learn nothing new, and you stop chasing them or typing their orders.</p></div>
+    </div>
+    <ol class="steps4">
+      <li class="step-card reveal">
+        <span class="n" aria-hidden="true">1</span>
+        <h3><span data-inline="he">מצטרפים בלינק אחד</span><span data-inline="en">Join with one link</span></h3>
+        <p data-lang="he">שולחים ללקוחות הקיימים לינק הצטרפות. הם ממלאים טופס קצר אחד בוואטסאפ, ואתם מאשרים אותם בלחיצה.</p>
+        <p data-lang="en">Send your existing customers a join link. They fill in one short WhatsApp form, and you approve them with a tap.</p>
+      </li>
+      <li class="step-card reveal">
+        <span class="n" aria-hidden="true">2</span>
+        <h3><span data-inline="he">תזכורת לפני הקאט-אוף</span><span data-inline="en">A reminder before cutoff</span></h3>
+        <p data-lang="he">לקוח עם יום אספקה קבוע שעוד לא הזמין מקבל תזכורת בוואטסאפ כמה שעות לפני שעת הקאט-אוף.</p>
+        <p data-lang="en">A customer with a regular delivery day who hasn't ordered yet gets a WhatsApp reminder a few hours before your cutoff.</p>
+      </li>
+      <li class="step-card reveal">
+        <span class="n" aria-hidden="true">3</span>
+        <h3><span data-inline="he">מזמינים כמו שהם רגילים</span><span data-inline="en">They order the way they're used to</span></h3>
+        <p data-lang="he">בהודעה רגילה, בהקלטה, בצילום של רשימה, או מדף ההזמנה בלינק. כל פריט מותאם למק״ט שלכם, והכינויים של כל לקוח נלמדים.</p>
+        <p data-lang="en">A regular message, a voice note, a photo of a list, or the order page link. Every item is matched to your SKU, and each customer's nicknames are learned.</p>
+      </li>
+      <li class="step-card reveal">
+        <span class="n" aria-hidden="true">4</span>
+        <h3><span data-inline="he">רשימה אחת בקאט-אוף</span><span data-inline="en">One list at cutoff</span></h3>
+        <p data-lang="he">בשעת הקאט-אוף נשלחת אליכם רשימת הזמנות מרוכזת לוואטסאפ ולמייל, מקובצת לפי לקוח.</p>
+        <p data-lang="en">At cutoff you get one consolidated order list on WhatsApp and by email, grouped by customer.</p>
+      </li>
+    </ol>
+    <div class="flow-note reveal"><span data-inline="he">וגם לקוחות שלא ילחצו על שום קישור, וממשיכים לכתוב בטקסט חופשי או לשלוח הקלטות, נקלטים בדיוק כמו כולם.</span><span data-inline="en">And customers who won't click any link and keep sending free text or voice notes are handled exactly like everyone else.</span></div>
+    <p class="guide-link reveal"><a href="whatsapp-orders-guide.html"><span data-inline="he">משווים פתרונות? המדריך: 3 דרכים להפסיק להקליד הזמנות מוואטסאפ ←</span><span data-inline="en">Comparing options? Our guide (in Hebrew): 3 ways to stop typing WhatsApp orders →</span></a></p>
+  </div>
+</section>
+
 <!-- ===== FAQ ===== -->
-<section class="tint" id="faq">
+<section class="white" id="faq">
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="kicker"><span data-inline="he">שאלות נפוצות</span><span data-inline="en">FAQ</span></div>
@@ -686,6 +858,13 @@
         </div>
       </details>
       <details class="reveal">
+        <summary><span data-inline="he">אפשר להמשיך לקבל הזמנות בוואטסאפ בלי לעבור על כל הודעה ולהקליד אותה?</span><span data-inline="en">Can I keep taking orders on WhatsApp without going through and typing every message?</span></summary>
+        <div class="ans">
+          <p data-lang="he">כן, זה בדיוק מה ש-OrdexAI עושה. הלקוחות ממשיכים לשלוח הזמנות בוואטסאפ, המערכת מבינה כל פריט ומתאימה אותו למק״ט שלכם, ובשעת הקאט-אוף אתם מקבלים רשימת הזמנות אחת מרוכזת במקום עשרות הודעות.</p>
+          <p data-lang="en">Yes, that's exactly what OrdexAI does. Customers keep sending orders on WhatsApp, the system understands each item and matches it to your SKU, and at cutoff you get one consolidated order list instead of dozens of messages.</p>
+        </div>
+      </details>
+      <details class="reveal">
         <summary><span data-inline="he">הלקוחות שלי צריכים להוריד אפליקציה או להירשם?</span><span data-inline="en">Do my customers need an app or an account?</span></summary>
         <div class="ans">
           <p data-lang="he">לא. הם מזמינים בוואטסאפ שכבר יש להם בטלפון — בלי אפליקציה ובלי סיסמה. בפעם הראשונה הם ממלאים טופס קצר אחד עם פרטי העסק, ואתם מאשרים אותם בלחיצה.</p>
@@ -697,6 +876,13 @@
         <div class="ans">
           <p data-lang="he">בהודעת טקסט חופשית, בהקלטה קולית או בצילום — למשל של טופס הזמנה. אפשר לכתוב כמו שמדברים, עם קיצורים וכינויים. ומי שמעדיף מסך מקבל דף הזמנה בלינק.</p>
           <p data-lang="en">A free-text message, a voice note, or a photo — of an order form, for example. They can write the way they talk, with shorthand and nicknames. Anyone who prefers a screen gets an order page via a link.</p>
+        </div>
+      </details>
+      <details class="reveal">
+        <summary><span data-inline="he">מה ההבדל בין OrdexAI לקטלוג הזמנות בלינק או לקטלוג של WhatsApp Business?</span><span data-inline="en">How is OrdexAI different from an ordering catalog link or the WhatsApp Business catalog?</span></summary>
+        <div class="ans">
+          <p data-lang="he">בקטלוג, בלינק או בתוך WhatsApp Business, הלקוח צריך לבחור את המוצרים בעצמו, ומי שממשיך לכתוב הודעות נשאר אצלכם להקלדה. OrdexAI נותן גם דף הזמנה בלינק, אבל קולט גם הזמנות שנכתבות כרגיל, בטקסט, בהקלטה או בתמונה, ומתאים אותן למק״טים שלכם. השוואה מלאה ב<a href="whatsapp-orders-guide.html">מדריך</a>.</p>
+          <p data-lang="en">With a catalog, whether a link or inside WhatsApp Business, customers pick the products themselves, and anyone who keeps texting is still left for you to type. OrdexAI also gives an order page link, but it takes orders written the usual way too — text, voice or photo — and matches them to your SKUs. Full comparison in our <a href="whatsapp-orders-guide.html">guide</a> (Hebrew).</p>
         </div>
       </details>
       <details class="reveal">
@@ -839,6 +1025,7 @@
       <a href="#solution"><span data-inline="he">הפתרון</span><span data-inline="en">Solution</span></a>
       <a href="#features"><span data-inline="he">יכולות</span><span data-inline="en">Features</span></a>
       <a href="#faq"><span data-inline="he">שאלות נפוצות</span><span data-inline="en">FAQ</span></a>
+      <a href="whatsapp-orders-guide.html"><span data-inline="he">מדריך: הזמנות מוואטסאפ</span><span data-inline="en">Guide: WhatsApp orders</span></a>
       <a href="#contact"><span data-inline="he">צור קשר</span><span data-inline="en">Contact</span></a>
       <a href="privacy-policy.html" target="_blank" rel="noopener noreferrer"><span data-inline="he">מדיניות פרטיות</span><span data-inline="en">Privacy Policy</span></a>
       <a href="accessibility.html" target="_blank" rel="noopener noreferrer"><span data-inline="he">הצהרת נגישות</span><span data-inline="en">Accessibility</span></a>
@@ -885,8 +1072,8 @@ function setLang(lang){
   document.documentElement.lang = lang;
   document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
   document.title = lang === 'he'
-    ? 'OrdexAI — הזמנות חכמות בוואטסאפ | ניהול הזמנות למפיצי מזון'
-    : 'OrdexAI — Smart WhatsApp ordering | Order management for food distributors';
+    ? 'OrdexAI — קליטת הזמנות מוואטסאפ בלי הקלדה ידנית | למפיצים'
+    : 'OrdexAI — WhatsApp order intake with no manual typing | For distributors';
   document.querySelectorAll('.lang-btn').forEach(b=>{
     const on = b.dataset.setLang === lang;
     b.classList.toggle('active', on);
