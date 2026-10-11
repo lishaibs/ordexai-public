@@ -7,7 +7,7 @@ Static GitHub Pages site served at **`www.ordexai.com`** (repo `lishaibs/ordexai
 |------|---------|
 | `index.html` | Home / landing page (HE + EN toggle, animated WhatsApp demo, FAQ, contact form) |
 | `whatsapp-orders-guide.html` | Hebrew guide "איך מפסיקים להקליד הזמנות מוואטסאפ: 3 דרכים" (catalog link vs. WhatsApp Business catalog vs. AI), written to be cited by search engines and AI answers |
-| `es/index.html` | Spanish (Rioplatense, voseo) page for distributors in Argentina & Uruguay. **Generated**: edit `_tools/es-template.html`, then run `node _tools/build-es.js` (it reuses the home page's CSS, demo player and a11y menu, and fails if any Hebrew character is left) |
+| `es/index.html` | Spanish (Rioplatense, voseo) page for distributors; no country names in the copy. **Generated**: edit `_tools/es-template.html`, then run `node _tools/build-es.js` (it reuses the home page's CSS, demo player and a11y menu, and fails if any Hebrew character is left) |
 | `es/accesibilidad.html` | Spanish accessibility statement |
 | `privacy-policy.html` | Privacy policy (Privacy Protection Law 1981 + Amendment 13) |
 | `accessibility.html` | Accessibility statement (IS 5568 / WCAG 2.0 AA) |
