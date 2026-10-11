@@ -299,7 +299,8 @@
   }
   (function () {
     let lang = 'he';
-    try { const q = new URLSearchParams(location.search).get('lang'); if (q === 'en' || q === 'he') lang = q; else if (localStorage.getItem('ordex_lang') === 'en') lang = 'en'; } catch (e) {}
+    // No Spanish version of the policy yet: Spanish-site visitors get the English one.
+    try { const q = new URLSearchParams(location.search).get('lang'); if (q === 'en' || q === 'he') lang = q; else if (q === 'es' || ['en', 'es'].includes(localStorage.getItem('ordex_lang'))) lang = 'en'; } catch (e) {}
     if (lang !== 'he') showLang(lang);
   })();
 </script>

@@ -5,6 +5,9 @@
     <lastmod>2026-10-11</lastmod>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.ordexai.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.ordexai.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ordexai.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://www.ordexai.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="es-UY" href="https://www.ordexai.com/es/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ordexai.com/"/>
   </url>
   <url>
@@ -12,6 +15,19 @@
     <lastmod>2026-10-11</lastmod>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.ordexai.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.ordexai.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ordexai.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://www.ordexai.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="es-UY" href="https://www.ordexai.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ordexai.com/"/>
+  </url>
+  <url>
+    <loc>https://www.ordexai.com/es/</loc>
+    <lastmod>2026-10-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.ordexai.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ordexai.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ordexai.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://www.ordexai.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="es-UY" href="https://www.ordexai.com/es/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ordexai.com/"/>
   </url>
   <url>
@@ -24,6 +40,14 @@
   </url>
   <url>
     <loc>https://www.ordexai.com/accessibility.html</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.ordexai.com/accessibility.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ordexai.com/es/accesibilidad.html"/>
+  </url>
+  <url>
+    <loc>https://www.ordexai.com/es/accesibilidad.html</loc>
+    <lastmod>2026-10-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.ordexai.com/accessibility.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ordexai.com/es/accesibilidad.html"/>
   </url>
 </urlset>

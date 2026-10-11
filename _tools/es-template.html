@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es-AR" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>OrdexAI — Pedidos por WhatsApp sin tipear | Distribuidoras de Argentina y Uruguay</title>
+  <meta name="description" content="Tus clientes piden por WhatsApp como siempre, en texto, audio o foto. OrdexAI entiende el pedido, lo confirma con cada cliente y te deja una sola lista ordenada. Para distribuidoras de insumos gastronómicos.">
+  <meta name="theme-color" content="#0c3b2b">
+  <link rel="canonical" href="https://www.ordexai.com/es/">
+  <link rel="alternate" hreflang="he" href="https://www.ordexai.com/">
+  <link rel="alternate" hreflang="en" href="https://www.ordexai.com/?lang=en">
+  <link rel="alternate" hreflang="es" href="https://www.ordexai.com/es/">
+  <link rel="alternate" hreflang="es-AR" href="https://www.ordexai.com/es/">
+  <link rel="alternate" hreflang="es-UY" href="https://www.ordexai.com/es/">
+  <link rel="alternate" hreflang="x-default" href="https://www.ordexai.com/">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OrdexAI">
+  <meta property="og:url" content="https://www.ordexai.com/es/">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:locale:alternate" content="es_UY">
+  <meta property="og:title" content="OrdexAI — Tus clientes piden como siempre. OrdexAI hace el resto.">
+  <meta property="og:description" content="Pedidos por WhatsApp en texto, audio o foto, entendidos, confirmados y ordenados en una sola lista. Para distribuidoras de Argentina y Uruguay.">
+  <meta property="og:image" content="https://www.ordexai.com/assets/og-image-es.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="OrdexAI — Tus clientes piden como siempre. OrdexAI hace el resto.">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.ordexai.com/#organization",
+        "name": "OrdexAI",
+        "url": "https://www.ordexai.com/",
+        "logo": "https://www.ordexai.com/assets/ordexai-icon-512.png",
+        "email": "info@ordexai.com",
+        "contactPoint": [{ "@type": "ContactPoint", "contactType": "sales", "telephone": "+972-55-665-4664", "email": "info@ordexai.com", "areaServed": ["AR", "UY", "IL"], "availableLanguage": ["Spanish", "Hebrew", "English"] }]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.ordexai.com/es/#webpage",
+        "url": "https://www.ordexai.com/es/",
+        "name": "OrdexAI — Pedidos por WhatsApp sin tipear",
+        "inLanguage": "es-AR",
+        "isPartOf": { "@id": "https://www.ordexai.com/#website" },
+        "about": { "@id": "https://www.ordexai.com/es/#service" }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://www.ordexai.com/es/#service",
+        "name": "OrdexAI — Pedidos por WhatsApp para distribuidoras",
+        "serviceType": "Toma y consolidación de pedidos por WhatsApp para distribuidoras de insumos gastronómicos",
+        "provider": { "@id": "https://www.ordexai.com/#organization" },
+        "areaServed": ["AR", "UY"],
+        "availableLanguage": ["Spanish"],
+        "audience": { "@type": "BusinessAudience", "audienceType": "Distribuidoras de insumos gastronómicos: alimentos, descartables, librería y limpieza" },
+        "description": "Los clientes piden por WhatsApp en texto, audio o foto. OrdexAI entiende cada renglón, lo asocia a tu código de producto, pregunta cuando algo no está claro, confirma el pedido con el cliente y, al cierre de pedidos, te manda una lista consolidada por cliente. Versión para Argentina y Uruguay en acceso anticipado.",
+        "url": "https://www.ordexai.com/es/"
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js')</script>
+  <style>
+/*__CSS__*/
+    /* ===== Spanish page additions (status labels, rubros, systems) ===== */
+    /* Spanish copy runs ~25% longer than Hebrew: smaller hero headline, balanced lines (no orphan word) */
+    h1{font-size:clamp(2rem,3.6vw,2.95rem);text-wrap:balance}
+    h2{text-wrap:balance}
+    @media(max-width:520px){h1{font-size:1.95rem}}
+    .status{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.2px;padding:.16rem .55rem;border-radius:50px;vertical-align:middle;margin-inline-start:.45rem;white-space:nowrap;font-family:'Heebo',sans-serif;text-transform:none}
+    .status.on{background:#e3f7ec;color:var(--teal-ink)}
+    .status.soon{background:#fdf4e3;color:#8a5a12}
+    .hero-badge.early{background:rgba(232,165,58,.16);border-color:rgba(232,165,58,.45);color:#ffd99a}
+    .rubros{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+    .rubro{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.4rem 1.3rem;box-shadow:var(--shadow)}
+    .rubro .ic{font-size:1.8rem;line-height:1;margin-bottom:.7rem}
+    .rubro h3{font-weight:800;color:var(--brand);font-size:1.05rem;margin-bottom:.3rem}
+    .rubro p{color:var(--ink2);font-size:.9rem;line-height:1.6}
+    .sys-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;max-width:880px;margin:0 auto}
+    .sys{background:#fff;border:1px solid var(--border);border-radius:14px;padding:.95rem 1.1rem;display:flex;justify-content:space-between;align-items:center;gap:.6rem;font-weight:700;color:var(--brand)}
+    .sys .status{margin:0}
+    .sys-note{text-align:center;margin-top:1.2rem;color:var(--ink2);font-size:.95rem}
+    .example-note{text-align:center;margin-top:1rem;color:var(--ink3);font-size:.85rem}
+    .tagline{margin-top:1.6rem;text-align:center;font-weight:800;font-size:1.25rem;color:var(--brand)}
+    .contact-line{margin-top:1.5rem;color:rgba(255,255,255,.85);font-size:.92rem}
+    .contact-line a{color:#fff;text-decoration:underline;font-weight:700}
+    .early-note{max-width:640px;margin:1rem auto 0;color:rgba(255,255,255,.85);font-size:.95rem}
+    body.hc .rubro,body.hc .sys{border-color:#000;border-width:1.5px}
+    @media(max-width:940px){.sys-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:820px){.rubros{grid-template-columns:1fr 1fr}}
+    @media(max-width:520px){.rubros,.sys-grid{grid-template-columns:1fr}.sys{padding:.85rem 1rem}}
+  </style>
+</head>
+<!-- The Spanish page reuses the site's LTR layout rules, which are keyed on body.lang-en -->
+<body class="lang-en">
+<a href="#main" class="skip-link">Ir al contenido principal</a>
+
+<nav aria-label="Navegación principal">
+  <a href="#top" class="logo" aria-label="OrdexAI">
+    <img class="brand-logo" src="../assets/ordexai-logo.png" alt="OrdexAI" width="84" height="52">
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#como-funciona">Cómo funciona</a></li>
+      <li><a href="#clientes">Tus clientes</a></li>
+      <li><a href="#sistemas">Sistemas</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <div class="lang-toggle" role="group" aria-label="Idioma">
+      <a class="lang-btn active" href="./" aria-current="page" data-pick="es">ES</a>
+      <a class="lang-btn" href="/" hreflang="he" data-pick="he" aria-label="HE – Hebreo">HE</a>
+      <a class="lang-btn" href="/?lang=en" hreflang="en" data-pick="en" aria-label="EN – English">EN</a>
+    </div>
+    <a href="__WA__" class="cta-nav" target="_blank" rel="noopener noreferrer">Escribinos</a>
+  </div>
+</nav>
+
+<main id="main" tabindex="-1">
+<!-- ===== HERO ===== -->
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge early">
+        <span class="wa-dot"></span>
+        <span>Acceso anticipado · Argentina y Uruguay</span>
+      </div>
+      <h1>Tus clientes piden como siempre.<br><span class="accent">OrdexAI hace el resto.</span></h1>
+      <p class="hero-sub">Pedidos por WhatsApp en texto, audio o foto: OrdexAI los entiende, los confirma con cada cliente y te los deja ordenados en una sola lista. Sin tipear y sin perseguir a nadie.</p>
+      <div class="cta-group">
+        <a href="__WA__" class="btn-primary" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.121.554 4.11 1.523 5.836L.057 23.625a.75.75 0 00.921.921l5.772-1.466A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.943 0-3.773-.524-5.349-1.437l-.383-.228-3.977 1.01 1.033-3.85-.249-.396A9.961 9.961 0 012 12C2 6.478 6.478 2 12 2s10 4.478 10 10-4.478 10-10 10z"/></svg>
+          Escribinos por WhatsApp
+        </a>
+        <a href="#como-funciona" class="btn-ghost">Ver cómo funciona</a>
+      </div>
+      <div class="hero-chips">
+        <span class="hero-chip"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 00-2 2v16l4-4h14a2 2 0 002-2V6a2 2 0 00-2-2z"/></svg>WhatsApp</span>
+        <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>Texto · audio · foto</span>
+        <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18M5 7l1.5 13h11L19 7M9 7V4h6v3"/></svg>Para distribuidoras</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-stage">
+      <!-- The animated chat is one image for assistive tech; the scene buttons below give access to all 5 scenes -->
+      <div class="hero-phone" role="img" aria-label="Demostración: un cliente pide por WhatsApp en texto, audio o foto, y OrdexAI ordena el pedido y le manda un resumen para confirmar"><div id="heroChat" class="wa-screen"></div></div>
+      <div class="hero-capline">
+        <div class="hero-cap" id="heroCap"></div>
+        <button type="button" class="demo-pause" id="demoPause" aria-pressed="false" aria-label="Pausar la demostración">
+          <svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4.5" height="16" rx="1.2"/><rect x="13.5" y="4" width="4.5" height="16" rx="1.2"/></svg>
+          <svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.2-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg>
+        </button>
+      </div>
+      <div class="demo-ctrl" role="group" aria-label="Elegí una escena de la demostración">
+        <button type="button" class="demo-tab" data-scene="0" aria-pressed="true">Texto</button>
+        <button type="button" class="demo-tab" data-scene="1" aria-pressed="false">Audio</button>
+        <button type="button" class="demo-tab" data-scene="2" aria-pressed="false">Foto</button>
+        <button type="button" class="demo-tab" data-scene="3" aria-pressed="false">Dudas</button>
+        <button type="button" class="demo-tab" data-scene="4" aria-pressed="false">Confirmación</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== VALUE BAND ===== -->
+<div class="value-band">
+  <div class="value-inner">
+    <span class="value-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Sin apps</span>
+    <span class="value-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Sin contraseñas</span>
+    <span class="value-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Sin tipear pedidos</span>
+  </div>
+</div>
+
+<!-- ===== 1 · PROBLEM ===== -->
+<section class="tint" id="problema">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker"><span class="num">01</span>El problema</div>
+      <h2>Pedidos de todos lados, a toda hora.</h2>
+      <p class="sec-sub">Y alguien tiene que juntarlos y tipearlos. Mensajes sueltos, audios, fotos de listas escritas a mano y las notas que te pasa el preventista al final del día.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card reveal"><span class="pain-emoji" aria-hidden="true">💬</span><p>Un pedido repartido en cinco mensajes</p></div>
+      <div class="pain-card reveal"><span class="pain-emoji" aria-hidden="true">🎙️</span><p>Un audio de 40 segundos que hay que escuchar dos veces</p></div>
+      <div class="pain-card reveal"><span class="pain-emoji" aria-hidden="true">📝</span><p>La foto de una lista escrita a mano</p></div>
+      <div class="pain-card reveal"><span class="pain-emoji" aria-hidden="true">❓</span><p>«¿Lavandina de 5 o de 2 litros?»</p></div>
+      <div class="pain-card reveal"><span class="pain-emoji" aria-hidden="true">🌙</span><p>El pedido que llega a las 23:40, después del cierre</p></div>
+      <div class="pain-card reveal"><span class="pain-emoji" aria-hidden="true">⌨️</span><p>Horas tipeando pedidos en el sistema</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 2 · HOW IT WORKS ===== -->
+<section class="white" id="como-funciona">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker"><span class="num">02</span>Cómo funciona</div>
+      <h2>Del mensaje al pedido listo, en tres pasos.</h2>
+      <p class="sec-sub">OrdexAI hace el trabajo que hoy se hace a mano: leer, entender, confirmar y ordenar.</p>
+    </div>
+    <div class="flow reveal">
+      <div class="flow-card">
+        <div class="flow-emoji" aria-hidden="true">🧠</div>
+        <h3>Entiende el pedido</h3>
+        <p>Lee textos, escucha audios y lee fotos. Entiende «bidones, cajas, rollos» y los nombres que usa cada cliente, y asocia cada renglón a tu código de producto.</p>
+      </div>
+      <div class="flow-arrow" aria-hidden="true">→</div>
+      <div class="flow-card">
+        <div class="flow-emoji" aria-hidden="true">✅</div>
+        <h3>Lo confirma con el cliente</h3>
+        <p>Si algo no está claro, pregunta con botones. El pedido sale solo cuando el cliente da el OK.</p>
+      </div>
+      <div class="flow-arrow" aria-hidden="true">→</div>
+      <div class="flow-card">
+        <div class="flow-emoji" aria-hidden="true">📦</div>
+        <h3>Te llega ordenado</h3>
+        <p>Al cierre de pedidos recibís una lista consolidada por cliente, en PDF, por WhatsApp y por mail. Carga directa en tu sistema: <span class="status soon">Próximamente</span></p>
+      </div>
+    </div>
+    <p class="example-note reveal">Los nombres, códigos y cantidades de esta página son ejemplos ilustrativos.</p>
+  </div>
+</section>
+
+<!-- ===== 3 · CUSTOMERS CHANGE NOTHING ===== -->
+<section class="tint" id="clientes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker"><span class="num">03</span>Tus clientes</div>
+      <h2>Tus clientes no cambian nada.</h2>
+      <p class="sec-sub">Siguen pidiendo por el mismo WhatsApp de siempre. Sin apps, sin contraseñas y sin aprender nada nuevo.</p>
+    </div>
+    <div class="grid3">
+      <div class="card reveal">
+        <div class="card-icon" aria-hidden="true">💬</div>
+        <h3>Texto, audio o foto</h3>
+        <p>Escriben como hablan, mandan un audio desde el local o le sacan una foto a la lista. Todo entra al mismo pedido.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon" aria-hidden="true">🛒</div>
+        <h3>Catálogo con fotos, desde el chat</h3>
+        <p>Quien prefiere elegir en pantalla abre tu catálogo con un link desde WhatsApp, y de paso ve productos que no se acordaba de pedir.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon" aria-hidden="true">🧩</div>
+        <h3>Aprende a cada cliente</h3>
+        <p>Recuerda los nombres y las abreviaturas que usa cada uno, así cada pedido sale más rápido que el anterior.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4 · SELL MORE (retention) ===== -->
+<section class="white" id="vender">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker"><span class="num">04</span>Vender más</div>
+      <h2>No solo toma pedidos. Te ayuda a vender.</h2>
+    </div>
+    <div class="grid3">
+      <div class="card reveal">
+        <div class="card-icon" aria-hidden="true">⏰</div>
+        <h3>Recuerda <span class="status on">Disponible</span></h3>
+        <p>Antes del cierre de pedidos, le avisa por WhatsApp al cliente que todavía no pidió para su próximo día de entrega.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon" aria-hidden="true">⭐</div>
+        <h3>Sugiere <span class="status on">Disponible</span></h3>
+        <p>Le muestra lo que pide siempre, con sus cantidades de costumbre, para que complete el pedido en un momento.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon" aria-hidden="true">📉</div>
+        <h3>Avisa <span class="status soon">Próximamente</span></h3>
+        <p>Si un cliente empieza a pedir menos, te avisa a vos o al preventista para que lo llamen a tiempo.</p>
+      </div>
+    </div>
+    <p class="tagline reveal">Tus preventistas se enfocan en vender. No en tipear.</p>
+  </div>
+</section>
+
+<!-- ===== 5 · ANY RUBRO ===== -->
+<section class="tint" id="rubros">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker"><span class="num">05</span>Rubros</div>
+      <h2>Funciona con tu catálogo, sea cual sea el rubro.</h2>
+      <p class="sec-sub">OrdexAI aprende tus productos, tus presentaciones (bidón, lata, caja, rollo) y tus códigos.</p>
+    </div>
+    <div class="rubros">
+      <div class="rubro reveal"><div class="ic" aria-hidden="true">🥫</div><h3>Alimentos</h3><p>Por ejemplo: tomate perita en lata, aceite, harina.</p></div>
+      <div class="rubro reveal"><div class="ic" aria-hidden="true">🥤</div><h3>Descartables</h3><p>Por ejemplo: vasos, bandejas, film, servilletas.</p></div>
+      <div class="rubro reveal"><div class="ic" aria-hidden="true">📎</div><h3>Librería</h3><p>Por ejemplo: resmas, rollos de ticket, biromes.</p></div>
+      <div class="rubro reveal"><div class="ic" aria-hidden="true">🧴</div><h3>Limpieza</h3><p>Por ejemplo: lavandina en bidón, detergente, rollos de cocina.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6 · SYSTEMS (honest status labels) ===== -->
+<section class="white" id="sistemas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker"><span class="num">06</span>Sistemas</div>
+      <h2>Y después, a tu sistema.</h2>
+      <p class="sec-sub">Hoy recibís la lista consolidada en PDF. Estamos trabajando en la carga directa en los sistemas más usados de la región.</p>
+    </div>
+    <div class="sys-grid reveal">
+      <div class="sys">PDF por WhatsApp y mail <span class="status on">Disponible</span></div>
+      <div class="sys">Excel <span class="status soon">Próximamente</span></div>
+      <div class="sys">Tango <span class="status soon">Próximamente</span></div>
+      <div class="sys">Bejerman <span class="status soon">Próximamente</span></div>
+      <div class="sys">Memory <span class="status soon">Próximamente</span></div>
+      <div class="sys">Odoo <span class="status soon">Próximamente</span></div>
+    </div>
+    <p class="sys-note reveal">¿No tenés sistema? Te llega en PDF, y pronto también en Excel. ¿Usás otro sistema? Contanos cuál.</p>
+  </div>
+</section>
+
+<!-- ===== 7 · CTA ===== -->
+<section class="cta-section" id="contacto">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:0">
+      <img class="cta-logo" src="../assets/ordexai-logo.png" alt="OrdexAI" width="167" height="104" loading="lazy">
+      <h2>¿Querés ver cómo funciona en tu negocio?</h2>
+      <p class="sec-sub">Estamos sumando las primeras distribuidoras de Argentina y Uruguay. Escribinos y te mostramos OrdexAI con tus propios productos.</p>
+    </div>
+    <div class="cta-actions reveal">
+      <a href="__WA__" class="btn-primary" target="_blank" rel="noopener noreferrer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.121.554 4.11 1.523 5.836L.057 23.625a.75.75 0 00.921.921l5.772-1.466A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.943 0-3.773-.524-5.349-1.437l-.383-.228-3.977 1.01 1.033-3.85-.249-.396A9.961 9.961 0 012 12C2 6.478 6.478 2 12 2s10 4.478 10 10-4.478 10-10 10z"/></svg>
+        Escribinos por WhatsApp
+      </a>
+      <a href="mailto:info@ordexai.com?subject=OrdexAI%20para%20mi%20distribuidora" class="btn-ghost">Mandanos un mail</a>
+    </div>
+    <p class="contact-line reveal">WhatsApp <a href="__WA__" target="_blank" rel="noopener noreferrer" dir="ltr">+972 55-665-4664</a> · <a href="mailto:info@ordexai.com">info@ordexai.com</a></p>
+  </div>
+</section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-top">
+    <a href="#top" class="footer-logo">
+      <img class="brand-logo" src="../assets/ordexai-logo.png" alt="OrdexAI" width="77" height="48" loading="lazy">
+    </a>
+    <div class="footer-links">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#sistemas">Sistemas</a>
+      <a href="#contacto">Contacto</a>
+      <a href="../privacy-policy.html?lang=en" hreflang="en">Política de privacidad (en inglés)</a>
+      <a href="accesibilidad.html">Accesibilidad</a>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <span>© 2026 OrdexAI. Todos los derechos reservados.</span>
+    <span>OrdexAI es operado por Lishai Shimon Ben Shoshan</span>
+  </div>
+</footer>
+
+<!-- Accessibility menu -->
+<div class="a11y" role="region" aria-label="Accesibilidad">
+  <button type="button" class="a11y-toggle" id="a11yToggle" aria-expanded="false" aria-controls="a11yPanel" aria-label="Menú de accesibilidad"><span aria-hidden="true">♿</span></button>
+  <div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="Opciones de accesibilidad" hidden>
+    <div class="a11y-title">Accesibilidad</div>
+    <div class="a11y-row">
+      <span>Tamaño del texto</span>
+      <div class="a11y-btns">
+        <button type="button" data-a11y="font-dec" aria-label="Achicar el texto">A−</button>
+        <button type="button" data-a11y="font-reset" aria-label="Tamaño original del texto">A</button>
+        <button type="button" data-a11y="font-inc" aria-label="Agrandar el texto">A+</button>
+      </div>
+    </div>
+    <button type="button" class="a11y-opt" data-a11y="contrast" aria-pressed="false">Alto contraste</button>
+    <button type="button" class="a11y-opt" data-a11y="motion" aria-pressed="false">Detener animaciones</button>
+    <button type="button" class="a11y-opt" data-a11y="links" aria-pressed="false">Resaltar enlaces</button>
+    <a class="a11y-opt" href="accesibilidad.html">Declaración de accesibilidad</a>
+    <button type="button" class="a11y-opt a11y-reset" data-a11y="reset">Restablecer</button>
+  </div>
+</div>
+
+<script>
+/* ===== Language switcher: remember the visitor's own choice (the home page reads it) ===== */
+document.querySelectorAll('[data-pick]').forEach(function(a){
+  a.addEventListener('click', function(){ try{ localStorage.setItem('ordex_lang', a.dataset.pick); }catch(e){} });
+});
+
+/* ===== Scroll reveal ===== */
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+/*__PLAYER__*/
+
+/*__A11Y__*/
+</script>
+
+</body>
+</html>

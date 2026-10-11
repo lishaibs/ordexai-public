@@ -5,12 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
+  <!-- First visit to "/": pick the language from the visitor's device (time zone + browser language).
+       No IP lookup and no third-party call. A choice made with the language switcher always wins,
+       ?lang= links are respected, and crawlers are never redirected (they always get this page). -->
+  <script>
+  (function(){
+    try{
+      if (/[?&]lang=/.test(location.search)) return;
+      var pick = null; try{ pick = localStorage.getItem('ordex_lang'); }catch(e){}
+      if (pick === 'es') { location.replace('es/' + location.hash); return; }
+      if (pick === 'he' || pick === 'en') return;
+      if (/bot|crawl|spider|slurp|preview|lighthouse|headless/i.test(navigator.userAgent)) return;
+      var langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
+      var first = String(langs[0] || '').toLowerCase();
+      var tz = ''; try{ tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; }catch(e){}
+      if (/^(he|iw)\b/.test(first) || /^Asia\/(Jerusalem|Tel_Aviv)$/.test(tz)) return;           // Israel: Hebrew
+      if (/^es\b/.test(first) || /^America\/(Argentina\/|Buenos_Aires$|Cordoba$|Mendoza$|Montevideo$|Asuncion$|Santiago$|La_Paz$|Lima$|Bogota$|Guayaquil$|Caracas$)/.test(tz)) {
+        location.replace('es/' + location.hash); return;                                         // Spanish-speaking South America
+      }
+      window.__ordexAutoLang = 'en';                                                              // elsewhere: English
+    }catch(e){}
+  })();
+  </script>
   <title>OrdexAI — קליטת הזמנות מוואטסאפ בלי הקלדה ידנית | למפיצים</title>
   <meta name="description" content="OrdexAI קולט הזמנות מלקוחות קבועים ישירות מוואטסאפ: טקסט חופשי, הקלטה או תמונה. כל פריט מותאם למק״ט, ואתם מקבלים רשימת הזמנות אחת מרוכזת. בלי אפליקציה ובלי הקלדה ידנית.">
   <meta name="theme-color" content="#0c3b2b">
   <!-- One page, two languages: English is the same page with ?lang=en (the script switches on it) -->
   <link rel="alternate" hreflang="he" href="https://www.ordexai.com/">
   <link rel="alternate" hreflang="en" href="https://www.ordexai.com/?lang=en">
+  <link rel="alternate" hreflang="es" href="https://www.ordexai.com/es/">
+  <link rel="alternate" hreflang="es-AR" href="https://www.ordexai.com/es/">
+  <link rel="alternate" hreflang="es-UY" href="https://www.ordexai.com/es/">
   <link rel="alternate" hreflang="x-default" href="https://www.ordexai.com/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
@@ -227,6 +252,7 @@
     .lang-toggle{display:flex;gap:3px;background:rgba(255,255,255,.1);border-radius:20px;padding:3px}
     .lang-btn{background:transparent;border:none;padding:.3rem .8rem;border-radius:16px;cursor:pointer;font-size:.8rem;font-weight:700;color:rgba(255,255,255,.72);transition:all .2s;font-family:'Heebo',sans-serif}
     .lang-btn.active{background:#fff;color:var(--brand);box-shadow:0 1px 6px rgba(0,0,0,.2)}
+    .lang-toggle a.lang-btn{display:inline-flex;align-items:center;text-decoration:none}  /* ES is a link to /es/ */
     .cta-nav{background:var(--wa);color:var(--on-wa);padding:.55rem 1.25rem;border-radius:50px;font-size:.85rem;font-weight:800;transition:all .2s;white-space:nowrap;display:inline-flex;align-items:center;gap:7px}
     .cta-nav:hover{background:#2ee06f;transform:translateY(-1px);box-shadow:0 6px 16px rgba(37,211,102,.35)}
 
@@ -569,6 +595,19 @@
       .faq summary{padding:1rem 1.1rem;font-size:.98rem}
       .faq .ans{padding:0 1.1rem 1.1rem}
     }
+    /* small phones: logo + 3 language buttons + CTA must fit in 320px */
+    @media(max-width:430px){
+      nav{padding:.7rem .85rem}
+      .nav-right{gap:.5rem}
+      .lang-btn{padding:.28rem .6rem}
+      .cta-nav{padding:.48rem .85rem}
+    }
+    @media(max-width:360px){
+      nav .brand-logo{height:36px}
+      .nav-right{gap:.4rem}
+      .lang-btn{padding:.26rem .45rem;font-size:.76rem}
+      .cta-nav{padding:.45rem .7rem;font-size:.78rem}
+    }
     /* desktop: copy beside the phone, so the live demo is above the fold */
     @media(min-width:1080px){
       .hero{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);align-items:center;column-gap:3.5rem;padding:3.6rem max(3rem,calc((100% - 1160px) / 2)) 3.8rem}
@@ -593,9 +632,10 @@
       <li><a href="#faq"><span data-inline="he">שאלות נפוצות</span><span data-inline="en">FAQ</span></a></li>
       <li><a href="#contact"><span data-inline="he">צור קשר</span><span data-inline="en">Contact</span></a></li>
     </ul>
-    <div class="lang-toggle" role="group" aria-label="שפה / Language">
+    <div class="lang-toggle" role="group" aria-label="שפה / Language / Idioma">
       <button type="button" class="lang-btn active" data-set-lang="he" lang="he" aria-label="עב – עברית" aria-pressed="true">עב</button>
       <button type="button" class="lang-btn" data-set-lang="en" lang="en" aria-label="EN – English" aria-pressed="false">EN</button>
+      <a class="lang-btn" href="es/" hreflang="es" lang="es" data-pick="es" aria-label="ES – Español">ES</a>
     </div>
     <!-- data-wa: href is rebuilt per language by setLang() with a pre-filled first message -->
     <a href="https://wa.me/972556654664?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20OrdexAI%20%F0%9F%91%8B" data-wa class="cta-nav" target="_blank" rel="noopener noreferrer">
@@ -1003,7 +1043,7 @@
       <div class="contact-info">
         <a class="info-card reveal" href="https://wa.me/972556654664?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20OrdexAI%20%F0%9F%91%8B" data-wa target="_blank" rel="noopener noreferrer">
           <div class="info-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.374 0 0 5.373 0 12c0 2.121.554 4.11 1.523 5.836L.057 23.625a.75.75 0 00.921.921l5.772-1.466A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></div>
-          <div><div class="info-label">WhatsApp</div><div class="info-val" dir="ltr">055-665-4664</div></div>
+          <div><div class="info-label">WhatsApp</div><div class="info-val" dir="ltr"><span data-inline="he">055-665-4664</span><span data-inline="en">+972 55-665-4664</span></div></div>
         </a>
         <a class="info-card reveal" href="mailto:info@ordexai.com">
           <div class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div>
@@ -1074,7 +1114,7 @@ function setLang(lang){
   document.title = lang === 'he'
     ? 'OrdexAI — קליטת הזמנות מוואטסאפ בלי הקלדה ידנית | למפיצים'
     : 'OrdexAI — WhatsApp order intake with no manual typing | For distributors';
-  document.querySelectorAll('.lang-btn').forEach(b=>{
+  document.querySelectorAll('[data-set-lang]').forEach(b=>{
     const on = b.dataset.setLang === lang;
     b.classList.toggle('active', on);
     b.setAttribute('aria-pressed', on ? 'true' : 'false');
@@ -1088,8 +1128,7 @@ function setLang(lang){
   });
   const wa = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(WA_TEXT[lang]);
   document.querySelectorAll('a[data-wa]').forEach(a=>{ a.href = wa; });
-  // shareable URL (?lang=en), remembered choice, and a canonical URL per language
-  try{ localStorage.setItem('ordex_lang', lang); }catch(e){}
+  // shareable URL (?lang=en) and a canonical URL per language
   try{
     const u = new URL(location.href);
     if(lang === 'en') u.searchParams.set('lang', 'en'); else u.searchParams.delete('lang');
@@ -1101,12 +1140,17 @@ function setLang(lang){
   // re-render the hero WhatsApp demo in the selected language
   if(window.OrdexChat) window.OrdexChat.setLang(lang);
 }
+// ?lang= link > the visitor's own earlier choice > device-based pick from the <head> script > Hebrew
 function initialLang(){
   try{ const q = new URLSearchParams(location.search).get('lang'); if(q === 'en' || q === 'he') return q; }catch(e){}
   try{ const s = localStorage.getItem('ordex_lang'); if(s === 'en' || s === 'he') return s; }catch(e){}
+  if(window.__ordexAutoLang === 'en') return 'en';
   return 'he';
 }
-document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.setLang)));
+// Only an explicit click is remembered, so the automatic pick keeps working until the visitor chooses.
+const rememberLang = l=>{ try{ localStorage.setItem('ordex_lang', l); }catch(e){} };
+document.querySelectorAll('[data-set-lang]').forEach(b=>b.addEventListener('click',()=>{ rememberLang(b.dataset.setLang); setLang(b.dataset.setLang); }));
+document.querySelectorAll('[data-pick]').forEach(a=>a.addEventListener('click',()=>rememberLang(a.dataset.pick)));
 setLang(initialLang());
 
 /* ===== Scroll reveal ===== */
