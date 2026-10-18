@@ -206,9 +206,19 @@ button{font:inherit}
 .nav-links{display:flex;gap:1.6rem;margin-inline-start:1.2rem}
 .nav-links a{color:var(--on-dark2);text-decoration:none;font-size:.92rem;font-weight:500;transition:color .2s}
 .nav-links a:hover{color:#fff}
-.lang{margin-inline-start:auto;display:flex;background:rgba(255,255,255,.08);border-radius:50px;padding:3px}
-.lang button,.lang a{appearance:none;border:0;background:none;cursor:pointer;font-size:.78rem;font-weight:700;color:var(--on-dark2);padding:.22rem .7rem;border-radius:50px;text-decoration:none;font-family:'Plus Jakarta Sans','Heebo',sans-serif}
-.lang .on,.lang [aria-pressed="true"]{background:#fff;color:var(--brand);font-family:'Heebo',sans-serif}
+/* language: globe button that opens a short list (common international pattern) */
+.lang{margin-inline-start:auto;position:relative}
+.lang-t{appearance:none;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#fff;border-radius:50px;padding:.36rem .7rem;font:inherit;font-size:.82rem;font-weight:700;line-height:1.2;transition:background .2s}
+.lang-t:hover,.lang-t[aria-expanded="true"]{background:rgba(255,255,255,.16)}
+.lang-t .g{width:18px;height:18px;flex:0 0 auto}
+.lang-t .c{width:10px;height:10px;flex:0 0 auto;opacity:.75;transition:transform .2s}
+.lang-t[aria-expanded="true"] .c{transform:rotate(180deg)}
+.lang-list{position:absolute;top:calc(100% + 8px);inset-inline-end:0;z-index:60;min-width:176px;background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-lg);padding:6px;list-style:none;margin:0}
+.lang-list a{display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.55rem .75rem;border-radius:9px;color:var(--ink);text-decoration:none;font-size:.92rem;font-weight:600;font-family:'Heebo',sans-serif}
+.lang-list a:hover,.lang-list a:focus-visible{background:var(--bg-tint)}
+.lang-list a[aria-current="page"]{color:var(--teal-ink);font-weight:800}
+.lang-list a svg{width:15px;height:15px;flex:0 0 auto}
+.lang-list a small{font-size:.74rem;font-weight:700;color:var(--ink3);font-family:'Plus Jakarta Sans','Heebo',sans-serif}
 .cta-nav{display:inline-flex;align-items:center;gap:7px;background:var(--wa);color:var(--on-wa);font-weight:800;font-size:.86rem;border-radius:50px;padding:.55rem 1.1rem;text-decoration:none;white-space:nowrap;box-shadow:0 6px 18px rgba(37,211,102,.32)}
 .cta-nav .s{display:none}
 
@@ -401,6 +411,34 @@ h2{font-size:clamp(1.6rem,3.4vw,2.5rem);font-weight:800;margin-bottom:1rem;color
 .af .erp-foot{padding-bottom:18px}
 .erp-foot .zero{font-weight:800;color:var(--teal-ink);background:#e3f5ec;border-radius:50px;padding:0 .6rem}
 
+/* ---- OrdexAI processing card: shown between "before" and the filled order, then it hands over to the ERP window ---- */
+.proc-wrap{position:absolute;inset:3.4rem 1.1rem 2.2rem;z-index:4;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.proc{width:min(330px,100%);background:radial-gradient(120% 120% at 100% 0%,#12503a,var(--brand) 55%,var(--brand2));color:#fff;border-radius:18px;padding:.95rem 1.05rem 1rem;box-shadow:var(--shadow-lg);
+  opacity:0;visibility:hidden;transition:opacity .35s ease,transform .45s cubic-bezier(.2,.8,.2,1),visibility 0s linear .35s}
+.proc.on{opacity:1;visibility:visible;transition:opacity .35s ease,transform .45s cubic-bezier(.2,.8,.2,1),visibility 0s}
+.proc-h{display:flex;align-items:center;gap:.55rem;margin-bottom:.7rem;font-size:.95rem}
+.proc-h b{font-weight:800}
+.proc-logo{width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.proc-logo img{width:26px;height:auto}
+.proc-steps{display:grid;gap:.5rem}
+.proc-steps li{display:flex;align-items:flex-start;gap:.55rem;font-size:.86rem;font-weight:700;line-height:1.35;color:var(--on-dark3);transition:color .3s}
+.proc-steps li small{display:block;font-size:.74rem;font-weight:600;color:var(--mint);opacity:0;transition:opacity .3s;font-family:'Plus Jakarta Sans','Heebo',sans-serif}
+.proc-steps li i{flex:0 0 auto;width:18px;height:18px;margin-top:1px;border-radius:50%;border:2px dashed rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;transition:background-color .3s,border-color .3s}
+.proc-steps li.on{color:#fff}
+.proc-steps li.on small{opacity:1}
+.proc-steps li.on i{background:var(--wa);border:2px solid var(--wa)}
+.proc-steps li.on i::after{content:'';width:8px;height:4px;border:solid var(--on-wa);border-width:0 0 2px 2px;transform:translateY(-1px) rotate(-45deg)}
+.anim .proc:not(.on){transform:translateY(10px) scale(.97)}
+/* between loops: the scene fades out, then replays from the top */
+.ba2.rewind .inbox,.ba2.rewind .ba-pain,.ba2.rewind .erp,.ba2.rewind .proc-wrap{opacity:0!important;transition:opacity .45s ease!important}
+
+/* ---- pause / play for the looping scene ---- */
+.st-row{display:flex;justify-content:center;margin-top:1.3rem}
+.st-play{appearance:none;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;border-radius:50px;padding:.38rem .95rem .38rem .8rem;font:inherit;font-size:.84rem;font-weight:700;background:#fff;color:var(--brand);border:1px solid var(--border-strong);transition:background .2s}
+.st-play:hover{background:var(--bg-tint)}
+.st-i{width:11px;height:12px;flex:0 0 auto;display:inline-block;background:linear-gradient(to right,currentColor 0 35%,transparent 35% 65%,currentColor 65%)}
+.st-play[data-state="play"] .st-i,.st-play[data-state="replay"] .st-i{background:currentColor;clip-path:polygon(0 0,100% 50%,0 100%)}
+
 /* ---- three benefits ---- */
 .bens{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;max-width:1040px;margin:0 auto}
 .ben{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.5rem 1.45rem 1.5rem;display:flex;flex-direction:column;gap:.55rem}
@@ -414,6 +452,7 @@ h2{font-size:clamp(1.6rem,3.4vw,2.5rem);font-weight:800;margin-bottom:1rem;color
 .ben.feat .ben-i{background:rgba(37,211,102,.16);color:var(--wa)}
 .ben-film{appearance:none;cursor:pointer;margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.24);color:#fff;border-radius:50px;padding:.5rem 1rem .5rem .9rem;font-weight:700;font-size:.9rem;transition:background .2s}
 .ben-film:hover{background:rgba(255,255,255,.16)}
+.ben-film small{font-family:'Plus Jakarta Sans','Heebo',sans-serif;font-weight:700;opacity:.7;font-size:.78rem}
 .ben-film .pl{width:22px;height:22px;border-radius:50%;background:#fff;color:var(--brand);display:inline-flex;align-items:center;justify-content:center}
 .ben-film .pl svg{width:10px;height:10px;margin-inline-end:-2px}
 
@@ -514,7 +553,8 @@ body.ul-links a{text-decoration:underline!important}
   .hero *,.hero *::before,.hero *::after,.ba2 *,.ba2 *::before,.ba2 *::after{animation:none!important}
   .anim .msg:not(.on),.anim .ic:not(.on),.anim .ba-pain:not(.on),.anim .via:not(.on),.anim .erp-tbl tr.r:not(.on),.anim .stamp:not(.on),.anim .toast:not(.on){transform:none}
   .anim .erp.lv2:not(.on),.ba2.ph-after:not(.done) .b4{filter:none}
-  .hero *,.ba2 *{transition-property:opacity,background-color,box-shadow,border-color!important}
+  .anim .proc:not(.on){transform:none}
+  .hero *,.ba2 *{transition-property:opacity,visibility,background-color,box-shadow,border-color!important}
 }
 body.no-motion *,body.no-motion *::before,body.no-motion *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition:none!important;scroll-behavior:auto!important}
 
@@ -633,7 +673,13 @@ body.no-motion .reveal{opacity:1!important;transform:none!important}
       <li><a href="#fit">למי זה מתאים</a></li>
       <li><a href="#faq">שאלות נפוצות</a></li>
     </ul>
-    <div class="lang" role="group" aria-label="שפה / Idioma"><button type="button" class="on" data-set-lang="he" lang="he" aria-pressed="true" aria-label="עב – עברית">עב</button><a href="es/" hreflang="es" lang="es" data-pick="es" aria-label="ES – Español">ES</a></div>
+    <div class="lang" id="langMenu">
+      <button type="button" class="lang-t" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-controls="langList" aria-label="עב – בחירת שפה (Language)"><svg class="g" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4M12 2.8c2.5 2.6 3.8 5.7 3.8 9.2s-1.3 6.6-3.8 9.2c-2.5-2.6-3.8-5.7-3.8-9.2S9.5 5.4 12 2.8z"/></svg><span lang="he">עב</span><svg class="c" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></button>
+      <ul class="lang-list" id="langList" hidden>
+        <li><a href="./" lang="he" hreflang="he" data-set-lang="he" aria-current="page"><span>עברית</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></a></li>
+        <li><a href="es/" lang="es" hreflang="es" data-pick="es"><span>Español</span><small>ES</small></a></li>
+      </ul>
+    </div>
     <a href="https://wa.me/972556654664?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20OrdexAI%20%F0%9F%91%8B" class="cta-nav" target="_blank" rel="noopener noreferrer"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.374 0 0 5.373 0 12c0 2.121.554 4.11 1.523 5.836L.057 23.625a.75.75 0 00.921.921l5.772-1.466A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg><span class="l">לשיחת הדגמה בוואטסאפ</span><span class="s">הדגמה</span></a>
   </div>
 </nav>
@@ -667,7 +713,7 @@ body.no-motion .reveal{opacity:1!important;transform:none!important}
             <span class="ph-day">היום</span>
             <div class="msg in" data-at="0.3">היי, תשלח לי למחר 3 פחים שמן ו-6 עגבניות מרוסקות גדולות 🙏<span class="t">14:32</span><span class="via" data-at="0.65">טקסט</span></div>
             <div class="msg in voice" data-at="1.2"><span class="va"></span><span class="vp"></span><span class="wave"><i style="height:7px"></i><i style="height:12px"></i><i style="height:18px"></i><i style="height:9px"></i><i style="height:15px"></i><i style="height:11px"></i><i style="height:20px"></i><i style="height:8px"></i><i style="height:14px"></i><i style="height:10px"></i><i style="height:17px"></i><i style="height:7px"></i><i style="height:13px"></i><i style="height:19px"></i><i style="height:9px"></i><i style="height:15px"></i><i style="height:6px"></i><i style="height:12px"></i><i style="height:16px"></i><i style="height:8px"></i><i style="height:11px"></i><i style="height:6px"></i></span><span class="vt">0:14</span><span class="via" data-at="1.55">הקלטה</span></div>
-            <div class="msg in photo" data-at="2.1" style="width:64%"><img src="assets/home/note-he.webp" alt="" width="464" height="348"><span class="t">14:38</span><span class="via" data-at="2.45">תמונה</span></div>
+            <div class="msg in photo" data-at="2.1" style="width:78%"><img src="assets/home/note-he.webp" alt="" width="464" height="348"><span class="t">14:38</span><span class="via" data-at="2.45">תמונה</span></div>
           </div></div>
           <div class="ph-input" aria-hidden="true"><i><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3m5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-2.1a7 7 0 0 0 6-6.9z"/></svg></i><span>הודעה</span></div>
           <div class="toast" data-at="3.3"><img src="assets/ordexai-logo.png" alt="" width="30" height="19"><span>OrdexAI הבינה את שלוש ההודעות · <b>ההזמנה נקלטה במערכת ✓</b></span></div>
@@ -686,7 +732,7 @@ body.no-motion .reveal{opacity:1!important;transform:none!important}
       <p class="sec-sub">היום מישהו בצוות אוסף הודעות, הקלטות ותמונות, ומקליד אותן ידנית. עם OrdexAI הלקוחות ממשיכים להזמין כמו תמיד, וההזמנה נכנסת מסודרת למערכת שלכם.</p>
     </div>
 
-    <div class="ba2" id="baScene" role="group" aria-label="לפני ואחרי: הזמנות מכמה ערוצים, והזמנה מסודרת במערכת">
+    <div class="ba2" id="baScene" role="group" aria-label="לפני ואחרי: הזמנות מגיעות מכמה ערוצים, OrdexAI מעבדת אותן ויוצרת הזמנה מסודרת במערכת">
       <figure class="ba-p b4">
         <figcaption class="ba-label"><span><i class="ba-dot amber" aria-hidden="true"></i>לפני · ככה ההזמנות מגיעות</span><small>כל היום, מכל לקוח</small></figcaption>
         <div class="inbox">
@@ -703,27 +749,38 @@ body.no-motion .reveal{opacity:1!important;transform:none!important}
       <figure class="ba-p af">
         <span class="sweep" aria-hidden="true"></span>
         <figcaption class="ba-label"><span><i class="ba-dot green" aria-hidden="true"></i>אחרי · ככה הן נקלטות</span><small>אוטומטית, עם המק״טים שלכם</small></figcaption>
-        <div class="erp lv2" data-at="1.45">
-          <div class="erp-bar"><span>הזמנת לקוח <span class="fill" data-at="1.6">10482</span></span><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+        <div class="proc-wrap" aria-hidden="true">
+          <div class="proc" data-at="1.55" data-off="3.5">
+            <div class="proc-h"><span class="proc-logo"><img src="assets/ordexai-logo.png" alt="" width="30" height="19"></span><b>OrdexAI מעבדת את ההזמנה</b></div>
+            <ol class="proc-steps">
+              <li data-at="1.85"><i></i><span>מזהה מוצרים וכמויות<small><bdi>2 פחים · 4 קרטונים · 6</bdi></small></span></li>
+              <li data-at="2.4"><i></i><span>מתאימה למק״טים שלכם<small><bdi>30110 · 52750 · 30245</bdi></small></span></li>
+              <li data-at="2.95"><i></i><span>יוצרת הזמנה במערכת<small>הזמנה <bdi>10482</bdi> · פיצה רומא</small></span></li>
+            </ol>
+          </div>
+        </div>
+        <div class="erp lv2" data-at="3.6">
+          <div class="erp-bar"><span>הזמנת לקוח <span class="fill" data-at="3.75">10482</span></span><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
           <div class="erp-fields">
-            <div class="erp-f"><span class="lb">לקוח</span><div><span class="fill" data-at="1.6">פיצה רומא</span></div></div>
-            <div class="erp-f"><span class="lb">תאריך אספקה</span><div><span class="fill erp-date" data-at="1.6">19/10/2026</span></div></div>
+            <div class="erp-f"><span class="lb">לקוח</span><div><span class="fill" data-at="3.75">פיצה רומא</span></div></div>
+            <div class="erp-f"><span class="lb">תאריך אספקה</span><div><span class="fill erp-date" data-at="3.75">19/10/2026</span></div></div>
           </div>
           <div class="erp-tw">
             <table class="erp-tbl">
               <thead><tr><th class="c-k">מק״ט</th><th>תיאור</th><th class="c-q">כמות</th><th class="c-u">יח׳</th></tr></thead>
               <tbody>
-                <tr class="r" data-at="1.8"><td class="c-k">30110</td><td>שמן קנולה לטיגון · 18 ליטר</td><td class="c-q">2</td><td class="c-u">פח</td></tr>
-                <tr class="r" data-at="2.0"><td class="c-k">52750</td><td>קופסאות מזון 750 מ״ל</td><td class="c-q">4</td><td class="c-u">קרטון</td></tr>
-                <tr class="r" data-at="2.2"><td class="c-k">30245</td><td>עגבניות מרוסקות · 2.5 ק״ג</td><td class="c-q">6</td><td class="c-u">יח׳</td></tr>
+                <tr class="r" data-at="3.95"><td class="c-k">30110</td><td>שמן קנולה לטיגון · 18 ליטר</td><td class="c-q">2</td><td class="c-u">פח</td></tr>
+                <tr class="r" data-at="4.15"><td class="c-k">52750</td><td>קופסאות מזון 750 מ״ל</td><td class="c-q">4</td><td class="c-u">קרטון</td></tr>
+                <tr class="r" data-at="4.35"><td class="c-k">30245</td><td>עגבניות מרוסקות · 2.5 ק״ג</td><td class="c-q">6</td><td class="c-u">יח׳</td></tr>
               </tbody>
             </table>
           </div>
-          <div class="erp-foot"><span class="fill" data-at="2.45">מקור: WhatsApp · OrdexAI</span><span class="zero fill" data-at="2.45">0 הקלדות ידניות</span></div>
-          <div class="stamp" data-at="2.8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>נקלטה במערכת</div>
+          <div class="erp-foot"><span class="fill" data-at="4.6">מקור: WhatsApp · OrdexAI</span><span class="zero fill" data-at="4.6">0 הקלדות ידניות</span></div>
+          <div class="stamp" data-at="4.95"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>נקלטה במערכת</div>
         </div>
       </figure>
     </div>
+    <div class="st-row"><button type="button" class="st-play" id="baPlay" data-state="pause" aria-label="עצירה – הדגמת לפני ואחרי"><span class="st-i" aria-hidden="true"></span><span class="st-l">עצירה</span></button></div>
   </div>
 </section>
 
@@ -749,7 +806,7 @@ body.no-motion .reveal{opacity:1!important;transform:none!important}
         <span class="ben-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
         <h3>יותר מכירות</h3>
         <p>OrdexAI מזכירה ללקוח לפני הקאט-אוף, מציעה את מה שהוא רגיל להזמין, ומתריעה כשלקוח מאט.</p>
-        <button type="button" class="ben-film" data-film><span class="pl" aria-hidden="true"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 1v10l9-5z"/></svg></span>ראו את זה בסרט</button>
+        <button type="button" class="ben-film" data-film data-film-start="38" data-film-end="68"><span class="pl" aria-hidden="true"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 1v10l9-5z"/></svg></span>ראו את זה בסרט <small>0:30</small></button>
       </article>
     </div>
   </div>
@@ -915,6 +972,23 @@ const rememberLang = l=>{ try{ localStorage.setItem('ordex_lang', l); }catch(e){
 document.querySelectorAll('[data-set-lang]').forEach(b=>b.addEventListener('click',()=>rememberLang(b.dataset.setLang)));
 document.querySelectorAll('[data-pick]').forEach(a=>a.addEventListener('click',()=>rememberLang(a.dataset.pick)));
 
+/* ===== Language menu: globe button opens the list; Esc, a click outside or tabbing away closes it ===== */
+(function(){
+  var wrap=document.getElementById('langMenu'), btn=document.getElementById('langBtn'), list=document.getElementById('langList');
+  if(!wrap||!btn||!list) return;
+  function setOpen(open,focusBtn){ list.hidden=!open; btn.setAttribute('aria-expanded',open?'true':'false'); if(!open&&focusBtn) btn.focus(); }
+  btn.addEventListener('click',function(){ var open=list.hidden; setOpen(open); if(open){ var cur=list.querySelector('[aria-current]')||list.querySelector('a'); cur.focus(); } });
+  list.querySelector('[aria-current]').addEventListener('click',function(e){ e.preventDefault(); setOpen(false,true); });   // already on Hebrew
+  list.addEventListener('keydown',function(e){
+    var items=[].slice.call(list.querySelectorAll('a')), i=items.indexOf(document.activeElement);
+    if(e.key==='ArrowDown'){ e.preventDefault(); items[(i+1)%items.length].focus(); }
+    else if(e.key==='ArrowUp'){ e.preventDefault(); items[(i-1+items.length)%items.length].focus(); }
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!list.hidden) setOpen(false,true); });
+  document.addEventListener('click',function(e){ if(!list.hidden&&!wrap.contains(e.target)) setOpen(false); });
+  wrap.addEventListener('focusout',function(e){ if(!list.hidden&&e.relatedTarget&&!wrap.contains(e.relatedTarget)) setOpen(false); });
+})();
+
 /* ===== Scroll reveal ===== */
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
@@ -1016,7 +1090,8 @@ function showStatus(type, html){
       return {el:el,at:+el.getAttribute('data-at'),off:el.hasAttribute('data-off')?+el.getAttribute('data-off'):1e9};});
     var segs=[].slice.call(st.querySelectorAll('.seg'));
     var cards=[].slice.call(document.querySelectorAll('.beat[data-scene="'+st.id+'"]'));
-    var btn=st.querySelector('.st-play');
+    var btn=o.btn?document.getElementById(o.btn):st.querySelector('.st-play');
+    var LOOP=o.loop||0, lt=0;   // loop: seconds to hold the final frame before replaying (0 = play once)
     var scr=[].map.call(st.querySelectorAll('[data-scroll-to]'),function(el){
       return {el:el,cur:null,stops:el.getAttribute('data-scroll-to').split(';').map(function(s){var q=s.split(':');return{at:+q[0],id:q[1]};})};});
     var t=END,playing=false,last=0,raf=0,started=false,inView=false,held=false,autoPaused=false;
@@ -1048,11 +1123,12 @@ function showStatus(type, html){
       cards.forEach(function(c){c.classList.toggle('cur',!done&&b===+c.getAttribute('data-go'));});
       doScroll(false);
       if(btn){
-        var state=playing?'pause':(t>0&&t<END?'play':'replay');
+        var state=(playing||lt)?'pause':((t>0&&t<END)||(LOOP&&held)?'play':'replay');
         if(btn.getAttribute('data-state')!==state){
           btn.setAttribute('data-state',state);
-          var lbl=state==='pause'?'השהיית ההדגמה':state==='play'?'המשך ההדגמה':'הפעלת ההדגמה מחדש';
+          var word=state==='pause'?'עצירה':'הפעלה', lbl=word+' – הדגמת לפני ואחרי';   // the accessible name starts with the visible word (WCAG 2.5.3)
           btn.setAttribute('aria-label',lbl);btn.title=lbl;
+          var bl=btn.querySelector('.st-l');if(bl)bl.textContent=word;
         }
       }
     }
@@ -1064,8 +1140,9 @@ function showStatus(type, html){
       if(!playing)return;
       var dt=Math.min(0.05,(now-last)/1000);last=now;
       t=Math.min(END,t+dt);if(t>=END)playing=false;
-      render();if(playing)raf=requestAnimationFrame(tick);
-      else live.forEach(function(o){if(o!==me)o.resume();});
+      render();if(playing){raf=requestAnimationFrame(tick);return;}
+      if(LOOP&&!held&&inView&&!still())scheduleLoop();
+      live.forEach(function(o){if(o!==me)o.resume();});
     }
     function play(){
       if(t>=END)snapTo(0);
@@ -1073,14 +1150,25 @@ function showStatus(type, html){
       playing=true;held=false;autoPaused=false;last=performance.now();
       cancelAnimationFrame(raf);raf=requestAnimationFrame(tick);render();
     }
-    function pause(){playing=false;cancelAnimationFrame(raf);render();}
+    function clearLoop(){if(lt){clearTimeout(lt);lt=0;}st.classList.remove('rewind');}
+    function scheduleLoop(){
+      clearLoop();
+      lt=setTimeout(function(){                                     // hold the final frame, fade out, replay
+        if(document.hidden||!inView||held||still()){lt=0;autoPaused=!held;render();return;}
+        st.classList.add('rewind');
+        lt=setTimeout(function(){lt=0;st.classList.remove('rewind');snapTo(0);play();},480);
+      },LOOP*1000);
+      render();
+    }
+    function pause(){playing=false;cancelAnimationFrame(raf);clearLoop();render();}
     function go(i){started=true;if(still()){pause();snapTo(SHOW[i]);return;}snapTo(B[i]);play();}
 
     var me={
-      yieldTo:function(){if(playing){pause();autoPaused=true;}},
+      yieldTo:function(){if(playing||lt){pause();autoPaused=true;}},
       resume:function(){if(autoPaused&&!held&&inView&&!still())play();},
       still:function(){
         if(still()){pause();snapTo(END);}
+        else if(LOOP&&held){snapTo(END);}
         else{snapTo(0);started=false;if(inView){started=true;play();}}
       },
       relayout:function(){doScroll(true);}
@@ -1090,8 +1178,8 @@ function showStatus(type, html){
 
     if(btn)btn.addEventListener('click',function(){
       started=true;
-      if(playing){pause();held=true;}
-      else play();
+      if(playing||lt){pause();held=true;}
+      else{held=false;play();}
     });
     segs.forEach(function(s){s.addEventListener('click',function(){go(+s.getAttribute('data-go'));});});
     cards.forEach(function(c){var b=c.querySelector('.beat-go');if(b)b.addEventListener('click',function(){
@@ -1108,23 +1196,44 @@ function showStatus(type, html){
         if(inView){
           if(!started&&!still()){started=true;snapTo(0);play();}
           else if(autoPaused&&!held&&!playing){play();}
-        }else if(e.intersectionRatio<0.12&&playing){pause();autoPaused=true;}
+        }else if(e.intersectionRatio<0.12&&(playing||lt)){pause();autoPaused=true;}
       });},{threshold:[0,0.12,thr,0.8]}).observe(st);
     }else if(!still()){started=true;play();}
+
+    // a hidden tab skips the replay; resume when the visitor comes back
+    document.addEventListener('visibilitychange',function(){if(!document.hidden&&autoPaused&&!held&&inView&&!playing&&!still())play();});
 
     live.push(me);
     return me;
   }
 
   var hero=document.getElementById('heroScene'); if(hero)scenes.push(Scene(hero,{B:[0,4.3],thr:0.15}));
-  var ba=document.getElementById('baScene'); if(ba)scenes.push(Scene(ba,{B:[0,3.7],PH:[['ph-after',1.4]],thr:0.5}));
+  var ba=document.getElementById('baScene'); if(ba)scenes.push(Scene(ba,{B:[0,5.8],PH:[['ph-after',1.4]],thr:0.5,loop:3.5,btn:'baPlay'}));
   var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){scenes.forEach(function(s){s.relayout();});},150);});
 
   /* ---------- film modal ---------- */
   var modal=document.getElementById('filmModal'), vid=document.getElementById('filmVid'), opener=null;
   function closeFilm(){if(modal.hidden)return;modal.hidden=true;try{vid.pause();}catch(e){}if(opener)opener.focus();}
+  /* a button may play one part of the film: data-film-start / data-film-end in seconds
+     (the "more sales" card plays 0:38–1:08: catalog page, reminder, slowing-customer alert) */
+  var segStart=0, segEnd=0, segArmed=false;
+  function seekTo(s){
+    try{vid.currentTime=s;}catch(e){}
+    if(vid.readyState<1)vid.addEventListener('loadedmetadata',function once(){vid.removeEventListener('loadedmetadata',once);try{vid.currentTime=s;}catch(e){}});
+  }
+  // the viewer seeking outside the clip frees it to play on
+  // (only after the clip has started: the browser may pass through 0:00 on the way to the start)
+  vid.addEventListener('seeked',function(){
+    if(!segEnd)return;
+    if(!segArmed){if(Math.abs(vid.currentTime-segStart)<1)segArmed=true;return;}
+    if(vid.currentTime<segStart-1||vid.currentTime>segEnd)segEnd=0;
+  });
+  vid.addEventListener('timeupdate',function(){if(segEnd&&vid.currentTime>=segEnd){vid.pause();segEnd=0;}});
   document.querySelectorAll('[data-film]').forEach(function(b){b.addEventListener('click',function(){
     opener=b;modal.hidden=false;modal.querySelector('.modal-x').focus();
+    segStart=+b.getAttribute('data-film-start')||0;
+    segEnd=+b.getAttribute('data-film-end')||0;segArmed=false;
+    seekTo(segStart);
     try{var pr=vid.play();if(pr&&pr.catch)pr.catch(function(){});}catch(e){}
   });});
   modal.querySelectorAll('[data-close]').forEach(function(x){x.addEventListener('click',closeFilm);});
