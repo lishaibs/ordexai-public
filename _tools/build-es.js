@@ -4,7 +4,9 @@
 const fs = require('fs');
 const path = require('path');
 const SITE = path.join(__dirname, '..');
-const home = fs.readFileSync(path.join(SITE, 'index.html'), 'utf8');
+// The Spanish page keeps the previous home design: its CSS, demo player and a11y widget come from a frozen
+// copy of that page (_tools/es-base.html), so redesigning index.html never changes /es/.
+const home = fs.readFileSync(path.join(__dirname, 'es-base.html'), 'utf8');
 let tpl = fs.readFileSync(path.join(__dirname, 'es-template.html'), 'utf8');
 
 const between = (s, a, b) => { const i = s.indexOf(a); const j = s.indexOf(b, i + a.length); if (i < 0 || j < 0) throw new Error('marker not found: ' + a + ' / ' + b); return s.slice(i + a.length, j); };
