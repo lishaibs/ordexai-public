@@ -9,9 +9,9 @@ let html = fs.readFileSync(file, 'utf8');
 
 const strip = s => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 const start = html.indexOf('id="faq">');
-const end = html.indexOf('<!-- ===== FINAL CTA ===== -->');
+const end = html.indexOf('<!-- ===== /FAQ ===== -->');
 if (start < 0 || end < 0) throw new Error('FAQ section markers not found');
-const items = [...html.slice(start, end).matchAll(/<details class="reveal">\s*<summary><span data-inline="he">([\s\S]*?)<\/span>[\s\S]*?<p data-lang="he">([\s\S]*?)<\/p>/g)]
+const items = [...html.slice(start, end).matchAll(/<details class="reveal">\s*<summary>([\s\S]*?)<\/summary>\s*<div class="ans"><p>([\s\S]*?)<\/p>/g)]
   .map(m => ({ q: strip(m[1]), a: strip(m[2]) }));
 if (!items.length) throw new Error('no FAQ items parsed');
 
@@ -26,7 +26,7 @@ const graph = {
       description: 'OrdexAI קולט הזמנות מלקוחות קבועים ישירות מוואטסאפ ומרכז אותן לרשימת הזמנות אחת למפיצי מזון.',
       email: 'info@ordexai.com',
       // Add profile URLs here once they exist (LinkedIn, G2, YouTube...): sameAs: ['https://...'],
-      contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', telephone: '+972-55-665-4664', email: 'info@ordexai.com', areaServed: 'IL', availableLanguage: ['Hebrew', 'English'] }],
+      contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', telephone: '+972-55-665-4664', email: 'info@ordexai.com', areaServed: 'IL', availableLanguage: ['Hebrew'] }],
     },
     {
       '@type': 'WebSite', '@id': SITE + '#website',
@@ -41,7 +41,7 @@ const graph = {
       serviceType: 'קליטת הזמנות מוואטסאפ וניהול הזמנות למפיצי מזון',
       provider: { '@id': SITE + '#organization' },
       areaServed: 'IL',
-      availableLanguage: ['Hebrew', 'English'],
+      availableLanguage: ['Hebrew'],
       audience: { '@type': 'BusinessAudience', audienceType: 'מפיצי מזון, מחלבות, מאפיות וספקים סיטונאיים' },
       description: 'הלקוחות מזמינים בוואטסאפ בטקסט חופשי, בהקלטה או בתמונה. OrdexAI מבין כל פריט, מתאים אותו למק״ט של המפיץ, שואל כשמשהו לא ברור, ושולח בשעת הקאט-אוף רשימת הזמנות אחת מרוכזת. כולל דף הזמנה בלינק ותזכורת ללקוחות קבועים לפני הקאט-אוף. בלי אפליקציה ובלי הקלדה ידנית.',
       url: SITE,

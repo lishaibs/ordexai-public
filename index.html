@@ -14,7 +14,7 @@
       if (/[?&]lang=/.test(location.search)) return;
       var pick = null; try{ pick = localStorage.getItem('ordex_lang'); }catch(e){}
       if (pick === 'es') { location.replace('es/' + location.hash); return; }
-      if (pick === 'he' || pick === 'en') return;
+      if (pick === 'he' || pick === 'en') return;                                                 // 'en' = an older stored choice; this build is Hebrew-only
       if (/bot|crawl|spider|slurp|preview|lighthouse|headless/i.test(navigator.userAgent)) return;
       var langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
       var first = String(langs[0] || '').toLowerCase();
@@ -23,7 +23,6 @@
       if (/^es\b/.test(first) || /^America\/(Argentina\/|Buenos_Aires$|Cordoba$|Mendoza$|Montevideo$|Asuncion$|Santiago$|La_Paz$|Lima$|Bogota$|Guayaquil$|Caracas$)/.test(tz)) {
         location.replace('es/' + location.hash); return;                                         // Spanish-speaking South America
       }
-      window.__ordexAutoLang = 'en';                                                              // elsewhere: English
     }catch(e){}
   })();
   </script>
@@ -32,11 +31,11 @@
   <meta name="theme-color" content="#0c3b2b">
   <!-- One page, two languages: English is the same page with ?lang=en (the script switches on it) -->
   <link rel="alternate" hreflang="he" href="https://www.ordexai.com/">
-  <link rel="alternate" hreflang="en" href="https://www.ordexai.com/?lang=en">
   <link rel="alternate" hreflang="es" href="https://www.ordexai.com/es/">
   <link rel="alternate" hreflang="es-AR" href="https://www.ordexai.com/es/">
   <link rel="alternate" hreflang="es-UY" href="https://www.ordexai.com/es/">
   <link rel="alternate" hreflang="x-default" href="https://www.ordexai.com/">
+  <link rel="canonical" href="https://www.ordexai.com/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -45,7 +44,6 @@
   <meta property="og:site_name" content="OrdexAI">
   <meta property="og:url" content="https://www.ordexai.com/">
   <meta property="og:locale" content="he_IL">
-  <meta property="og:locale:alternate" content="en_US">
   <meta property="og:title" content="OrdexAI — קליטת הזמנות מוואטסאפ בלי הקלדה ידנית">
   <meta property="og:description" content="הלקוחות ממשיכים להזמין בוואטסאפ, בטקסט, בהקלטה או בתמונה. OrdexAI מתאים כל פריט למק״ט ומרכז הכול לרשימת הזמנות אחת.">
   <meta property="og:image" content="https://www.ordexai.com/assets/og-image.jpg">
@@ -74,8 +72,7 @@
             "email": "info@ordexai.com",
             "areaServed": "IL",
             "availableLanguage": [
-              "Hebrew",
-              "English"
+              "Hebrew"
             ]
           }
         ]
@@ -100,8 +97,7 @@
         },
         "areaServed": "IL",
         "availableLanguage": [
-          "Hebrew",
-          "English"
+          "Hebrew"
         ],
         "audience": {
           "@type": "BusinessAudience",
@@ -117,18 +113,10 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "למי OrdexAI מתאים?",
+            "name": "למי OrdexAI מתאימה?",
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "למפיצים ולספקי מזון שמקבלים הזמנות חוזרות מלקוחות עסקיים — מחלבות, מאפיות, מעדניות ומפיצים. אם הלקוחות שלכם כבר שולחים לכם הזמנות בוואטסאפ, זה בשבילכם."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "אפשר להמשיך לקבל הזמנות בוואטסאפ בלי לעבור על כל הודעה ולהקליד אותה?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "כן, זה בדיוק מה ש-OrdexAI עושה. הלקוחות ממשיכים לשלוח הזמנות בוואטסאפ, המערכת מבינה כל פריט ומתאימה אותו למק״ט שלכם, ובשעת הקאט-אוף אתם מקבלים רשימת הזמנות אחת מרוכזת במקום עשרות הודעות."
             }
           },
           {
@@ -149,18 +137,18 @@
           },
           {
             "@type": "Question",
-            "name": "מה ההבדל בין OrdexAI לקטלוג הזמנות בלינק או לקטלוג של WhatsApp Business?",
+            "name": "ומה אם המערכת לא בטוחה למה הלקוח התכוון?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "בקטלוג, בלינק או בתוך WhatsApp Business, הלקוח צריך לבחור את המוצרים בעצמו, ומי שממשיך לכתוב הודעות נשאר אצלכם להקלדה. OrdexAI נותן גם דף הזמנה בלינק, אבל קולט גם הזמנות שנכתבות כרגיל, בטקסט, בהקלטה או בתמונה, ומתאים אותן למק״טים שלכם. השוואה מלאה במדריך."
+              "text": "היא שואלת. הלקוח מקבל כפתורי בחירה מהירה (למשל איזה אחוז שומן), ותמיד אפשר לדלג. לפני שההזמנה נקלטת, הלקוח מקבל סיכום ומאשר אותו."
             }
           },
           {
             "@type": "Question",
-            "name": "ומה אם הבוט לא בטוח למה הלקוח התכוון?",
+            "name": "מה ההבדל בין OrdexAI לקטלוג הזמנות בלינק או לקטלוג של WhatsApp Business?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "במקום לנחש — הוא שואל. הלקוח מקבל כפתורי בחירה מהירה (למשל איזה אחוז שומן), ותמיד אפשר לדלג. לפני שההזמנה נקלטת, הלקוח מקבל סיכום ומאשר אותו."
+              "text": "בקטלוג, בלינק או בתוך WhatsApp Business, הלקוח צריך לבחור את המוצרים בעצמו, ומי שממשיך לכתוב הודעות נשאר אצלכם להקלדה. OrdexAI נותנת גם דף הזמנה בלינק, אבל קולטת גם הזמנות שנכתבות כרגיל, בטקסט, בהקלטה או בתמונה, ומשייכת אותן למק״טים שלכם. השוואה מלאה במדריך."
             }
           },
           {
@@ -173,18 +161,10 @@
           },
           {
             "@type": "Question",
-            "name": "כמה זמן לוקח להתחיל?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "בדרך כלל יום עבודה אחד. אנחנו מקימים את הבוט על מספר וואטסאפ עסקי, טוענים את הקטלוג שלכם ומגדירים ימי אספקה ושעת קאט-אוף — ואתם שולחים ללקוחות לינק הצטרפות."
-            }
-          },
-          {
-            "@type": "Question",
             "name": "המידע שלי ושל הלקוחות שלי מוגן?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "OrdexAI פועל על WhatsApp Business Platform הרשמי של Meta. אנחנו לא מוכרים מידע ולא משתמשים בו לפרסום, וכל מפיץ רואה רק את הלקוחות וההזמנות שלו. כל הפרטים במדיניות הפרטיות."
+              "text": "OrdexAI פועלת על WhatsApp Business Platform הרשמי של Meta. אנחנו לא מוכרים מידע ולא משתמשים בו לפרסום, וכל מפיץ רואה רק את הלקוחות וההזמנות שלו. כל הפרטים במדיניות הפרטיות."
             }
           }
         ]
@@ -616,443 +596,434 @@
       .cta-group,.hero-chips{justify-content:flex-start}
       .hero-visual{margin:0;padding:0}
     }
+
+    /* =====================================================================
+       5-SECTION HOME (2026-10): hero · how · impact · systems · CTA+form
+       The older component rules above stay because _tools/build-es.js copies
+       this whole <style> block into the Spanish page, which still uses them.
+       ===================================================================== */
+    .cta-nav .cta-short{display:none}
+    .btn-lg{padding:1.05rem 2.1rem;font-size:1.06rem}
+    ul.hero-chips{list-style:none}
+    .hero-chip svg{width:12px;height:12px}
+
+    /* --- 2. how it works: before → after --- */
+    #how .sec-head{margin-bottom:2.4rem}
+    .ba{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:1.4rem;align-items:stretch;max-width:1000px;margin:0 auto}
+    .ba-panel{margin:0;background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-md);overflow:hidden;display:flex;flex-direction:column}
+    .ba-label{display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.9rem 1.25rem;border-bottom:1px solid var(--border);font-weight:800;color:var(--brand);font-size:1rem}
+    .ba-label small{font-weight:600;color:var(--ink3);font-size:.8rem;white-space:nowrap}
+    .ba-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-inline-end:.55rem;vertical-align:middle}
+    .ba-dot.amber{background:var(--amber);box-shadow:0 0 0 4px rgba(232,165,58,.18)}
+    .ba-dot.green{background:var(--wa);box-shadow:0 0 0 4px rgba(37,211,102,.18)}
+    .ba-chat{flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:7px;padding:1.1rem 1.1rem 1.3rem;background:#efeae2}
+    .ba-msg{max-width:88%;background:#fff;border-radius:10px;border-start-start-radius:3px;padding:6px 10px 5px;font-size:.92rem;line-height:1.5;color:#111b21;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+    .ba-msg .t{display:inline-block;unicode-bidi:isolate;font-size:.68rem;color:#667781;margin-inline-start:.6rem;white-space:nowrap}  /* isolated, so a trailing quantity never fuses with the time ("5"+"07:52") */
+    .ba-voice{display:flex;align-items:center;gap:7px}
+    .ba-wave{display:flex;align-items:center;gap:2px;height:20px}
+    .ba-wave i{display:block;width:2.5px;border-radius:2px;background:#9db3ad}
+    .ba-voice .t{margin:0}
+    .ba-note{display:inline-block;margin-inline-start:.45rem;font-size:.68rem;font-weight:800;color:#6b4100;background:#fdf0d8;border:1px solid #efcf93;border-radius:50px;padding:0 .5rem;line-height:1.55;vertical-align:1px}
+    .ba-mid{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;color:var(--wa-dark)}
+    .ba-orb{width:62px;height:62px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px rgba(37,211,102,.14),var(--shadow-md)}
+    .ba-arrow{display:block}
+    .ord{padding:.4rem 0 .6rem}
+    .ord-cust{padding:.55rem 1.25rem .35rem;font-weight:800;color:var(--brand);font-size:.98rem}
+    .ord-row{display:grid;grid-template-columns:3.1em minmax(0,1fr) 2.3em 5.6em;gap:.6rem;align-items:center;padding:.62rem 1.25rem;border-top:1px solid #edf2ef;font-size:.93rem;color:var(--ink)}
+    .ord-th{border-top:0;padding-top:.3rem;padding-bottom:.3rem;font-size:.74rem;font-weight:700;color:var(--ink3)}
+    .ord-th span:nth-child(3),.ord-th span:nth-child(4){text-align:center}
+    .ord-code{font-size:.8rem;color:var(--ink3);font-variant-numeric:tabular-nums}
+    .ord-qty{font-weight:800;color:var(--brand);text-align:center;font-variant-numeric:tabular-nums}
+    .ord-src{justify-self:center;font-size:.7rem;font-weight:700;color:var(--teal-ink);background:var(--bg-tint);border-radius:50px;padding:.05rem .55rem;white-space:nowrap}
+    .ord-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:.8rem;flex-wrap:wrap;padding:.85rem 1.25rem;background:#effaf3;border-top:1px solid rgba(37,211,102,.28);font-size:.86rem;font-weight:700;color:var(--teal-ink)}
+    .ord-foot svg{vertical-align:-3px;margin-inline-end:.25rem}
+    .how-steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:1000px;margin:2.2rem auto 0}
+    .how-steps li{display:flex;align-items:center;gap:.8rem;background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:.95rem 1.15rem;font-weight:700;color:var(--brand);font-size:.98rem;line-height:1.4}
+    .how-steps .n{flex:0 0 auto;width:32px;height:32px;border-radius:50%;background:var(--wa);color:var(--on-wa);font-weight:800;display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans','Heebo',sans-serif;font-size:.9rem}
+    .how-note{max-width:1000px;margin-inline:auto}
+
+    /* --- 3. impact cards --- */
+    .impact{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+    .icard{position:relative;overflow:hidden;background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem 1.6rem 1.4rem;display:flex;flex-direction:column;box-shadow:var(--shadow);transition:transform .3s,box-shadow .3s,border-color .3s}
+    .icard::before{content:'';position:absolute;inset-inline:0;top:0;height:4px;background:linear-gradient(90deg,var(--wa),var(--wa-dark))}
+    .icard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:rgba(37,211,102,.4)}
+    .icard-top{display:flex;align-items:center;justify-content:space-between;gap:.8rem;margin-bottom:1.15rem}
+    .icard-ico{flex:0 0 auto;width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,rgba(37,211,102,.16),rgba(18,140,126,.1));border:1px solid rgba(37,211,102,.2);display:flex;align-items:center;justify-content:center;color:var(--wa-dark)}
+    .icard-ico svg{width:24px;height:24px}
+    .itag{font-size:.78rem;font-weight:800;color:var(--teal-ink);background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.34);padding:.22rem .75rem;border-radius:50px;white-space:nowrap}
+    .icard h3{font-size:1.2rem;font-weight:800;color:var(--brand);margin-bottom:.45rem;line-height:1.3}
+    .icard p{color:var(--ink2);font-size:.96rem;line-height:1.65;margin-bottom:1.2rem}
+    .iresult{margin-top:auto;padding-top:.95rem;border-top:1px dashed var(--border-strong);display:flex;gap:.55rem;align-items:baseline;font-weight:700;color:var(--teal-ink);font-size:.94rem;line-height:1.5}
+    .iarrow{font-weight:800;color:var(--wa-dark)}
+
+    /* --- 4. systems --- */
+    .integ{display:grid;grid-template-columns:1.1fr .9fr;gap:1.3rem;max-width:1000px;margin:0 auto}
+    .integ-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem}
+    .integ-card h3{font-size:1.2rem;font-weight:800;color:var(--brand);margin:1.3rem 0 .35rem}
+    .integ-card p{color:var(--ink2);font-size:1rem;line-height:1.6}
+    .integ-pipe{display:flex;align-items:center;gap:.6rem}
+    .pipe-node{display:inline-flex;align-items:center;gap:.45rem;background:#fff;border:1px solid var(--border-strong);border-radius:12px;padding:.55rem .85rem;font-weight:700;font-size:.86rem;color:var(--brand);white-space:nowrap;box-shadow:var(--shadow)}
+    .pipe-node svg{width:18px;height:18px;color:var(--wa-dark)}
+    .pipe-erp{background:var(--brand);border-color:var(--brand);color:#fff;font-family:'Plus Jakarta Sans','Heebo',sans-serif;letter-spacing:.5px}
+    .pipe-erp svg{color:var(--wa)}
+    .pipe-line{flex:1;min-width:28px;height:2px;background:repeating-linear-gradient(90deg,var(--wa) 0 7px,transparent 7px 12px);position:relative}
+    .pipe-line::after{content:'';position:absolute;inset-inline-end:-3px;top:50%;transform:translateY(-50%);border-block:5px solid transparent;border-inline-start:8px solid var(--wa)}  /* head points toward ERP in either direction */
+    .erp-row{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-top:1.15rem}
+    .erp-lbl{font-size:.8rem;color:var(--ink3);font-weight:600;margin-inline-end:.15rem}
+    .erp-chip{background:#fff;border:1px solid var(--border);border-radius:10px;padding:.4rem .9rem;font-weight:800;color:var(--ink2);font-size:.9rem}
+    .erp-chip[lang="en"]{font-family:'Plus Jakarta Sans','Heebo',sans-serif;letter-spacing:.2px}
+    .files{display:flex;gap:.8rem}
+    .file{position:relative;width:62px;height:76px;background:#fff;border:1px solid var(--border-strong);border-radius:6px 16px 6px 6px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:flex-end;padding:8px}
+    .file-tag{position:absolute;top:9px;inset-inline-start:-7px;font:800 .62rem/1 'Plus Jakarta Sans','Heebo',sans-serif;color:#fff;padding:.28rem .4rem;border-radius:4px;letter-spacing:.4px}
+    .file-tag.pdf{background:#b3261e}
+    .file-tag.xls{background:#1d6f42}
+    .file-tag.csv{background:var(--ink2)}
+    .file-lines{display:flex;flex-direction:column;gap:5px}
+    .file-lines i{display:block;height:3px;border-radius:2px;background:#d6e2db}
+    .file-lines i:last-child{width:60%}
+    .file-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+    .file-grid i{display:block;height:7px;border-radius:1px;background:#cfe6d8}
+
+    /* --- 5. CTA + micro-form --- */
+    #demo .cta-actions{margin-top:1.9rem}
+    .or-sep{display:flex;align-items:center;gap:1rem;max-width:780px;margin:2.3rem auto 0;color:rgba(255,255,255,.72);font-size:.88rem;font-weight:600}
+    .or-sep::before,.or-sep::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.18)}
+    .mform{max-width:780px;margin:1.3rem auto 0;background:#fff;color:var(--ink);text-align:start;border-radius:var(--radius);padding:1.7rem 1.8rem 1.4rem;box-shadow:var(--shadow-lg)}
+    .mform-intro{font-weight:800;color:var(--brand);font-size:1.08rem;margin-bottom:1.05rem}
+    .mform-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem}
+    .mform .field{margin-bottom:.9rem}
+    .mform-foot{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    .mform-foot .consent{margin:0}
+    .mform-foot .btn-primary{padding:.8rem 2.2rem}
+    .privacy-line{margin-top:1rem;padding-top:.85rem;border-top:1px solid var(--border);font-size:.78rem;color:var(--ink3);line-height:1.55}
+    .privacy-line a{color:var(--teal-ink);text-decoration:underline;font-weight:600}
+    body.hc .icard,body.hc .integ-card,body.hc .ba-panel,body.hc .how-steps li,body.hc .mform{border-color:#000;border-width:1.5px}
+
+    @media(max-width:900px){
+      .ba{grid-template-columns:minmax(0,1fr);gap:.9rem;max-width:560px}
+      .ba-mid{flex-direction:row}
+      .ba-arrow{transform:rotate(-90deg)}        /* points DOWN when stacked */
+      .ba-orb{width:52px;height:52px}
+      .ba-orb img{width:28px;height:28px}
+      .how-steps{grid-template-columns:1fr;max-width:560px;gap:.6rem}
+      .how-note{max-width:560px}
+      .impact{grid-template-columns:1fr;max-width:560px;margin:0 auto}
+      .integ{grid-template-columns:1fr;max-width:560px}
+      .mform-row{grid-template-columns:1fr;gap:0}
+    }
+    @media(max-width:768px){
+      #how,#impact,#systems,#demo,#faq{padding-top:3rem;padding-bottom:3rem}
+      .sec-head{margin-bottom:2rem}
+      .mform{padding:1.4rem 1.25rem 1.2rem}
+      .mform-foot .btn-primary{width:100%;justify-content:center}
+    }
+    @media(max-width:560px){
+      .cta-nav .cta-long{display:none}
+      .cta-nav .cta-short{display:inline}
+      h2{font-size:1.55rem}
+      h2.h2-long{font-size:1.38rem}
+      .icard{padding:1.5rem 1.35rem 1.25rem}
+      .integ-card{padding:1.4rem 1.3rem}
+      .ba-label{padding:.8rem 1.1rem}
+      .ord-row{padding-inline:1.1rem;gap:.45rem;grid-template-columns:2.8em minmax(0,1fr) 2em 5.2em}
+      .ord-cust{padding-inline:1.1rem}
+      .ord-foot{padding-inline:1.1rem}
+      .btn-lg{width:100%;justify-content:center}
+      .hero-chips{min-height:4.8rem;align-content:flex-start}  /* two rows reserved: the chips wrap only once Heebo loads, which used to push the demo down (CLS) */
+      .erp-row{gap:.4rem}
+      .erp-chip{padding:.35rem .7rem;font-size:.86rem}
+    }
   </style>
 </head>
 <body class="lang-he">
-<a href="#main" class="skip-link"><span data-inline="he">דלג לתוכן הראשי</span><span data-inline="en">Skip to main content</span></a>
+<a href="#main" class="skip-link">דלג לתוכן הראשי</a>
 
-<nav data-aria-he="ניווט ראשי" data-aria-en="Main navigation" aria-label="ניווט ראשי">
+<nav aria-label="ניווט ראשי">
   <a href="#top" class="logo" aria-label="OrdexAI">
     <img class="brand-logo" src="assets/ordexai-logo.png" alt="OrdexAI" width="84" height="52">
   </a>
   <div class="nav-right">
     <ul class="nav-links">
-      <li><a href="#solution"><span data-inline="he">הפתרון</span><span data-inline="en">Solution</span></a></li>
-      <li><a href="#features"><span data-inline="he">יכולות</span><span data-inline="en">Features</span></a></li>
-      <li><a href="#faq"><span data-inline="he">שאלות נפוצות</span><span data-inline="en">FAQ</span></a></li>
-      <li><a href="#contact"><span data-inline="he">צור קשר</span><span data-inline="en">Contact</span></a></li>
+      <li><a href="#how">איך זה עובד</a></li>
+      <li><a href="#impact">מה זה משנה</a></li>
+      <li><a href="#systems">מערכות</a></li>
+      <li><a href="#faq">שאלות נפוצות</a></li>
     </ul>
-    <div class="lang-toggle" role="group" aria-label="שפה / Language / Idioma">
+    <div class="lang-toggle" role="group" aria-label="שפה / Idioma">
       <button type="button" class="lang-btn active" data-set-lang="he" lang="he" aria-label="עב – עברית" aria-pressed="true">עב</button>
-      <button type="button" class="lang-btn" data-set-lang="en" lang="en" aria-label="EN – English" aria-pressed="false">EN</button>
       <a class="lang-btn" href="es/" hreflang="es" lang="es" data-pick="es" aria-label="ES – Español">ES</a>
     </div>
-    <!-- data-wa: href is rebuilt per language by setLang() with a pre-filled first message -->
-    <a href="https://wa.me/972556654664?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20OrdexAI%20%F0%9F%91%8B" data-wa class="cta-nav" target="_blank" rel="noopener noreferrer">
-      <span data-inline="he">התחילו עכשיו</span><span data-inline="en">Get Started</span>
+    <a href="https://wa.me/972556654664?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20OrdexAI%20%F0%9F%91%8B" class="cta-nav" target="_blank" rel="noopener noreferrer">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.374 0 0 5.373 0 12c0 2.121.554 4.11 1.523 5.836L.057 23.625a.75.75 0 00.921.921l5.772-1.466A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+      <span class="cta-long">לשיחת הדגמה בוואטסאפ</span><span class="cta-short">לשיחת הדגמה</span>
     </a>
   </div>
 </nav>
 
 <main id="main" tabindex="-1">
-<!-- ===== HERO ===== -->
+<!-- ===== 1. HERO ===== -->
 <header class="hero" id="top">
   <div class="hero-inner">
     <div class="hero-text">
       <div class="hero-badge">
         <span class="wa-dot"></span>
-        <span data-inline="he">מופעל על תשתית WhatsApp Business API</span>
-        <span data-inline="en">Powered by WhatsApp Business API</span>
+        <span>מופעל על תשתית WhatsApp Business API</span>
       </div>
-      <div data-lang="he">
-        <h1>ההזמנות שלכם.<br><span class="accent">בוואטסאפ.</span><br>בלי אפליקציה.</h1>
-        <p class="hero-sub">OrdexAI קולט הזמנות מלקוחות קבועים ישר מהוואטסאפ: טקסט חופשי, הקלטה או תמונה. כל פריט מותאם למק״ט שלכם, ואתם מקבלים רשימת הזמנות אחת מרוכזת. בלי לעבור הודעה-הודעה ובלי להקליד.</p>
-      </div>
-      <div data-lang="en">
-        <h1>Your orders.<br><span class="accent">On WhatsApp.</span><br>No app.</h1>
-        <p class="hero-sub">OrdexAI takes orders from your regular customers straight from WhatsApp: free text, voice notes or photos. Every item is matched to your SKU, and you get one consolidated order list. No going through messages, no typing.</p>
-      </div>
+      <h1>ההזמנות שלכם.<br><span class="accent">בוואטסאפ.</span><br>בלי אפליקציה.</h1>
+      <p class="hero-sub">הלקוחות מזמינים כמו תמיד: בהודעה, בהקלטה או בתמונה. OrdexAI מסדרת את ההזמנה.</p>
       <div class="cta-group">
-        <a href="https://wa.me/972556654664?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20OrdexAI%20%F0%9F%91%8B" data-wa class="btn-primary" target="_blank" rel="noopener noreferrer">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.121.554 4.11 1.523 5.836L.057 23.625a.75.75 0 00.921.921l5.772-1.466A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.943 0-3.773-.524-5.349-1.437l-.383-.228-3.977 1.01 1.033-3.85-.249-.396A9.961 9.961 0 012 12C2 6.478 6.478 2 12 2s10 4.478 10 10-4.478 10-10 10z"/></svg>
-          <span data-inline="he">שלחו הודעה</span><span data-inline="en">Send a message</span>
-        </a>
-        <a href="#contact" class="btn-ghost">
-          <span data-inline="he">דברו איתנו</span><span data-inline="en">Talk to us</span>
+        <a href="https://wa.me/972556654664?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20OrdexAI%20%F0%9F%91%8B" class="btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.121.554 4.11 1.523 5.836L.057 23.625a.75.75 0 00.921.921l5.772-1.466A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.943 0-3.773-.524-5.349-1.437l-.383-.228-3.977 1.01 1.033-3.85-.249-.396A9.961 9.961 0 012 12C2 6.478 6.478 2 12 2s10 4.478 10 10-4.478 10-10 10z"/></svg>
+          לשיחת הדגמה בוואטסאפ
         </a>
       </div>
-      <div class="hero-chips">
-        <span class="hero-chip"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 00-2 2v16l4-4h14a2 2 0 002-2V6a2 2 0 00-2-2z"/></svg><span data-inline="he">וואטסאפ</span><span data-inline="en">WhatsApp</span></span>
-        <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span data-inline="he">הבנת שפה טבעית</span><span data-inline="en">Natural language</span></span>
-        <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="8" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><path d="M7 8h.01M7 17h.01"/></svg><span data-inline="he">ישר למערכות שלכם</span><span data-inline="en">Into your systems</span></span>
-      </div>
+      <!-- the former standalone "no app" section, folded into the hero -->
+      <ul class="hero-chips" aria-label="בלי שום דבר חדש ללקוח">
+        <li class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>בלי אפליקציה</li>
+        <li class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>בלי סיסמה</li>
+        <li class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>בלי הקלדה ידנית</li>
+      </ul>
     </div>
-
   </div>
   <div class="hero-visual">
     <div class="hero-stage">
       <!-- The animated chat is one image for assistive tech; the scene buttons below give access to all 5 scenes -->
-      <div class="hero-phone" role="img"
-           data-aria-he="הדגמה: לקוח מזמין בוואטסאפ בטקסט, בהקלטה או בתמונה, OrdexAI מסדר את ההזמנה ושולח סיכום לאישור"
-           data-aria-en="Demo: a customer orders on WhatsApp by text, voice or photo, and OrdexAI organizes the order and sends a summary to confirm"
-           aria-label="הדגמה: לקוח מזמין בוואטסאפ בטקסט, בהקלטה או בתמונה, OrdexAI מסדר את ההזמנה ושולח סיכום לאישור"><div id="heroChat" class="wa-screen"></div></div>
+      <div class="hero-phone" role="img" aria-label="הדגמה: לקוח מזמין בוואטסאפ בטקסט, בהקלטה או בתמונה, OrdexAI מסדרת את ההזמנה ושולחת סיכום לאישור"><div id="heroChat" class="wa-screen"></div></div>
       <div class="hero-capline">
         <div class="hero-cap" id="heroCap"></div>
-        <button type="button" class="demo-pause" id="demoPause" aria-pressed="false" data-aria-he="השהיית ההדגמה" data-aria-en="Pause the demo" aria-label="השהיית ההדגמה">
+        <button type="button" class="demo-pause" id="demoPause" aria-pressed="false" aria-label="השהיית ההדגמה">
           <svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4.5" height="16" rx="1.2"/><rect x="13.5" y="4" width="4.5" height="16" rx="1.2"/></svg>
           <svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.2-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg>
         </button>
       </div>
-      <div class="demo-ctrl" role="group" data-aria-he="בחירת סצנה בהדגמה" data-aria-en="Choose a demo scene" aria-label="בחירת סצנה בהדגמה">
-        <button type="button" class="demo-tab" data-scene="0" aria-pressed="true"><span data-inline="he">טקסט</span><span data-inline="en">Text</span></button>
-        <button type="button" class="demo-tab" data-scene="1" aria-pressed="false"><span data-inline="he">קול</span><span data-inline="en">Voice</span></button>
-        <button type="button" class="demo-tab" data-scene="2" aria-pressed="false"><span data-inline="he">תמונה</span><span data-inline="en">Photo</span></button>
-        <button type="button" class="demo-tab" data-scene="3" aria-pressed="false"><span data-inline="he">הבהרות</span><span data-inline="en">Clarify</span></button>
-        <button type="button" class="demo-tab" data-scene="4" aria-pressed="false"><span data-inline="he">אישור</span><span data-inline="en">Confirm</span></button>
+      <div class="demo-ctrl" role="group" aria-label="בחירת סצנה בהדגמה">
+        <button type="button" class="demo-tab" data-scene="0" aria-pressed="true">טקסט</button>
+        <button type="button" class="demo-tab" data-scene="1" aria-pressed="false">קול</button>
+        <button type="button" class="demo-tab" data-scene="2" aria-pressed="false">תמונה</button>
+        <button type="button" class="demo-tab" data-scene="3" aria-pressed="false">הבהרות</button>
+        <button type="button" class="demo-tab" data-scene="4" aria-pressed="false">אישור</button>
       </div>
     </div>
   </div>
 </header>
 
-<!-- ===== VALUE BAND ===== -->
-<div class="value-band">
-  <div class="value-inner">
-    <span class="value-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-inline="he">בלי אפליקציה</span><span data-inline="en">No app</span></span>
-    <span class="value-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-inline="he">בלי סיסמה</span><span data-inline="en">No password</span></span>
-    <span class="value-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-inline="he">בלי הקלדה ידנית</span><span data-inline="en">No manual typing</span></span>
-  </div>
-</div>
-
-<!-- ===== PAIN (01) ===== -->
-<section class="tint" id="pain">
+<!-- ===== 2. HOW IT WORKS: before → after ===== -->
+<section class="white" id="how">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="kicker"><span class="num">01</span><span data-inline="he">הכאב</span><span data-inline="en">The problem</span></div>
-      <div data-lang="he"><h2>כל הזמנה מגיעה אחרת.<br>וכולן נופלות עליכם.</h2><p class="sec-sub">מפיצים חיים בין וואטסאפ, טלפון, הקלטות ופתקים — ומרכיבים כל בוקר את רשימת ההזמנות ביד. זמן שנשרף, טעויות, ולקוחות שנשכחים.</p></div>
-      <div data-lang="en"><h2>Every order arrives differently.<br>And they all land on you.</h2><p class="sec-sub">Distributors juggle WhatsApp, phone calls, voice notes and scraps of paper — assembling the order list by hand every single morning. Wasted time, mistakes, forgotten customers.</p></div>
+      <div class="kicker"><span class="num">01</span>איך זה עובד</div>
+      <h2>מהודעות מפוזרות<br>להזמנה אחת מסודרת</h2>
     </div>
-    <div class="pain-grid">
-      <div class="pain-card reveal"><span class="pain-emoji" aria-hidden="true">💬</span><p data-lang="he">הזמנה מפוזרת על פני 5 הודעות נפרדות</p><p data-lang="en">An order scattered across 5 separate messages</p></div>
-      <div class="pain-card reveal"><span class="pain-emoji" aria-hidden="true">❓</span><p data-lang="he">״התכוונת ל-3% או ל-5%?״</p><p data-lang="en">"Did you mean 3% or 5%?"</p></div>
-      <div class="pain-card reveal"><span class="pain-emoji" aria-hidden="true">📞</span><p data-lang="he">שיחה ב-23:40: ״תוסיף לי עוד 3 גבינות״</p><p data-lang="en">A call at 23:40: "add me 3 more cheeses"</p></div>
-      <div class="pain-card reveal"><span class="pain-emoji" aria-hidden="true">🎙️</span><p data-lang="he">הקלטה של 40 שניות שצריך לשמוע פעמיים</p><p data-lang="en">A 40-second recording you replay twice</p></div>
-      <div class="pain-card reveal"><span class="pain-emoji" aria-hidden="true">📝</span><p data-lang="he">פתק בכתב יד שאי אפשר לפענח</p><p data-lang="en">A handwritten note you can't decipher</p></div>
-      <div class="pain-card reveal"><span class="pain-emoji" aria-hidden="true">📋</span><p data-lang="he">שעה של הקלדה ידנית לרשימת הזמנות אחת</p><p data-lang="en">An hour of manual typing for a single order list</p></div>
-    </div>
-  </div>
-</section>
 
-<!-- ===== NO APP (02) ===== -->
-<section class="white" id="noapp">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="kicker"><span class="num">02</span><span data-inline="he">בלי אפליקציה</span><span data-inline="en">No app</span></div>
-      <div data-lang="he"><h2>הלקוחות שלכם כבר לא פותחים אפליקציה.<br>הם מזמינים בוואטסאפ.</h2><p class="sec-sub">אפליקציות הזמנה מותקנות פעם אחת — ונשכחות. וואטסאפ פתוח אצל הלקוחות שלכם כל היום. שם הם כבר נמצאים, ושם הם יזמינו.</p></div>
-      <div data-lang="en"><h2>Your customers don't open apps.<br>They order on WhatsApp.</h2><p class="sec-sub">Ordering apps get installed once — then forgotten. WhatsApp is open on your customers' phones all day. That's where they already are, and that's where they'll order.</p></div>
-    </div>
-    <div class="vs-grid reveal">
-      <div class="vs-card vs-good">
-        <span class="vs-tag"><span data-inline="he">פעיל עכשיו</span><span data-inline="en">Active now</span></span>
-        <div class="vs-title"><span data-inline="he">🥖 מאפיית בקאור</span><span data-inline="en">🥖 Bekaor Bakery</span></div>
-        <div class="vs-mini" data-lang="he">היי, למחר בבוקר 🌅 25 לחמניות, 4 חלות</div>
-        <div class="vs-mini" data-lang="en">Hey, for tomorrow morning 🌅 25 rolls, 4 challahs</div>
-        <div class="vs-reply"><span data-inline="he">נקלט ✓ סידרתי הכול</span><span data-inline="en">Received ✓ all sorted</span></div>
-        <div class="vs-foot"><span data-inline="he">וואטסאפ · בלי הורדה, בלי סיסמה</span><span data-inline="en">WhatsApp · no download, no password</span></div>
-      </div>
-      <div class="vs-word">VS</div>
-      <div class="vs-card vs-bad">
-        <span class="vs-tag"><span data-inline="he">לא בשימוש</span><span data-inline="en">Unused</span></span>
-        <div class="vs-title"><span data-inline="he">▦ אפליקציית הזמנות</span><span data-inline="en">▦ Ordering app</span></div>
-        <div class="vs-zero">0</div>
-        <div class="vs-zero-l"><span data-inline="he">הזמנות היום</span><span data-inline="en">orders today</span></div>
-        <div class="vs-foot"><span data-inline="he">כניסה אחרונה: לפני 23 יום</span><span data-inline="en">Last opened: 23 days ago</span></div>
-      </div>
-    </div>
-  </div>
-</section>
+    <div class="ba reveal">
+      <!-- BEFORE: what lands on the distributor's phone -->
+      <figure class="ba-panel ba-before">
+        <figcaption class="ba-label"><span><i class="ba-dot amber" aria-hidden="true"></i>ככה ההזמנה מגיעה</span><small>5 הודעות · וואטסאפ</small></figcaption>
+        <div class="ba-chat">
+          <div class="ba-msg">בוקר טוב 🙂<span class="t">07:52</span></div>
+          <div class="ba-msg">תרשום לי 10 קוטג 5<span class="t">07:52</span></div>
+          <div class="ba-msg ba-voice">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#54656f"/></svg>
+            <span class="ba-wave" aria-hidden="true"><i style="height:7px"></i><i style="height:13px"></i><i style="height:18px"></i><i style="height:9px"></i><i style="height:16px"></i><i style="height:11px"></i><i style="height:19px"></i><i style="height:8px"></i><i style="height:14px"></i><i style="height:10px"></i><i style="height:17px"></i><i style="height:7px"></i><i style="height:12px"></i><i style="height:6px"></i></span>
+            <span class="t">0:09 · 07:53</span>
+            <span class="ba-note">הקלטה</span>
+          </div>
+          <div class="ba-msg">שמנת מתוקה 6.. לא, תעשה 8<span class="t">07:55</span><span class="ba-note">תיקון</span></div>
+          <div class="ba-msg">אה ו־2 לבן נגב מארז<span class="t">08:09</span><span class="ba-note">תוספת</span></div>
+        </div>
+      </figure>
 
-<!-- ===== SOLUTION (03) ===== -->
-<section class="tint" id="solution">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="kicker"><span class="num">03</span><span data-inline="he">הפתרון</span><span data-inline="en">The solution</span></div>
-      <div data-lang="he"><h2>OrdexAI הופך כל שיחה<br>להזמנה מסודרת.</h2><p class="sec-sub">מנוע שמבין עברית אמיתית, מזהה כל מוצר במדויק, ומרכיב לבד את רשימת ההזמנות המרוכזת — בזמן שאתם עסוקים בעסק.</p></div>
-      <div data-lang="en"><h2>OrdexAI turns every chat<br>into a clean order.</h2><p class="sec-sub">An engine that understands real Hebrew, identifies every product precisely, and builds the consolidated order list on its own — while you run your business.</p></div>
-    </div>
-    <div class="flow reveal">
-      <div class="flow-card">
-        <div class="flow-emoji" aria-hidden="true">🛒</div>
-        <h3><span data-inline="he">הלקוח מזמין</span><span data-inline="en">Customer orders</span></h3>
-        <p><span data-inline="he">טקסט · קול · תמונה</span><span data-inline="en">Text · voice · photo</span></p>
+      <div class="ba-mid" aria-hidden="true">
+        <span class="ba-orb"><img src="favicon.svg" alt="" width="34" height="34"></span>
+        <svg class="ba-arrow" viewBox="0 0 48 24" width="48" height="24"><path d="M46 12H6M14 4l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <div class="flow-arrow" aria-hidden="true"><span data-inline="he">←</span><span data-inline="en">→</span></div>
-      <div class="flow-card">
-        <div class="flow-emoji" aria-hidden="true">🧠</div>
-        <h3><span data-inline="he">OrdexAI מבין</span><span data-inline="en">OrdexAI understands</span></h3>
-        <p><span data-inline="he">ומדייק כל פריט</span><span data-inline="en">and pinpoints every item</span></p>
-      </div>
-      <div class="flow-arrow" aria-hidden="true"><span data-inline="he">←</span><span data-inline="en">→</span></div>
-      <div class="flow-card">
-        <div class="flow-emoji" aria-hidden="true">📦</div>
-        <h3><span data-inline="he">אתם מקבלים</span><span data-inline="en">You receive</span></h3>
-        <p><span data-inline="he">רשימת הזמנות מרוכזת</span><span data-inline="en">one consolidated list</span></p>
-      </div>
-    </div>
-    <div class="flow-note reveal"><span data-inline="he">הכול קורה בוואטסאפ שהלקוח כבר משתמש בו כל יום — בלי הורדות ובלי הקלדה.</span><span data-inline="en">It all happens in the WhatsApp your customer already uses every day — no downloads, no typing.</span></div>
-  </div>
-</section>
 
-<!-- ===== FEATURES ===== -->
-<section class="white" id="features">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="kicker"><span data-inline="he">יכולות</span><span data-inline="en">Features</span></div>
-      <div data-lang="he"><h2>כל מה שצריך — במקום אחד</h2><p class="sec-sub">מזמינים בשפה של החיים, והמערכת עושה את השאר — מהקליטה ועד המחסן.</p></div>
-      <div data-lang="en"><h2>Everything you need — in one place</h2><p class="sec-sub">Order in everyday language; the system does the rest — from the message to the warehouse.</p></div>
+      <!-- AFTER: one clean order line per product -->
+      <figure class="ba-panel ba-after">
+        <figcaption class="ba-label"><span><i class="ba-dot green" aria-hidden="true"></i>ככה היא נקלטת</span><small>אספקה: יום ה׳</small></figcaption>
+        <div class="ord">
+          <div class="ord-cust">מעדניית שקד</div>
+          <div class="ord-row ord-th"><span>מק״ט</span><span>מוצר</span><span>כמות</span><span>מקור</span></div>
+          <div class="ord-row"><span class="ord-code">1042</span><span>קוטג׳ 5%</span><b class="ord-qty">10</b><span class="ord-src">טקסט</span></div>
+          <div class="ord-row"><span class="ord-code">4417</span><span>לאבנה 500 ג׳</span><b class="ord-qty">4</b><span class="ord-src">הקלטה</span></div>
+          <div class="ord-row"><span class="ord-code">1108</span><span>שמנת מתוקה 38%</span><b class="ord-qty">8</b><span class="ord-src">אחרי תיקון</span></div>
+          <div class="ord-row"><span class="ord-code">3390</span><span>לבן נגב · מארז</span><b class="ord-qty">2</b><span class="ord-src">תוספת</span></div>
+        </div>
+        <div class="ord-foot"><span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> הלקוח אישר את ההזמנה</span><span>4 שורות · 24 יח׳</span></div>
+      </figure>
     </div>
-    <div class="grid3">
-      <div class="card reveal">
-        <div class="card-icon" aria-hidden="true">💬</div>
-        <h3><span data-inline="he">כל דרך להזמין</span><span data-inline="en">Order any way</span></h3>
-        <p data-lang="he">טקסט, קול או תמונה — בעברית של החיים, כולל כמויות, אחוזי שומן וקיצורים. גם צילום טופס עם מק״טים נקרא אוטומטית (OCR). הכול נכנס לאותו מנוע.</p>
-        <p data-lang="en">Text, voice, or a photo — in everyday Hebrew, including quantities, fat % and shorthand. Even a photo of a form with SKUs is read automatically (OCR). All into one engine.</p>
-      </div>
-      <div class="card reveal">
-        <div class="card-icon" aria-hidden="true">👆</div>
-        <h3><span data-inline="he">כשלא ברור — שואלים</span><span data-inline="en">When unclear, it asks</span></h3>
-        <p data-lang="he">פריט מעורפל? כפתורי בחירה מהירה במקום הקלדה. ״מכל סוג״? בורר וריאציות שנפתח לכל האפשרויות — תמיד עם אפשרות דילוג.</p>
-        <p data-lang="en">Ambiguous item? Quick-choice buttons instead of typing. "Any type"? A variant picker that opens to all options — always with a skip option.</p>
-      </div>
-      <div class="card reveal">
-        <div class="card-icon" aria-hidden="true">🧠</div>
-        <h3><span data-inline="he">לומדת את הלקוחות ומקצרת את ההזמנה</span><span data-inline="en">Learns your customers, speeds up ordering</span></h3>
-        <p data-lang="he">המערכת זוכרת את הכינויים והקיצורים של כל לקוח ומזהה אותם אוטומטית בפעם הבאה — כל הזמנה מהירה יותר מהקודמת.</p>
-        <p data-lang="en">It remembers each customer's nicknames and shorthand and recognizes them automatically next time — every order is faster than the last.</p>
-      </div>
-      <div class="card reveal">
-        <div class="card-icon" aria-hidden="true">📦</div>
-        <h3><span data-inline="he">רשימה מרוכזת — ישר למערכות שלכם</span><span data-inline="en">Consolidated list — into your systems</span></h3>
-        <p data-lang="he">בשעת הקאט-אוף נשלחת רשימת הזמנות מרוכזת (PDF) לוואטסאפ ולמייל, מקובצת לפי לקוח — וניתן לשדר אותה ישירות למערכת ה-ERP שלכם.</p>
-        <p data-lang="en">At cutoff, a consolidated order list (PDF) is sent to WhatsApp and email, grouped by customer — and can be transmitted straight into your company's ERP.</p>
-      </div>
-      <div class="card reveal">
-        <div class="card-icon" aria-hidden="true">📅</div>
-        <h3><span data-inline="he">תאריך אספקה ותזכורות</span><span data-inline="en">Delivery date & reminders</span></h3>
-        <p data-lang="he">יום האספקה מחושב לפי ימי המשלוח של הלקוח, שעת הקאט-אוף וחגי ישראל. תזכורת עדינה לפני הקאט-אוף דואגת ששום הזמנה לא תישכח.</p>
-        <p data-lang="en">The delivery day is computed from the customer's delivery days, the cutoff and Israeli holidays. A gentle pre-cutoff reminder makes sure no order slips through.</p>
-      </div>
-      <div class="card reveal">
-        <div class="card-icon" aria-hidden="true">🔒</div>
-        <h3><span data-inline="he">אמין ובר-בקרה</span><span data-inline="en">Reliable &amp; auditable</span></h3>
-        <p data-lang="he">הבנה בשתי שכבות: ה-AI מזהה כוונה, וקוד מדויק מתאים בדיוק את המק״ט — אמין, לא ניחוש.</p>
-        <p data-lang="en">Two-layer understanding: the AI detects intent, and precise matching logic locks onto the exact SKU — reliable, not guesswork.</p>
-      </div>
-    </div>
-    <div class="flow-note reveal"><span data-inline="he">וגם: הצטרפות בוואטסאפ ב-30 שניות · אישור לקוח בלחיצה · דף הזמנה בלינק לכל מי שמעדיף מסך.</span><span data-inline="en">Also: WhatsApp onboarding in 30 seconds · one-tap customer approval · an order page via a link for anyone who prefers a screen.</span></div>
-  </div>
-</section>
 
-<!-- ===== WEEKLY CUSTOMERS ===== -->
-<section class="tint" id="weekly">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="kicker"><span data-inline="he">לקוחות קבועים</span><span data-inline="en">Regular customers</span></div>
-      <div data-lang="he"><h2>לקוחות שמזמינים כל שבוע?<br>ככה זה עובד עם OrdexAI</h2><p class="sec-sub">הלקוחות לא צריכים ללמוד שום דבר חדש, ואתם לא צריכים לרדוף אחריהם או להקליד את ההזמנות שלהם.</p></div>
-      <div data-lang="en"><h2>Customers who order every week?<br>Here's how it works with OrdexAI</h2><p class="sec-sub">Your customers learn nothing new, and you stop chasing them or typing their orders.</p></div>
-    </div>
-    <ol class="steps4">
-      <li class="step-card reveal">
-        <span class="n" aria-hidden="true">1</span>
-        <h3><span data-inline="he">מצטרפים בלינק אחד</span><span data-inline="en">Join with one link</span></h3>
-        <p data-lang="he">שולחים ללקוחות הקיימים לינק הצטרפות. הם ממלאים טופס קצר אחד בוואטסאפ, ואתם מאשרים אותם בלחיצה.</p>
-        <p data-lang="en">Send your existing customers a join link. They fill in one short WhatsApp form, and you approve them with a tap.</p>
-      </li>
-      <li class="step-card reveal">
-        <span class="n" aria-hidden="true">2</span>
-        <h3><span data-inline="he">תזכורת לפני הקאט-אוף</span><span data-inline="en">A reminder before cutoff</span></h3>
-        <p data-lang="he">לקוח עם יום אספקה קבוע שעוד לא הזמין מקבל תזכורת בוואטסאפ כמה שעות לפני שעת הקאט-אוף.</p>
-        <p data-lang="en">A customer with a regular delivery day who hasn't ordered yet gets a WhatsApp reminder a few hours before your cutoff.</p>
-      </li>
-      <li class="step-card reveal">
-        <span class="n" aria-hidden="true">3</span>
-        <h3><span data-inline="he">מזמינים כמו שהם רגילים</span><span data-inline="en">They order the way they're used to</span></h3>
-        <p data-lang="he">בהודעה רגילה, בהקלטה, בצילום של רשימה, או מדף ההזמנה בלינק. כל פריט מותאם למק״ט שלכם, והכינויים של כל לקוח נלמדים.</p>
-        <p data-lang="en">A regular message, a voice note, a photo of a list, or the order page link. Every item is matched to your SKU, and each customer's nicknames are learned.</p>
-      </li>
-      <li class="step-card reveal">
-        <span class="n" aria-hidden="true">4</span>
-        <h3><span data-inline="he">רשימה אחת בקאט-אוף</span><span data-inline="en">One list at cutoff</span></h3>
-        <p data-lang="he">בשעת הקאט-אוף נשלחת אליכם רשימת הזמנות מרוכזת לוואטסאפ ולמייל, מקובצת לפי לקוח.</p>
-        <p data-lang="en">At cutoff you get one consolidated order list on WhatsApp and by email, grouped by customer.</p>
-      </li>
+    <ol class="how-steps reveal">
+      <li><span class="n">1</span>הלקוח שולח הזמנה כרגיל</li>
+      <li><span class="n">2</span>OrdexAI מבינה ומסדרת אותה</li>
+      <li><span class="n">3</span>הלקוח מאשר, וההזמנה נקלטת</li>
     </ol>
-    <div class="flow-note reveal"><span data-inline="he">וגם לקוחות שלא ילחצו על שום קישור, וממשיכים לכתוב בטקסט חופשי או לשלוח הקלטות, נקלטים בדיוק כמו כולם.</span><span data-inline="en">And customers who won't click any link and keep sending free text or voice notes are handled exactly like everyone else.</span></div>
-    <p class="guide-link reveal"><a href="whatsapp-orders-guide.html"><span data-inline="he">משווים פתרונות? המדריך: 3 דרכים להפסיק להקליד הזמנות מוואטסאפ ←</span><span data-inline="en">Comparing options? Our guide (in Hebrew): 3 ways to stop typing WhatsApp orders →</span></a></p>
+    <p class="flow-note how-note reveal">חיבור מהיר לקטלוג שלכם, והמערכת מוכנה לקלוט הזמנות. המערכת משייכת כל בקשה לפריט המדויק בקטלוג.</p>
   </div>
 </section>
 
-<!-- ===== FAQ ===== -->
-<section class="white" id="faq">
+<!-- ===== 3. IMPACT ===== -->
+<section class="tint" id="impact">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="kicker"><span data-inline="he">שאלות נפוצות</span><span data-inline="en">FAQ</span></div>
-      <div data-lang="he"><h2>שאלות שמפיצים שואלים אותנו</h2><p class="sec-sub">לא מצאתם את מה שחיפשתם? <a data-wa href="https://wa.me/972556654664?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20OrdexAI%20%F0%9F%91%8B" target="_blank" rel="noopener noreferrer">כתבו לנו בוואטסאפ</a> ונשמח לעזור.</p></div>
-      <div data-lang="en"><h2>Questions distributors ask us</h2><p class="sec-sub">Didn't find what you were looking for? <a data-wa href="https://wa.me/972556654664" target="_blank" rel="noopener noreferrer">Message us on WhatsApp</a> and we'll be glad to help.</p></div>
+      <div class="kicker"><span class="num">02</span>מה זה משנה</div>
+      <h2 class="h2-long">כל הזמנה בוואטסאפ נקלטת, מסודרת ומוכנה לליקוט</h2>
+      <p class="sec-sub">פחות הקלדה. בקרה לפני שליחה. הזמנות מרוכזות ומתועדות.</p>
     </div>
-    <div class="faq">
-      <details class="reveal">
-        <summary><span data-inline="he">למי OrdexAI מתאים?</span><span data-inline="en">Who is OrdexAI for?</span></summary>
-        <div class="ans">
-          <p data-lang="he">למפיצים ולספקי מזון שמקבלים הזמנות חוזרות מלקוחות עסקיים — מחלבות, מאפיות, מעדניות ומפיצים. אם הלקוחות שלכם כבר שולחים לכם הזמנות בוואטסאפ, זה בשבילכם.</p>
-          <p data-lang="en">Food distributors and suppliers who take repeat orders from business customers — dairies, bakeries, delis and wholesalers. If your customers already send you orders on WhatsApp, it's built for you.</p>
+    <div class="impact">
+      <article class="icard reveal">
+        <div class="icard-top">
+          <span class="icard-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/><path d="M3 3l18 18"/></svg></span>
+          <span class="itag">ללא הקלדה ידנית</span>
         </div>
-      </details>
-      <details class="reveal">
-        <summary><span data-inline="he">אפשר להמשיך לקבל הזמנות בוואטסאפ בלי לעבור על כל הודעה ולהקליד אותה?</span><span data-inline="en">Can I keep taking orders on WhatsApp without going through and typing every message?</span></summary>
-        <div class="ans">
-          <p data-lang="he">כן, זה בדיוק מה ש-OrdexAI עושה. הלקוחות ממשיכים לשלוח הזמנות בוואטסאפ, המערכת מבינה כל פריט ומתאימה אותו למק״ט שלכם, ובשעת הקאט-אוף אתם מקבלים רשימת הזמנות אחת מרוכזת במקום עשרות הודעות.</p>
-          <p data-lang="en">Yes, that's exactly what OrdexAI does. Customers keep sending orders on WhatsApp, the system understands each item and matches it to your SKU, and at cutoff you get one consolidated order list instead of dozens of messages.</p>
+        <h3>פחות עבודה ידנית</h3>
+        <p>ההזמנות הופכות למידע מובנה, בלי הקלדה מחדש.</p>
+        <div class="iresult"><span class="iarrow" aria-hidden="true">←</span>יותר זמן לצוות לדברים שדורשים אדם.</div>
+      </article>
+      <article class="icard reveal">
+        <div class="icard-top">
+          <span class="icard-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6a1 1 0 0 1 1 1v1H8V5a1 1 0 0 1 1-1z"/><path d="M16 5h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2"/><path d="M8.5 13.5l2.5 2.5 4.5-5"/></svg></span>
+          <span class="itag">אישור לפני קליטה</span>
         </div>
-      </details>
-      <details class="reveal">
-        <summary><span data-inline="he">הלקוחות שלי צריכים להוריד אפליקציה או להירשם?</span><span data-inline="en">Do my customers need an app or an account?</span></summary>
-        <div class="ans">
-          <p data-lang="he">לא. הם מזמינים בוואטסאפ שכבר יש להם בטלפון — בלי אפליקציה ובלי סיסמה. בפעם הראשונה הם ממלאים טופס קצר אחד עם פרטי העסק, ואתם מאשרים אותם בלחיצה.</p>
-          <p data-lang="en">No. They order in the WhatsApp they already have — no app, no password. The first time, they fill in one short form with their business details, and you approve them with a tap.</p>
+        <h3>בקרה לפני שליחה</h3>
+        <p>מוצרים וכמויות מוצגים ללקוח לאישור לפני שההזמנה נקלטת.</p>
+        <div class="iresult"><span class="iarrow" aria-hidden="true">←</span>מוצרים וכמויות מאושרים מראש.</div>
+      </article>
+      <article class="icard reveal">
+        <div class="icard-top">
+          <span class="icard-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6l1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/></svg></span>
+          <span class="itag">מעקב אחרי כל הזמנה</span>
         </div>
-      </details>
-      <details class="reveal">
-        <summary><span data-inline="he">באילו דרכים אפשר להזמין?</span><span data-inline="en">How can customers place an order?</span></summary>
-        <div class="ans">
-          <p data-lang="he">בהודעת טקסט חופשית, בהקלטה קולית או בצילום — למשל של טופס הזמנה. אפשר לכתוב כמו שמדברים, עם קיצורים וכינויים. ומי שמעדיף מסך מקבל דף הזמנה בלינק.</p>
-          <p data-lang="en">A free-text message, a voice note, or a photo — of an order form, for example. They can write the way they talk, with shorthand and nicknames. Anyone who prefers a screen gets an order page via a link.</p>
-        </div>
-      </details>
-      <details class="reveal">
-        <summary><span data-inline="he">מה ההבדל בין OrdexAI לקטלוג הזמנות בלינק או לקטלוג של WhatsApp Business?</span><span data-inline="en">How is OrdexAI different from an ordering catalog link or the WhatsApp Business catalog?</span></summary>
-        <div class="ans">
-          <p data-lang="he">בקטלוג, בלינק או בתוך WhatsApp Business, הלקוח צריך לבחור את המוצרים בעצמו, ומי שממשיך לכתוב הודעות נשאר אצלכם להקלדה. OrdexAI נותן גם דף הזמנה בלינק, אבל קולט גם הזמנות שנכתבות כרגיל, בטקסט, בהקלטה או בתמונה, ומתאים אותן למק״טים שלכם. השוואה מלאה ב<a href="whatsapp-orders-guide.html">מדריך</a>.</p>
-          <p data-lang="en">With a catalog, whether a link or inside WhatsApp Business, customers pick the products themselves, and anyone who keeps texting is still left for you to type. OrdexAI also gives an order page link, but it takes orders written the usual way too — text, voice or photo — and matches them to your SKUs. Full comparison in our <a href="whatsapp-orders-guide.html">guide</a> (Hebrew).</p>
-        </div>
-      </details>
-      <details class="reveal">
-        <summary><span data-inline="he">ומה אם הבוט לא בטוח למה הלקוח התכוון?</span><span data-inline="en">What if the bot isn't sure what the customer meant?</span></summary>
-        <div class="ans">
-          <p data-lang="he">במקום לנחש — הוא שואל. הלקוח מקבל כפתורי בחירה מהירה (למשל איזה אחוז שומן), ותמיד אפשר לדלג. לפני שההזמנה נקלטת, הלקוח מקבל סיכום ומאשר אותו.</p>
-          <p data-lang="en">Instead of guessing, it asks. The customer gets quick-choice buttons (for example, which fat %), and can always skip. Before the order is saved, the customer gets a summary to confirm.</p>
-        </div>
-      </details>
-      <details class="reveal">
-        <summary><span data-inline="he">איך ההזמנות מגיעות אליי?</span><span data-inline="en">How do the orders reach me?</span></summary>
-        <div class="ans">
-          <p data-lang="he">בשעת הקאט-אוף נשלחת אליכם רשימת הזמנות מרוכזת (PDF) לוואטסאפ ולמייל, מקובצת לפי לקוח. צריכים תמונת מצב באמצע היום? שלחו הודעה לבוט וקבלו רשימה עדכנית.</p>
-          <p data-lang="en">At your cutoff time you get one consolidated order list (PDF) on WhatsApp and by email, grouped by customer. Need a snapshot mid-day? Message the bot and get an up-to-date list.</p>
-        </div>
-      </details>
-      <details class="reveal">
-        <summary><span data-inline="he">כמה זמן לוקח להתחיל?</span><span data-inline="en">How long does it take to get started?</span></summary>
-        <div class="ans">
-          <p data-lang="he">בדרך כלל יום עבודה אחד. אנחנו מקימים את הבוט על מספר וואטסאפ עסקי, טוענים את הקטלוג שלכם ומגדירים ימי אספקה ושעת קאט-אוף — ואתם שולחים ללקוחות לינק הצטרפות.</p>
-          <p data-lang="en">Usually a single working day. We set up the bot on a WhatsApp Business number, load your catalog and configure delivery days and cutoff time — then you send your customers a join link.</p>
-        </div>
-      </details>
-      <details class="reveal">
-        <summary><span data-inline="he">המידע שלי ושל הלקוחות שלי מוגן?</span><span data-inline="en">Is my data — and my customers' data — protected?</span></summary>
-        <div class="ans">
-          <p data-lang="he">OrdexAI פועל על WhatsApp Business Platform הרשמי של Meta. אנחנו לא מוכרים מידע ולא משתמשים בו לפרסום, וכל מפיץ רואה רק את הלקוחות וההזמנות שלו. כל הפרטים ב<a href="privacy-policy.html">מדיניות הפרטיות</a>.</p>
-          <p data-lang="en">OrdexAI runs on Meta's official WhatsApp Business Platform. We never sell data or use it for advertising, and each distributor sees only their own customers and orders. Full details in our <a href="privacy-policy.html">Privacy Policy</a>.</p>
-        </div>
-      </details>
+        <h3>הזמנות מרוכזות ומתועדות</h3>
+        <p>כל הזמנה נשמרת ומופיעה ברשימה אחת למעקב וטיפול.</p>
+        <div class="iresult"><span class="iarrow" aria-hidden="true">←</span>יותר שליטה בהזמנות.</div>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ===== FINAL CTA ===== -->
+<!-- ===== 4. SYSTEMS ===== -->
+<section class="white" id="systems">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker"><span class="num">03</span>מערכות</div>
+      <h2>עובדת עם המערכת שלכם</h2>
+    </div>
+    <div class="integ reveal">
+      <div class="integ-card integ-erp">
+        <div class="integ-pipe" aria-hidden="true">
+          <span class="pipe-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6a1 1 0 0 1 1 1v1H8V5a1 1 0 0 1 1-1z"/><path d="M16 5h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2"/><path d="M8.5 13.5l2.5 2.5 4.5-5"/></svg>הזמנה מאושרת</span>
+          <span class="pipe-line"></span>
+          <span class="pipe-node pipe-erp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="7" rx="1.5"/><rect x="3" y="14" width="18" height="7" rx="1.5"/><path d="M7 6.5h.01M7 17.5h.01"/></svg>ERP</span>
+        </div>
+        <h3>יש לכם ERP?</h3>
+        <p>ההזמנה נקלטת ישירות במערכת ה-ERP שלכם.</p>
+        <div class="erp-row"><span class="erp-lbl">למשל</span><span class="erp-chip" lang="en">Priority</span><span class="erp-chip">חשבשבת</span><span class="erp-chip" lang="en">SAP</span></div>
+      </div>
+      <div class="integ-card integ-files">
+        <div class="files" aria-hidden="true">
+          <span class="file"><span class="file-tag pdf">PDF</span><span class="file-lines"><i></i><i></i><i></i></span></span>
+          <span class="file"><span class="file-tag xls">XLSX</span><span class="file-grid"><i></i><i></i><i></i><i></i><i></i><i></i></span></span>
+          <span class="file"><span class="file-tag csv">CSV</span><span class="file-lines"><i></i><i></i><i></i></span></span>
+        </div>
+        <h3>אין מערכת?</h3>
+        <p>רשימת ליקוט ב-PDF, וקובץ Excel/CSV מוכנים להזנה.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5. CTA + MICRO-FORM ===== -->
 <section class="cta-section" id="demo">
   <div class="wrap">
     <div class="sec-head reveal" style="margin-bottom:0">
-      <img class="cta-logo" src="assets/ordexai-logo.png" alt="OrdexAI" width="167" height="104" loading="lazy">
-      <div data-lang="he"><h2>רוצים לראות את זה עובד על העסק שלכם?</h2><p class="sec-sub">נחבר את הבוט למספר שלכם, נטען את הקטלוג — ותוך יום הלקוחות שלכם כבר מזמינים, ואתם מקבלים רשימה אחת נקייה.</p></div>
-      <div data-lang="en"><h2>Want to see it working for your business?</h2><p class="sec-sub">We connect the bot to your number and load your catalog — within a day your customers are ordering and you get one clean list.</p></div>
-    </div>
-    <div class="cta-steps reveal">
-      <div class="cta-step"><div class="n">1</div><p><span data-inline="he">חיבור מספר וטעינת קטלוג</span><span data-inline="en">Connect a number & load the catalog</span></p></div>
-      <div class="cta-step"><div class="n">2</div><p><span data-inline="he">הלקוחות מתחילים להזמין</span><span data-inline="en">Customers start ordering</span></p></div>
-      <div class="cta-step"><div class="n">3</div><p><span data-inline="he">רשימת הזמנות מרוכזת בקאט-אוף</span><span data-inline="en">Consolidated order list at cutoff</span></p></div>
+      <h2>רוצים לראות את זה על ההזמנות שלכם?</h2>
+      <p class="sec-sub">שיחה קצרה בוואטסאפ, ונראה לכם איך הזמנה עוברת מהודעה לרשימה מסודרת.</p>
     </div>
     <div class="cta-actions reveal">
-      <a href="https://wa.me/972556654664?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20OrdexAI%20%F0%9F%91%8B" data-wa class="btn-primary" target="_blank" rel="noopener noreferrer">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.121.554 4.11 1.523 5.836L.057 23.625a.75.75 0 00.921.921l5.772-1.466A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.943 0-3.773-.524-5.349-1.437l-.383-.228-3.977 1.01 1.033-3.85-.249-.396A9.961 9.961 0 012 12C2 6.478 6.478 2 12 2s10 4.478 10 10-4.478 10-10 10z"/></svg>
-        <span data-inline="he">בואו נדבר · וואטסאפ</span><span data-inline="en">Let's talk · WhatsApp</span>
+      <a href="https://wa.me/972556654664?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20OrdexAI%20%F0%9F%91%8B" class="btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.121.554 4.11 1.523 5.836L.057 23.625a.75.75 0 00.921.921l5.772-1.466A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.943 0-3.773-.524-5.349-1.437l-.383-.228-3.977 1.01 1.033-3.85-.249-.396A9.961 9.961 0 012 12C2 6.478 6.478 2 12 2s10 4.478 10 10-4.478 10-10 10z"/></svg>
+        לשיחת הדגמה בוואטסאפ
       </a>
-      <a href="#contact" class="btn-ghost"><span data-inline="he">השאירו פרטים</span><span data-inline="en">Leave your details</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CONTACT ===== -->
-<section class="tint" id="contact">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="kicker"><span data-inline="he">צור קשר</span><span data-inline="en">Contact</span></div>
-      <div data-lang="he"><h2>בואו נדבר</h2><p class="sec-sub">השאירו פרטים ונחזור אליכם — ההודעה נשלחת ישירות למייל שלנו. או פשוט כתבו לנו בוואטסאפ.</p></div>
-      <div data-lang="en"><h2>Let's talk</h2><p class="sec-sub">Leave your details and we'll get back to you — the message goes straight to our inbox. Or just message us on WhatsApp.</p></div>
     </div>
 
-    <div class="contact-grid">
-      <!-- FORM: submits to info@ordexai.com via FormSubmit (works on static hosting).
-           First submission triggers a one-time confirmation email to info@ordexai.com — click the link once to activate. -->
-      <form class="contact-form reveal" id="contactForm" novalidate>
-        <input type="hidden" name="_subject" value="פנייה חדשה מאתר OrdexAI">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="true">
-        <input type="text" name="_honey" class="form-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="or-sep reveal" aria-hidden="true"><span>או</span></div>
 
-        <div class="form-row">
-          <div class="field">
-            <label for="cf-name"><span data-inline="he">שם מלא</span><span data-inline="en">Full name</span> <span class="req">*</span></label>
-            <input id="cf-name" name="name" type="text" required autocomplete="name" data-ph-he="ישראל ישראלי" data-ph-en="John Doe">
-          </div>
-          <div class="field">
-            <label for="cf-business"><span data-inline="he">שם העסק</span><span data-inline="en">Business name</span></label>
-            <input id="cf-business" name="business" type="text" autocomplete="organization" data-ph-he="מחלבות רם" data-ph-en="Ram Dairies">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="field">
-            <label for="cf-phone"><span data-inline="he">טלפון</span><span data-inline="en">Phone</span> <span class="req">*</span></label>
-            <input id="cf-phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" dir="ltr" data-ph-he="050-000-0000" data-ph-en="+972 50 000 0000">
-          </div>
-          <div class="field">
-            <label for="cf-email"><span data-inline="he">אימייל</span><span data-inline="en">Email</span></label>
-            <input id="cf-email" name="email" type="email" autocomplete="email" dir="ltr" data-ph-he="you@example.com" data-ph-en="you@example.com">
-          </div>
+    <!-- MICRO-FORM: submits to info@ordexai.com via FormSubmit (works on static hosting) -->
+    <form class="mform reveal" id="contactForm" novalidate>
+      <input type="hidden" name="_subject" value="בקשה לחזרה מאתר OrdexAI">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="text" name="_honey" class="form-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <p class="mform-intro">לא נוח לדבר עכשיו? השאירו פרטים ונחזור אליכם.</p>
+      <div class="mform-row">
+        <div class="field">
+          <label for="cf-name">שם מלא <span class="req">*</span></label>
+          <input id="cf-name" name="name" type="text" required autocomplete="name" placeholder="ישראל ישראלי">
         </div>
         <div class="field">
-          <label for="cf-msg"><span data-inline="he">במה נוכל לעזור?</span><span data-inline="en">How can we help?</span></label>
-          <textarea id="cf-msg" name="message" data-ph-he="ספרו לנו על העסק שלכם וכמה לקוחות מזמינים מכם…" data-ph-en="Tell us about your business and how many customers order from you…"></textarea>
+          <label for="cf-business">שם העסק</label>
+          <input id="cf-business" name="business" type="text" autocomplete="organization" placeholder="מחלבות רם">
         </div>
-        <div class="consent-field">
-          <label class="consent">
-            <input type="checkbox" id="cf-privacy" name="privacy_consent" required value="אישר/ה את מדיניות הפרטיות">
-            <span><span data-inline="he">קראתי ואני מסכים/ה ל<a href="privacy-policy.html" target="_blank" rel="noopener noreferrer">מדיניות הפרטיות</a></span><span data-inline="en">I have read and agree to the <a href="privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a></span> <span class="req">*</span></span>
-          </label>
-          <label class="consent">
-            <input type="checkbox" id="cf-marketing" name="marketing_consent" value="מעוניין/ת לקבל עדכונים ותוכן שיווקי">
-            <span><span data-inline="he">מעוניין/ת לקבל עדכונים ותוכן שיווקי מ-OrdexAI (לא חובה)</span><span data-inline="en">I'd like to receive updates and marketing from OrdexAI (optional)</span></span>
-          </label>
-          <p class="consent-note"><span data-inline="he">הפרטים שתשאירו (שם, טלפון, אימייל ושם העסק) ישמשו ליצירת קשר בלבד, נשמרים בצורה מאובטחת ואינם מועברים לצד שלישי לצרכים שיווקיים.</span><span data-inline="en">Your details (name, phone, email, business) are used only to contact you, stored securely, and never shared with third parties for marketing.</span></p>
+        <div class="field">
+          <label for="cf-phone">טלפון/וואטסאפ <span class="req">*</span></label>
+          <input id="cf-phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" dir="ltr" placeholder="050-000-0000">
         </div>
-        <button type="submit" class="btn-primary submit-btn" id="cf-submit">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          <span data-inline="he">שליחת הודעה</span><span data-inline="en">Send message</span>
-        </button>
-        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
-      </form>
-
-      <div class="contact-info">
-        <a class="info-card reveal" href="https://wa.me/972556654664?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20OrdexAI%20%F0%9F%91%8B" data-wa target="_blank" rel="noopener noreferrer">
-          <div class="info-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.374 0 0 5.373 0 12c0 2.121.554 4.11 1.523 5.836L.057 23.625a.75.75 0 00.921.921l5.772-1.466A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></div>
-          <div><div class="info-label">WhatsApp</div><div class="info-val" dir="ltr"><span data-inline="he">055-665-4664</span><span data-inline="en">+972 55-665-4664</span></div></div>
-        </a>
-        <a class="info-card reveal" href="mailto:info@ordexai.com">
-          <div class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div>
-          <div><div class="info-label">Email</div><div class="info-val" dir="ltr">info@ordexai.com</div></div>
-        </a>
       </div>
+      <div class="mform-foot">
+        <label class="consent">
+          <input type="checkbox" id="cf-privacy" name="privacy_consent" required value="אישר/ה את מדיניות הפרטיות">
+          <span>קראתי ואני מסכים/ה ל<a href="privacy-policy.html" target="_blank" rel="noopener noreferrer">מדיניות הפרטיות</a> <span class="req">*</span></span>
+        </label>
+        <button type="submit" class="btn-primary" id="cf-submit">דברו איתי</button>
+      </div>
+      <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+      <p class="privacy-line">הפרטים ישמשו רק כדי לחזור אליכם, ולא יועברו לצד שלישי לצורכי שיווק. פרטים נוספים ב<a href="privacy-policy.html" target="_blank" rel="noopener noreferrer">מדיניות הפרטיות</a>.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ===== FAQ (kept after the CTA: search engines + FAQPage markup) ===== -->
+<section class="white" id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">שאלות נפוצות</div>
+      <h2>שאלות שמפיצים שואלים אותנו</h2>
+    </div>
+    <div class="faq">
+      <details class="reveal">
+        <summary>למי OrdexAI מתאימה?</summary>
+        <div class="ans"><p>למפיצים ולספקי מזון שמקבלים הזמנות חוזרות מלקוחות עסקיים — מחלבות, מאפיות, מעדניות ומפיצים. אם הלקוחות שלכם כבר שולחים לכם הזמנות בוואטסאפ, זה בשבילכם.</p></div>
+      </details>
+      <details class="reveal">
+        <summary>הלקוחות שלי צריכים להוריד אפליקציה או להירשם?</summary>
+        <div class="ans"><p>לא. הם מזמינים בוואטסאפ שכבר יש להם בטלפון — בלי אפליקציה ובלי סיסמה. בפעם הראשונה הם ממלאים טופס קצר אחד עם פרטי העסק, ואתם מאשרים אותם בלחיצה.</p></div>
+      </details>
+      <details class="reveal">
+        <summary>באילו דרכים אפשר להזמין?</summary>
+        <div class="ans"><p>בהודעת טקסט חופשית, בהקלטה קולית או בצילום — למשל של טופס הזמנה. אפשר לכתוב כמו שמדברים, עם קיצורים וכינויים. ומי שמעדיף מסך מקבל דף הזמנה בלינק.</p></div>
+      </details>
+      <details class="reveal">
+        <summary>ומה אם המערכת לא בטוחה למה הלקוח התכוון?</summary>
+        <div class="ans"><p>היא שואלת. הלקוח מקבל כפתורי בחירה מהירה (למשל איזה אחוז שומן), ותמיד אפשר לדלג. לפני שההזמנה נקלטת, הלקוח מקבל סיכום ומאשר אותו.</p></div>
+      </details>
+      <details class="reveal">
+        <summary>מה ההבדל בין OrdexAI לקטלוג הזמנות בלינק או לקטלוג של WhatsApp Business?</summary>
+        <div class="ans"><p>בקטלוג, בלינק או בתוך WhatsApp Business, הלקוח צריך לבחור את המוצרים בעצמו, ומי שממשיך לכתוב הודעות נשאר אצלכם להקלדה. OrdexAI נותנת גם דף הזמנה בלינק, אבל קולטת גם הזמנות שנכתבות כרגיל, בטקסט, בהקלטה או בתמונה, ומשייכת אותן למק״טים שלכם. השוואה מלאה ב<a href="whatsapp-orders-guide.html">מדריך</a>.</p></div>
+      </details>
+      <details class="reveal">
+        <summary>איך ההזמנות מגיעות אליי?</summary>
+        <div class="ans"><p>בשעת הקאט-אוף נשלחת אליכם רשימת הזמנות מרוכזת (PDF) לוואטסאפ ולמייל, מקובצת לפי לקוח. צריכים תמונת מצב באמצע היום? שלחו הודעה לבוט וקבלו רשימה עדכנית.</p></div>
+      </details>
+      <details class="reveal">
+        <summary>המידע שלי ושל הלקוחות שלי מוגן?</summary>
+        <div class="ans"><p>OrdexAI פועלת על WhatsApp Business Platform הרשמי של Meta. אנחנו לא מוכרים מידע ולא משתמשים בו לפרסום, וכל מפיץ רואה רק את הלקוחות וההזמנות שלו. כל הפרטים ב<a href="privacy-policy.html">מדיניות הפרטיות</a>.</p></div>
+      </details>
     </div>
   </div>
 </section>
+<!-- ===== /FAQ ===== -->
 </main>
 
 <!-- ===== FOOTER ===== -->
@@ -1062,96 +1033,48 @@
       <img class="brand-logo" src="assets/ordexai-logo.png" alt="OrdexAI" width="77" height="48" loading="lazy">
     </a>
     <div class="footer-links">
-      <a href="#solution"><span data-inline="he">הפתרון</span><span data-inline="en">Solution</span></a>
-      <a href="#features"><span data-inline="he">יכולות</span><span data-inline="en">Features</span></a>
-      <a href="#faq"><span data-inline="he">שאלות נפוצות</span><span data-inline="en">FAQ</span></a>
-      <a href="whatsapp-orders-guide.html"><span data-inline="he">מדריך: הזמנות מוואטסאפ</span><span data-inline="en">Guide: WhatsApp orders</span></a>
-      <a href="#contact"><span data-inline="he">צור קשר</span><span data-inline="en">Contact</span></a>
-      <a href="privacy-policy.html" target="_blank" rel="noopener noreferrer"><span data-inline="he">מדיניות פרטיות</span><span data-inline="en">Privacy Policy</span></a>
-      <a href="accessibility.html" target="_blank" rel="noopener noreferrer"><span data-inline="he">הצהרת נגישות</span><span data-inline="en">Accessibility</span></a>
+      <a href="#how">איך זה עובד</a>
+      <a href="#impact">מה זה משנה</a>
+      <a href="#systems">מערכות</a>
+      <a href="#faq">שאלות נפוצות</a>
+      <a href="whatsapp-orders-guide.html">מדריך: הזמנות מוואטסאפ</a>
+      <a href="privacy-policy.html" target="_blank" rel="noopener noreferrer">מדיניות פרטיות</a>
+      <a href="accessibility.html" target="_blank" rel="noopener noreferrer">הצהרת נגישות</a>
     </div>
   </div>
   <div class="footer-legal">
-    <span><span data-inline="he">© 2026 OrdexAI. כל הזכויות שמורות.</span><span data-inline="en">© 2026 OrdexAI. All rights reserved.</span></span>
-    <span><span data-inline="he">OrdexAI מופעל על ידי לישי שמעון בן שושן</span><span data-inline="en">OrdexAI is operated by Lishai Shimon Ben Shoshan</span></span>
+    <span>© 2026 OrdexAI. כל הזכויות שמורות.</span>
+    <span>OrdexAI מופעל על ידי לישי שמעון בן שושן</span>
   </div>
 </footer>
 
 <!-- Accessibility widget (IS 5568 / WCAG AA) -->
-<div class="a11y" role="region" data-aria-he="נגישות" data-aria-en="Accessibility" aria-label="נגישות">
-  <button type="button" class="a11y-toggle" id="a11yToggle" aria-expanded="false" aria-controls="a11yPanel" data-aria-he="תפריט נגישות" data-aria-en="Accessibility menu" aria-label="תפריט נגישות"><span aria-hidden="true">♿</span></button>
-  <div class="a11y-panel" id="a11yPanel" role="dialog" data-aria-he="הגדרות נגישות" data-aria-en="Accessibility settings" aria-label="הגדרות נגישות" hidden>
-    <div class="a11y-title"><span data-inline="he">נגישות</span><span data-inline="en">Accessibility</span></div>
+<div class="a11y" role="region" aria-label="נגישות">
+  <button type="button" class="a11y-toggle" id="a11yToggle" aria-expanded="false" aria-controls="a11yPanel" aria-label="תפריט נגישות"><span aria-hidden="true">♿</span></button>
+  <div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="הגדרות נגישות" hidden>
+    <div class="a11y-title">נגישות</div>
     <div class="a11y-row">
-      <span><span data-inline="he">גודל טקסט</span><span data-inline="en">Text size</span></span>
+      <span>גודל טקסט</span>
       <div class="a11y-btns">
-        <button type="button" data-a11y="font-dec" data-aria-he="הקטנת טקסט" data-aria-en="Decrease text size" aria-label="הקטנת טקסט">A−</button>
-        <button type="button" data-a11y="font-reset" data-aria-he="איפוס גודל הטקסט" data-aria-en="Reset text size" aria-label="איפוס גודל הטקסט">A</button>
-        <button type="button" data-a11y="font-inc" data-aria-he="הגדלת טקסט" data-aria-en="Increase text size" aria-label="הגדלת טקסט">A+</button>
+        <button type="button" data-a11y="font-dec" aria-label="הקטנת טקסט">A−</button>
+        <button type="button" data-a11y="font-reset" aria-label="איפוס גודל הטקסט">A</button>
+        <button type="button" data-a11y="font-inc" aria-label="הגדלת טקסט">A+</button>
       </div>
     </div>
-    <button type="button" class="a11y-opt" data-a11y="contrast" aria-pressed="false"><span data-inline="he">ניגודיות גבוהה</span><span data-inline="en">High contrast</span></button>
-    <button type="button" class="a11y-opt" data-a11y="motion" aria-pressed="false"><span data-inline="he">עצירת אנימציות</span><span data-inline="en">Stop animations</span></button>
-    <button type="button" class="a11y-opt" data-a11y="links" aria-pressed="false"><span data-inline="he">הדגשת קישורים</span><span data-inline="en">Highlight links</span></button>
-    <a class="a11y-opt" href="accessibility.html"><span data-inline="he">הצהרת נגישות</span><span data-inline="en">Accessibility statement</span></a>
-    <button type="button" class="a11y-opt a11y-reset" data-a11y="reset"><span data-inline="he">איפוס הגדרות</span><span data-inline="en">Reset</span></button>
+    <button type="button" class="a11y-opt" data-a11y="contrast" aria-pressed="false">ניגודיות גבוהה</button>
+    <button type="button" class="a11y-opt" data-a11y="motion" aria-pressed="false">עצירת אנימציות</button>
+    <button type="button" class="a11y-opt" data-a11y="links" aria-pressed="false">הדגשת קישורים</button>
+    <a class="a11y-opt" href="accessibility.html">הצהרת נגישות</a>
+    <button type="button" class="a11y-opt a11y-reset" data-a11y="reset">איפוס הגדרות</button>
   </div>
 </div>
 
 <script>
-/* ===== Language toggle: ?lang=en link > remembered choice > Hebrew ===== */
-const WA_NUMBER = '972556654664';
-const WA_TEXT = {  // first message pre-filled in WhatsApp, so a visitor only has to tap Send
-  he: 'היי, הגעתי מהאתר ואשמח לשמוע על OrdexAI 👋',
-  en: 'Hi! I found OrdexAI through your website and would love to hear more 👋'
-};
-function setLang(lang){
-  // swap only the language class: the a11y widget's classes (hc / no-motion / ul-links) must survive
-  document.body.classList.remove('lang-he', 'lang-en');
-  document.body.classList.add('lang-' + lang);
-  document.documentElement.lang = lang;
-  document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
-  document.title = lang === 'he'
-    ? 'OrdexAI — קליטת הזמנות מוואטסאפ בלי הקלדה ידנית | למפיצים'
-    : 'OrdexAI — WhatsApp order intake with no manual typing | For distributors';
-  document.querySelectorAll('[data-set-lang]').forEach(b=>{
-    const on = b.dataset.setLang === lang;
-    b.classList.toggle('active', on);
-    b.setAttribute('aria-pressed', on ? 'true' : 'false');
-  });
-  // swap input placeholders and accessible names
-  document.querySelectorAll('[data-ph-he]').forEach(el=>{
-    el.placeholder = lang === 'he' ? el.dataset.phHe : el.dataset.phEn;
-  });
-  document.querySelectorAll('[data-aria-he]').forEach(el=>{
-    el.setAttribute('aria-label', lang === 'he' ? el.dataset.ariaHe : el.dataset.ariaEn);
-  });
-  const wa = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(WA_TEXT[lang]);
-  document.querySelectorAll('a[data-wa]').forEach(a=>{ a.href = wa; });
-  // shareable URL (?lang=en) and a canonical URL per language
-  try{
-    const u = new URL(location.href);
-    if(lang === 'en') u.searchParams.set('lang', 'en'); else u.searchParams.delete('lang');
-    history.replaceState(history.state, '', u.pathname + u.search + u.hash);
-  }catch(e){}
-  let canon = document.querySelector('link[rel="canonical"]');
-  if(!canon){ canon = document.createElement('link'); canon.rel = 'canonical'; document.head.appendChild(canon); }
-  canon.href = 'https://www.ordexai.com/' + (lang === 'en' ? '?lang=en' : '');
-  // re-render the hero WhatsApp demo in the selected language
-  if(window.OrdexChat) window.OrdexChat.setLang(lang);
-}
-// ?lang= link > the visitor's own earlier choice > device-based pick from the <head> script > Hebrew
-function initialLang(){
-  try{ const q = new URLSearchParams(location.search).get('lang'); if(q === 'en' || q === 'he') return q; }catch(e){}
-  try{ const s = localStorage.getItem('ordex_lang'); if(s === 'en' || s === 'he') return s; }catch(e){}
-  if(window.__ordexAutoLang === 'en') return 'en';
-  return 'he';
-}
-// Only an explicit click is remembered, so the automatic pick keeps working until the visitor chooses.
+/* ===== Hebrew-only build. The demo player reads its language from <body class="lang-he">.
+   The ES link and the עב button remember an explicit choice for the language script in <head>. ===== */
 const rememberLang = l=>{ try{ localStorage.setItem('ordex_lang', l); }catch(e){} };
-document.querySelectorAll('[data-set-lang]').forEach(b=>b.addEventListener('click',()=>{ rememberLang(b.dataset.setLang); setLang(b.dataset.setLang); }));
+document.querySelectorAll('[data-set-lang]').forEach(b=>b.addEventListener('click',()=>rememberLang(b.dataset.setLang)));
 document.querySelectorAll('[data-pick]').forEach(a=>a.addEventListener('click',()=>rememberLang(a.dataset.pick)));
-setLang(initialLang());
 
 /* ===== Scroll reveal ===== */
 const io = new IntersectionObserver((entries)=>{
@@ -1159,7 +1082,7 @@ const io = new IntersectionObserver((entries)=>{
 },{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-/* ===== Contact form → email to info@ordexai.com (FormSubmit AJAX) ===== */
+/* ===== Micro-form → email to info@ordexai.com (FormSubmit AJAX) ===== */
 const form = document.getElementById('contactForm');
 const statusBox = document.getElementById('formStatus');
 const submitBtn = document.getElementById('cf-submit');
@@ -1176,24 +1099,23 @@ form.addEventListener('change', e=>e.target.removeAttribute('aria-invalid'));
 
 form.addEventListener('submit', async (ev)=>{
   ev.preventDefault();
-  const isHe = document.body.classList.contains('lang-he');
   if(form._honey.value){ return; } // spam bot filled honeypot
   const missing = [form.name, form.phone].filter(f=>!f.value.trim());
   if(missing.length){
     markInvalid(missing);
-    showStatus('err', isHe ? 'אנא מלאו שם וטלפון.' : 'Please fill in your name and phone.');
+    showStatus('err', 'אנא מלאו שם וטלפון.');
     return;
   }
   // Privacy-policy consent is required before any personal data leaves the browser (תיקון 13).
   if(!form.privacy_consent.checked){
     markInvalid([form.privacy_consent]);
-    showStatus('err', isHe ? 'יש לאשר את מדיניות הפרטיות כדי לשלוח.' : 'Please accept the Privacy Policy to send.');
+    showStatus('err', 'יש לאשר את מדיניות הפרטיות כדי לשלוח.');
     return;
   }
   markInvalid([]);
   const original = submitBtn.innerHTML;
   submitBtn.disabled = true;
-  submitBtn.innerHTML = isHe ? 'שולח…' : 'Sending…';
+  submitBtn.innerHTML = 'שולח…';
   statusBox.className = 'form-status';
 
   const payload = {};
@@ -1208,25 +1130,20 @@ form.addEventListener('submit', async (ev)=>{
     const data = await res.json().catch(()=>({}));
     if(res.ok && (data.success === 'true' || data.success === true)){
       form.reset();
-      showStatus('ok', isHe ? '✓ תודה! ההודעה נשלחה. נחזור אליכם בהקדם.' : '✓ Thanks! Your message was sent. We\'ll be in touch soon.');
+      showStatus('ok', '✓ תודה! קיבלנו את הפרטים ונחזור אליכם בהקדם.');
     }else{
       throw new Error('formsubmit');
     }
   }catch(err){
     // graceful fallback → open the user's mail client pre-filled
-    const subj = encodeURIComponent(isHe ? 'פנייה מאתר OrdexAI' : 'Enquiry from OrdexAI site');
+    const subj = encodeURIComponent('בקשה לחזרה מאתר OrdexAI');
     const body = encodeURIComponent(
-      (isHe ? 'שם: ' : 'Name: ') + form.name.value + '\n' +
-      (isHe ? 'עסק: ' : 'Business: ') + form.business.value + '\n' +
-      (isHe ? 'טלפון: ' : 'Phone: ') + form.phone.value + '\n' +
-      (isHe ? 'אימייל: ' : 'Email: ') + form.email.value + '\n\n' +
-      form.message.value
+      'שם: ' + form.name.value + '\n' +
+      'עסק: ' + form.business.value + '\n' +
+      'טלפון: ' + form.phone.value
     );
     const mailto = 'mailto:' + TARGET_EMAIL + '?subject=' + subj + '&body=' + body;
-    showStatus('err',
-      (isHe ? 'השליחה נכשלה. ' : 'Sending failed. ') +
-      '<a href="' + mailto + '">' + (isHe ? 'שלחו לנו מייל ישירות' : 'email us directly') + '</a>'
-    );
+    showStatus('err', 'השליחה נכשלה. <a href="' + mailto + '">שלחו לנו מייל ישירות</a>');
   }finally{
     submitBtn.disabled = false;
     submitBtn.innerHTML = original;
