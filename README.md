@@ -7,7 +7,8 @@ Static GitHub Pages site served at **`www.ordexai.com`** (repo `lishaibs/ordexai
 |------|---------|
 | `index.html` | Home / landing page (HE + EN toggle, animated WhatsApp demo, FAQ, contact form) |
 | `whatsapp-orders-guide.html` | Hebrew guide "איך מפסיקים להקליד הזמנות מוואטסאפ: 3 דרכים" (catalog link vs. WhatsApp Business catalog vs. AI), written to be cited by search engines and AI answers |
-| `es/index.html` | Spanish (Rioplatense, voseo) home page, for Spanish speakers anywhere; no country names in the copy. **Generated from `index.html`**: run `node _tools/build-es.js` after any home-page change (same structure, CSS and script; Spanish head, copy dictionary, LTR overrides). The build fails if any Hebrew is left, so a new Hebrew string must get a Spanish entry |
+| `en/index.html` | English home page (US spelling), no film for now. **Generated from `index.html`** by `node _tools/build-langs.js` |
+| `es/index.html` | Spanish (Rioplatense, voseo) home page, for Spanish speakers anywhere; no country names in the copy. **Generated from `index.html`** by `node _tools/build-langs.js` |
 | `es/accesibilidad.html` | Spanish accessibility statement |
 | `es/privacidad.html` | Spanish privacy policy (contact form + service; Argentina, Uruguay, EU/Spain, Mexico, Chile, Colombia, Peru). AI-drafted: lawyer review pending |
 | `privacy-policy.html` | Privacy policy (Privacy Protection Law 1981 + Amendment 13) |
@@ -20,14 +21,14 @@ Static GitHub Pages site served at **`www.ordexai.com`** (repo `lishaibs/ordexai
 | `robots.txt`, `sitemap.xml` | Crawl hints; the sitemap lists both language versions of the home page |
 | `CNAME` | Custom domain → `www.ordexai.com` (do not change without updating DNS) |
 | `_tools/faq-jsonld.js` | Regenerates the home page structured data from the visible FAQ. Not published (Jekyll skips `_` folders) |
-| `_tools/build-es.js` | Builds `es/index.html` from `index.html` (not published) |
-| `_tools/scene.js` | The before → after order scene (four orders, both languages). `node _tools/scene.js` rewrites it in `index.html`; `build-es.js` uses it for Spanish |
-| `assets/home/` | Home media: films (`ordexai-film.mp4` Hebrew, `ordexai-film.es.mp4` Spanish), captions (`.he.vtt`, `.es.vtt`), posters, hero note photos |
+| `_tools/build-langs.js`, `_tools/lang/en.js`, `_tools/lang/es.js` | Build `en/` and `es/` from `index.html` (same structure, CSS and script; per-language head, Hebrew → target dictionary, UI strings, a11y menu, form, media). Run `node _tools/build-langs.js` after ANY change to `index.html`. The build fails if Hebrew is left anywhere but the language menu, so a new Hebrew string needs an entry in each `lang/*.js` |
+| `_tools/scene.js` | The before → after order scene (four orders; Hebrew, English, Spanish data). `node _tools/scene.js` rewrites it in `index.html`; `build-langs.js` uses it for the other pages |
+| `assets/home/` | Home media: films (`ordexai-film.mp4` Hebrew, `ordexai-film.es.mp4` Spanish), captions (`.he.vtt`, `.es.vtt`), posters, hero note photos (`note-he`, `note-es`, `note-en` once it exists). `assets/og-image-en.jpg` is the English link preview |
 
 All pages are **self-contained**: inline CSS/JS, no build step, no external runtime. The only third-party requests are Google Fonts (CSS + font files) and FormSubmit.co (contact-form submissions to `info@ordexai.com`), both allow-listed in each page's Content-Security-Policy.
 
 ## How the home page works
-- **Language:** Hebrew `/` and Spanish `/es/` (English is not published yet). On a first visit to `/`, a small script in `<head>` picks one from the visitor's **device** (time zone + browser language: Spanish-speaking South America or a Spanish browser → `/es/`, otherwise Hebrew). There's no IP lookup or third-party call. A choice made in the globe language menu is stored (`localStorage` key `ordex_lang`) and always wins, `?lang=` links are respected, `/es/` never redirects, and crawlers always get the Hebrew page, so search engines index both versions through hreflang.
+- **Language:** Hebrew `/`, English `/en/`, Spanish `/es/`, all with the same globe language menu. On a first visit to `/`, a small script in `<head>` picks one from the visitor's **device** (time zone + browser language): Israel → Hebrew, Spanish-speaking South America or a Spanish browser → `/es/`, elsewhere → `/en/`. There's no IP lookup or third-party call. A choice made in the language menu is stored (`localStorage` key `ordex_lang`) and always wins; `?lang=en` / `?lang=es` links (including the old `/?lang=en` address) go to `/en/` or `/es/`; `/en/` and `/es/` never redirect; crawlers are never redirected from `/`, so search engines index every version through hreflang.
 - **Phone format:** Hebrew shows `055-665-4664`; English and Spanish show `+972 55-665-4664`.
 - **WhatsApp buttons:** every link marked `data-wa` is rebuilt per language with a pre-filled first message (`WA_TEXT` in the script). The number is `WA_NUMBER`.
 - **Demos:** the hero phone (text, voice, photo → order received) plays once; the before → after scene processes four orders one by one and loops, with a pause button. OS "reduce motion" keeps them playing as fades only (the thinking ring still turns); the a11y menu's "stop animations" shows the final frames. The scene timeline engine is the `Scene()` function in the page script; pages without JS show the final frame.
