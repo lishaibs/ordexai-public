@@ -202,6 +202,6 @@ module.exports = { render, inject };
 
 if (require.main === module) {
   const file = path.join(__dirname, '..', 'index.html');
-  fs.writeFileSync(file, inject(fs.readFileSync(file, 'utf8'), 'he'));
+  fs.writeFileSync(file, inject(fs.readFileSync(file, 'utf8').replace(/\r\n/g, '\n'), 'he'));   // git may check files out with CRLF
   console.log('index.html: scene regenerated (he)');
 }

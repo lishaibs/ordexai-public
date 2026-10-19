@@ -10,7 +10,7 @@ const path = require('path');
 const scene = require('./scene');
 const SITE = path.join(__dirname, '..');
 const SITE_URL = 'https://www.ordexai.com/';
-const home = fs.readFileSync(path.join(SITE, 'index.html'), 'utf8');
+const home = fs.readFileSync(path.join(SITE, 'index.html'), 'utf8').replace(/\r\n/g, '\n');   // git may check files out with CRLF
 
 const take = (s, a, b) => { const i = s.indexOf(a), j = s.indexOf(b, i + a.length); if (i < 0 || j < 0) throw new Error('marker not found: ' + a.slice(0, 50)); return s.slice(i, j + b.length); };
 function rep(s, a, b, all) { if (!s.includes(a)) throw new Error('not found: ' + a.slice(0, 90)); return all ? s.split(a).join(b) : s.replace(a, b); }
