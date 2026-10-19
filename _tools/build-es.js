@@ -178,6 +178,7 @@ h1,h2,h3{font-family:'Plus Jakarta Sans','Heebo',sans-serif}
 .legal-line{margin-top:.6rem;font-size:.72rem;color:var(--ink3);line-height:1.5}
 .ph-who b{font-size:12.5px}
 .ph-ic{gap:10px}
+@media (max-width:560px){ .ph-head{gap:6px;padding:0 8px 4px} .ph-ic{gap:8px} .ph-ic svg{width:15px;height:15px} .ph-who b{font-size:12px} }   /* full customer name in the narrow phone */
 .erp-tbl .c-src{width:80px}
 .example-note{text-align:center;margin-top:.8rem;color:var(--ink3);font-size:.82rem}
 `;
