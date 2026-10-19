@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <!-- Spanish privacy policy for the Spanish page and its contact form. AI-drafted (October 2026): must be reviewed
+       by a lawyer before launch, in particular sections 7 (international transfers), 8 (retention) and 11 (by country). -->
+  <title>Política de privacidad — OrdexAI</title>
+  <meta name="description" content="Política de privacidad de OrdexAI: qué datos tratamos, para qué, con qué proveedores, cómo ejercer tus derechos y qué dice la ley de tu país (Argentina, Uruguay, España, México, Chile, Colombia, Perú).">
+  <meta name="theme-color" content="#0c3b2b">
+  <link rel="canonical" href="https://www.ordexai.com/es/privacidad.html">
+  <link rel="alternate" hreflang="es" href="https://www.ordexai.com/es/privacidad.html">
+  <link rel="alternate" hreflang="he" href="https://www.ordexai.com/privacy-policy.html">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Brand font loads without blocking the first paint -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap"></noscript>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --wa:#25d366; --brand:#0c3b2b; --brand2:#082419;
+      --ink:#0d1f18; --ink2:#3f574c; --ink3:#536b60;
+      --teal-ink:#0f7166; --on-wa:#052a1c;
+      --bg:#f5f8f6; --bg-tint:#edf5f0; --card:#fff; --border:#dde8e2;
+      --amber:#e8a53a; --amber-soft:#fdf4e3;
+    }
+    body{font-family:'Heebo',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.75}
+    a{color:var(--teal-ink)}
+    a:focus-visible,.tbl-wrap:focus-visible{outline:3px solid var(--wa);outline-offset:2px;border-radius:5px}
+    .skip{position:absolute;top:-60px;left:12px;background:var(--brand);color:#fff;padding:10px 16px;border-radius:10px;font-weight:700;text-decoration:none;z-index:10}
+    .skip:focus{top:12px}
+    .top{background:linear-gradient(160deg,#12503a,var(--brand) 60%,var(--brand2));padding:1.1rem 1.5rem}
+    .top-inner{max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+    .brand img{height:48px;width:auto;display:block;filter:drop-shadow(0 2px 7px rgba(0,0,0,.3))}
+    .other-lang{color:rgba(255,255,255,.88);font-size:.85rem;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,.25);border-radius:50px;padding:.3rem .85rem}
+    .other-lang:hover{background:rgba(255,255,255,.1)}
+    .container{max-width:860px;margin:2.6rem auto 3rem;padding:0 1.5rem}
+    .policy-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2.8rem;box-shadow:0 4px 24px rgba(12,59,43,.07)}
+    h1{font-size:1.8rem;font-weight:800;color:var(--brand);margin-bottom:.3rem;letter-spacing:-.3px}
+    .updated{font-size:.85rem;color:var(--ink3);margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+    h2{font-size:1.1rem;color:var(--brand);margin:1.9rem 0 .6rem;font-weight:800}
+    h3{font-size:.98rem;color:var(--brand);margin:1.2rem 0 .4rem;font-weight:800}
+    p{color:var(--ink2);font-size:.95rem;margin-bottom:.8rem}
+    ul{padding-inline-start:1.5rem;margin-bottom:.8rem}
+    li{color:var(--ink2);font-size:.95rem;margin-bottom:.4rem}
+    strong{color:var(--ink)}
+    .highlight{background:#f0f9f4;border-inline-start:3px solid var(--wa);padding:.8rem 1rem;border-radius:8px;margin:1rem 0;font-size:.9rem;color:var(--ink)}
+    .legal{background:var(--amber-soft);border-inline-start:3px solid var(--amber);padding:.8rem 1rem;border-radius:8px;margin:1rem 0;font-size:.88rem;color:var(--ink)}
+    .tbl-wrap{overflow-x:auto}
+    table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.88rem}
+    th{background:var(--bg-tint);color:var(--brand);font-weight:700;padding:.6rem .8rem;text-align:start;border:1px solid var(--border)}
+    td{padding:.6rem .8rem;border:1px solid var(--border);color:var(--ink2);vertical-align:top}
+    tr:nth-child(even) td{background:#fafcfb}
+    .contact-box{background:linear-gradient(160deg,#12503a,var(--brand) 60%,var(--brand2));color:#fff;border-radius:14px;padding:1.5rem;margin-top:2rem;text-align:center}
+    .contact-box p{color:rgba(255,255,255,.85)!important}
+    .contact-box a{color:var(--wa);text-decoration:none;font-weight:700}
+    .contact-box a:hover{text-decoration:underline}
+    footer{text-align:center;padding:0 1.5rem 2.5rem;color:var(--ink3);font-size:.82rem}
+    footer a{color:var(--teal-ink);text-decoration:underline;font-weight:600}
+    @media(max-width:600px){.policy-card{padding:1.6rem 1.25rem}.top{padding:.9rem 1rem}.brand img{height:42px}}
+  </style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido principal</a>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="./" aria-label="OrdexAI — Inicio"><img src="../assets/ordexai-logo.png" alt="OrdexAI" width="77" height="48"></a>
+    <a class="other-lang" href="../privacy-policy.html" hreflang="he">Otros idiomas</a>
+  </div>
+</header>
+
+<main class="container" id="main">
+  <div class="policy-card">
+    <h1>Política de privacidad</h1>
+    <p class="updated">Última actualización: 19 de octubre de 2026 · OrdexAI, operado por Lishai Shimon Ben Shoshan (Israel) · Contacto: <a href="mailto:info@ordexai.com">info@ordexai.com</a></p>
+
+    <h2>1. Quiénes somos y a quién se aplica esta política</h2>
+    <p>OrdexAI es un sistema B2B para gestionar pedidos por WhatsApp. Los clientes de una distribuidora mandan sus pedidos como siempre, en texto, audio o foto, y OrdexAI los entiende con inteligencia artificial, los asocia a los códigos del catálogo de la distribuidora y los carga en su sistema.</p>
+    <p>Esta política se aplica a:</p>
+    <ul>
+      <li><strong>Distribuidoras</strong>: empresas que contratan OrdexAI para recibir pedidos.</li>
+      <li><strong>Clientes de la distribuidora</strong>: negocios que hacen pedidos por WhatsApp o por la página de pedidos.</li>
+      <li><strong>Visitantes del sitio</strong>: quienes navegan ordexai.com o nos dejan sus datos en el formulario de contacto.</li>
+    </ul>
+    <p><strong>Responsable del tratamiento.</strong> Para los datos del sitio y del formulario de contacto, el responsable es OrdexAI (Lishai Shimon Ben Shoshan, Israel, <a href="mailto:info@ordexai.com">info@ordexai.com</a>). Para los datos de los clientes de una distribuidora, la distribuidora es la responsable y OrdexAI actúa como encargado del tratamiento, siguiendo sus instrucciones.</p>
+
+    <h2>2. Qué datos tratamos</h2>
+    <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabla de datos que tratamos">
+    <table>
+      <tr><th>Dato</th><th>Detalle</th><th>¿Se guarda?</th></tr>
+      <tr><td>Formulario de contacto del sitio</td><td>Nombre y apellido, empresa, WhatsApp o teléfono, país y tus consentimientos, cuando enviás el formulario</td><td>Sí</td></tr>
+      <tr><td>Número de teléfono</td><td>Se registra cuando un cliente escribe por primera vez al número de pedidos</td><td>Sí</td></tr>
+      <tr><td>Datos del negocio</td><td>Nombre del negocio, dirección y datos de contacto, cargados por el cliente o la distribuidora</td><td>Sí</td></tr>
+      <tr><td>Contenido de los pedidos</td><td>Texto del mensaje, productos, cantidades y nivel de certeza de cada renglón</td><td>Sí</td></tr>
+      <tr><td>Nombres propios de productos</td><td>Cómo llama cada cliente a ciertos productos; se aprenden para entender mejor los pedidos siguientes</td><td>Sí</td></tr>
+      <tr><td>Audios</td><td>Se envían a un proveedor de transcripción solo para pasarlos a texto</td><td>No, se borran después de transcribirlos</td></tr>
+      <tr><td>Fotos y formularios escaneados</td><td>Se envían a un proveedor de reconocimiento de texto solo para leerlos</td><td>No, se borran después de procesarlos</td></tr>
+      <tr><td>Página de pedidos</td><td>Pedidos hechos en order.ordexai.com: productos, cantidades y productos no encontrados</td><td>Sí</td></tr>
+      <tr><td>Datos técnicos</td><td>Dirección IP y tipo de navegador, al visitar ordexai.com</td><td>De forma temporal</td></tr>
+    </table>
+    </div>
+    <p>No pedimos datos sensibles (salud, origen étnico, opiniones políticas, etc.). Te pedimos que no los incluyas en el formulario.</p>
+
+    <h2>3. Para qué usamos los datos y con qué base</h2>
+    <ul>
+      <li><strong>Responder tu consulta del formulario</strong> y coordinar una demostración: con tu consentimiento, que podés retirar en cualquier momento, y como paso previo a un posible contrato.</li>
+      <li><strong>Prestar el servicio a las distribuidoras</strong> (recibir, entender, confirmar y cargar pedidos): en cumplimiento del contrato con la distribuidora.</li>
+      <li><strong>Seguridad y prevención de abusos</strong> (por ejemplo, límites de mensajes y verificación de firmas): por nuestro interés legítimo en proteger el servicio.</li>
+      <li><strong>Cumplir obligaciones legales</strong>, cuando corresponda.</li>
+    </ul>
+    <p>No vendemos datos personales ni los usamos para publicidad. Solo te enviaríamos comunicaciones comerciales si nos das un consentimiento aparte y explícito, que podés retirar cuando quieras. OrdexAI no toma decisiones automatizadas que produzcan efectos jurídicos sobre las personas: la inteligencia artificial solo interpreta pedidos, y el cliente confirma cada pedido antes de que se cargue.</p>
+
+    <h2>4. Cookies y seguimiento</h2>
+    <p>El sitio de OrdexAI no usa cookies de publicidad, píxeles ni herramientas de seguimiento (como Google Analytics o Meta Pixel). Usamos el almacenamiento local del navegador (localStorage) solo para funciones del sitio, por ejemplo recordar tu idioma o tus preferencias de accesibilidad. Algunas páginas cargan tipografías de Google Fonts, por lo que tu dirección IP puede llegar a Google al cargar la página.</p>
+
+    <h2>5. Cómo se procesan los pedidos</h2>
+    <ul>
+      <li><strong>Texto</strong>: el mensaje se envía a Claude (Anthropic) para interpretar el lenguaje y extraer productos y cantidades.</li>
+      <li><strong>Audio</strong>: el audio se envía a Soniox para transcribirlo; el texto resultante se procesa como un pedido escrito. El audio original no se guarda.</li>
+      <li><strong>Foto o formulario</strong>: la imagen se envía a Azure Document Intelligence para leer el texto, y ese texto se procesa como un pedido escrito. La imagen original no se guarda.</li>
+    </ul>
+    <p>El pedido confirmado se guarda en la base de datos y se carga en el sistema de la distribuidora, o se le envía como lista en PDF, Excel o CSV.</p>
+
+    <h2>6. Con quién compartimos datos</h2>
+    <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabla de proveedores">
+    <table>
+      <tr><th>Quién</th><th>Para qué</th><th>Qué recibe</th></tr>
+      <tr><td>FormSubmit.co</td><td>Procesa el formulario de contacto y lo reenvía a nuestro correo</td><td>Los datos del formulario</td></tr>
+      <tr><td>Zoho Mail</td><td>Nuestro correo electrónico (info@ordexai.com)</td><td>Los mensajes que recibimos</td></tr>
+      <tr><td>Meta / WhatsApp</td><td>Infraestructura de mensajería</td><td>Contenido de los mensajes y números de teléfono</td></tr>
+      <tr><td>Anthropic (Claude)</td><td>Interpretación de pedidos</td><td>Texto del pedido y catálogo de productos</td></tr>
+      <tr><td>Soniox</td><td>Transcripción de audios</td><td>Solo el audio, que no se guarda después</td></tr>
+      <tr><td>Microsoft (Azure Document Intelligence)</td><td>Lectura de texto en fotos y formularios</td><td>Solo la imagen, que no se guarda después</td></tr>
+      <tr><td>Amazon Web Services</td><td>Servidores y envío de correos</td><td>Datos operativos y listas de pedidos</td></tr>
+      <tr><td>Supabase</td><td>Base de datos protegida (alojada en Frankfurt, Unión Europea)</td><td>Datos de pedidos y clientes</td></tr>
+      <tr><td>Google Fonts</td><td>Tipografías del sitio</td><td>Solo la dirección IP, al cargar la página</td></tr>
+      <tr><td>La distribuidora</td><td>Recibir y gestionar los pedidos de sus clientes</td><td>Los pedidos de sus propios clientes</td></tr>
+      <tr><td>Autoridades</td><td>Cumplimiento legal</td><td>Solo lo que exija la ley</td></tr>
+    </table>
+    </div>
+
+    <h2>7. Transferencias internacionales</h2>
+    <p>OrdexAI se opera desde Israel, la base de datos está en la Unión Europea (Frankfurt) y algunos proveedores (por ejemplo Anthropic, Soniox, FormSubmit, Meta y Google) procesan datos en los Estados Unidos. Por eso tus datos pueden salir de tu país.</p>
+    <ul>
+      <li>La Unión Europea e Israel tienen un nivel de protección reconocido como adecuado por Argentina (Disposición DNPDP 60-E/2016 y Resolución AAIP 34/2019; en el caso de Israel, para datos con tratamiento automatizado), y la Comisión Europea reconoce como adecuado a Israel.</li>
+      <li>Para los países que no tienen ese reconocimiento, como los Estados Unidos, la transferencia se basa en tu consentimiento, que nos das al enviar el formulario, y en las garantías contractuales que ofrecen nuestros proveedores cuando están disponibles.</li>
+    </ul>
+
+    <h2>8. Cuánto tiempo guardamos los datos</h2>
+    <ul>
+      <li><strong>Formulario de contacto</strong>: el tiempo necesario para responderte y, si empezamos a trabajar juntos, mientras dure la relación. Si no avanzamos, los borramos a más tardar 24 meses después del último contacto.</li>
+      <li><strong>Pedidos</strong>: mientras la distribuidora use el servicio y lo necesite para su operación, o hasta que pida borrarlos.</li>
+      <li><strong>Audios e imágenes</strong>: no se guardan; se procesan y se borran.</li>
+    </ul>
+
+    <h2>9. Seguridad</h2>
+    <p>Aplicamos medidas como cifrado de las comunicaciones (HTTPS/TLS), verificación de firma (HMAC) en todos los mensajes de WhatsApp, separación de datos por organización (Row-Level Security) y claves protegidas en AWS. Ningún sistema es 100% seguro, pero si ocurriera un incidente de seguridad que afecte tus datos, lo notificaremos a quien corresponda según la ley aplicable.</p>
+
+    <h2>10. Tus derechos</h2>
+    <p>Podés pedirnos, en forma gratuita:</p>
+    <ul>
+      <li><strong>Acceso</strong>: saber qué datos tuyos tenemos.</li>
+      <li><strong>Rectificación y actualización</strong> de datos incorrectos o incompletos.</li>
+      <li><strong>Supresión</strong> (cancelación) de tus datos.</li>
+      <li><strong>Oposición</strong> a un tratamiento, y retirar tu consentimiento en cualquier momento.</li>
+      <li>Donde la ley lo prevé (por ejemplo, en la Unión Europea): <strong>portabilidad</strong> y <strong>limitación</strong> del tratamiento.</li>
+    </ul>
+    <p>Escribinos a <a href="mailto:info@ordexai.com">info@ordexai.com</a>. Si sos cliente de una distribuidora, también podés pedirle a ella que deje de enviar tus datos a OrdexAI, o escribir STOP en el chat de WhatsApp de pedidos. Respondemos dentro de los plazos de la ley aplicable; por ejemplo, 10 días corridos para el acceso en Argentina, 5 días hábiles en Uruguay y un mes en la Unión Europea.</p>
+
+    <h2>11. Información según tu país</h2>
+    <h3>Argentina</h3>
+    <p>Aplica la Ley N° 25.326 de Protección de los Datos Personales y su reglamentación.</p>
+    <div class="legal">
+      <p>El titular de los datos personales tiene la facultad de ejercer el derecho de acceso a los mismos en forma gratuita a intervalos no inferiores a seis meses, salvo que se acredite un interés legítimo al efecto, conforme lo establecido en el artículo 14, inciso 3 de la Ley N° 25.326.</p>
+      <p>La AGENCIA DE ACCESO A LA INFORMACIÓN PÚBLICA, en su carácter de Órgano de Control de la Ley N° 25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes resulten afectados en sus derechos por incumplimiento de las normas vigentes en materia de protección de datos personales.</p>
+    </div>
+    <h3>Uruguay</h3>
+    <p>Aplica la Ley N° 18.331 de Protección de Datos Personales, también a responsables ubicados en el exterior que ofrecen servicios a personas en Uruguay (artículo 37 de la Ley N° 19.670). Podés presentar un reclamo ante la Unidad Reguladora y de Control de Datos Personales (URCDP).</p>
+    <h3>España y Unión Europea</h3>
+    <p>Aplican el Reglamento General de Protección de Datos (RGPD) y, en España, la Ley Orgánica 3/2018 (LOPDGDD). Las bases legales son las del punto 3. Podés presentar una reclamación ante la Agencia Española de Protección de Datos (aepd.es) o ante la autoridad de tu país.</p>
+    <h3>México</h3>
+    <p>Aplica la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (DOF, 20 de marzo de 2025). Esta política es nuestro aviso de privacidad integral. Podés ejercer tus derechos de acceso, rectificación, cancelación y oposición (ARCO) escribiendo a <a href="mailto:info@ordexai.com">info@ordexai.com</a>. La autoridad competente es la Secretaría Anticorrupción y Buen Gobierno.</p>
+    <h3>Chile</h3>
+    <p>Aplica la Ley N° 19.628 sobre protección de la vida privada. Desde la entrada en vigencia de la Ley N° 21.719, prevista para el 1 de diciembre de 2026, también podrás acudir a la Agencia de Protección de Datos Personales.</p>
+    <h3>Colombia y Perú</h3>
+    <p>En Colombia aplica la Ley 1581 de 2012 (autoridad: Superintendencia de Industria y Comercio). En Perú aplica la Ley N° 29733 (autoridad: Autoridad Nacional de Protección de Datos Personales).</p>
+    <h3>Otros países</h3>
+    <p>Si tu país tiene otra ley de protección de datos, también respetamos los derechos que esa ley te reconoce.</p>
+
+    <h2>12. Cambios en esta política</h2>
+    <p>Podemos actualizar esta política. Publicaremos los cambios importantes en esta página, y entrarán en vigencia 14 días después de su publicación.</p>
+
+    <div class="contact-box">
+      <p><strong style="color:#fff">¿Preguntas o pedidos sobre tus datos?</strong></p>
+      <p>Responsable de privacidad: Lishai Shimon Ben Shoshan</p>
+      <p><a href="mailto:info@ordexai.com">info@ordexai.com</a></p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 OrdexAI · operado por Lishai Shimon Ben Shoshan ·
+  <a href="./">Volver al inicio</a> ·
+  <a href="accesibilidad.html">Declaración de accesibilidad</a>
+</footer>
+</body>
+</html>

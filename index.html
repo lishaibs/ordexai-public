@@ -567,7 +567,7 @@ body.ul-links a{text-decoration:underline!important}
 .anim .toast:not(.on){opacity:0;transform:translateY(14px)}
 /* OS "reduce motion": the scenes still play once, opacity only (LI's rule, 2026-10-08).
    No translate/scale, no light sweep, no ring pulses, no row flash, no desaturation.
-   The a11y menu's "עצירת אנימציות" (body.no-motion) shows the final frame at once. */
+   The a11y menu's "stop animations" (body.no-motion) shows the final frame at once. */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .hero *,.hero *::before,.hero *::after,.ba2 *,.ba2 *::before,.ba2 *::after{animation:none!important}
@@ -1062,8 +1062,22 @@ body.no-motion .reveal{opacity:1!important;transform:none!important}
 </div>
 
 <script>
-/* ===== Hebrew-only build. The demo player reads its language from <body class="lang-he">.
-   The ES link and the עב button remember an explicit choice for the language script in <head>. ===== */
+/* ===== Language: this script is shared with es/index.html (built by _tools/build-es.js).
+   The language menu remembers an explicit choice for the language script in <head>. ===== */
+
+/* ===== UI strings: the only language-specific part of this script.
+   _tools/build-es.js swaps this block for the Spanish one; keep the keys in sync. ===== */
+const UI = {
+  needNamePhone: 'אנא מלאו שם וטלפון.',
+  needConsent: 'יש לאשר את מדיניות הפרטיות כדי לשלוח.',
+  sending: 'שולח…',
+  sent: '✓ תודה! קיבלנו את הפרטים ונחזור אליכם בהקדם.',
+  mailSubject: 'בקשה לחזרה מאתר OrdexAI',
+  mailName: 'שם: ', mailBusiness: 'עסק: ', mailPhone: 'טלפון: ', mailCountry: 'מדינה: ',
+  sendFailed: 'השליחה נכשלה.', mailUs: 'שלחו לנו מייל ישירות',
+  pause: 'עצירה', play: 'הפעלה', demoName: 'הדגמת לפני ואחרי'
+};
+/* ===== /UI strings ===== */
 const rememberLang = l=>{ try{ localStorage.setItem('ordex_lang', l); }catch(e){} };
 document.querySelectorAll('[data-set-lang]').forEach(b=>b.addEventListener('click',()=>rememberLang(b.dataset.setLang)));
 document.querySelectorAll('[data-pick]').forEach(a=>a.addEventListener('click',()=>rememberLang(a.dataset.pick)));
@@ -1112,19 +1126,19 @@ form.addEventListener('submit', async (ev)=>{
   const missing = [form.name, form.phone].filter(f=>!f.value.trim());
   if(missing.length){
     markInvalid(missing);
-    showStatus('err', 'אנא מלאו שם וטלפון.');
+    showStatus('err', UI.needNamePhone);
     return;
   }
-  // Privacy-policy consent is required before any personal data leaves the browser (תיקון 13).
+  // Privacy-policy consent is required before any personal data leaves the browser (Israel: Amendment 13; ES page: local laws).
   if(!form.privacy_consent.checked){
     markInvalid([form.privacy_consent]);
-    showStatus('err', 'יש לאשר את מדיניות הפרטיות כדי לשלוח.');
+    showStatus('err', UI.needConsent);
     return;
   }
   markInvalid([]);
   const original = submitBtn.innerHTML;
   submitBtn.disabled = true;
-  submitBtn.innerHTML = 'שולח…';
+  submitBtn.innerHTML = UI.sending;
   statusBox.className = 'form-status';
 
   const payload = {};
@@ -1139,20 +1153,21 @@ form.addEventListener('submit', async (ev)=>{
     const data = await res.json().catch(()=>({}));
     if(res.ok && (data.success === 'true' || data.success === true)){
       form.reset();
-      showStatus('ok', '✓ תודה! קיבלנו את הפרטים ונחזור אליכם בהקדם.');
+      showStatus('ok', UI.sent);
     }else{
       throw new Error('formsubmit');
     }
   }catch(err){
     // graceful fallback → open the user's mail client pre-filled
-    const subj = encodeURIComponent('בקשה לחזרה מאתר OrdexAI');
+    const subj = encodeURIComponent(UI.mailSubject);
     const body = encodeURIComponent(
-      'שם: ' + form.name.value + '\n' +
-      'עסק: ' + form.business.value + '\n' +
-      'טלפון: ' + form.phone.value
+      UI.mailName + form.name.value + '\n' +
+      UI.mailBusiness + form.business.value + '\n' +
+      UI.mailPhone + form.phone.value +
+      (form.country ? '\n' + UI.mailCountry + form.country.value : '')
     );
     const mailto = 'mailto:' + TARGET_EMAIL + '?subject=' + subj + '&body=' + body;
-    showStatus('err', 'השליחה נכשלה. <a href="' + mailto + '">שלחו לנו מייל ישירות</a>');
+    showStatus('err', UI.sendFailed + ' <a href="' + mailto + '">' + UI.mailUs + '</a>');
   }finally{
     submitBtn.disabled = false;
     submitBtn.innerHTML = original;
@@ -1168,11 +1183,11 @@ function showStatus(type, html){
 (function(){
   document.documentElement.lang='he';
   /* OS reduce-motion still plays the scenes (opacity only, in CSS). Only the a11y menu's
-     "עצירת אנימציות" (body.no-motion) shows the final frame. */
+     "stop animations" (body.no-motion) shows the final frame. */
   function still(){return document.body.classList.contains('no-motion');}
   var scenes=[], live=[];
 
-  /* tomorrow's date in the ERP window, to match "למחר" in the message */
+  /* tomorrow's date in the ERP window, to match "tomorrow" in the message */
   try{var d=new Date();d.setDate(d.getDate()+1);var p2=function(n){return(n<10?'0':'')+n};
     document.querySelectorAll('.erp-date').forEach(function(e){e.textContent=p2(d.getDate())+'/'+p2(d.getMonth()+1)+'/'+d.getFullYear();});}catch(e){}
 
@@ -1222,7 +1237,7 @@ function showStatus(type, html){
         var state=(playing||lt)?'pause':((t>0&&t<END)||(LOOP&&held)?'play':'replay');
         if(btn.getAttribute('data-state')!==state){
           btn.setAttribute('data-state',state);
-          var word=state==='pause'?'עצירה':'הפעלה', lbl=word+' – הדגמת לפני ואחרי';   // the accessible name starts with the visible word (WCAG 2.5.3)
+          var word=state==='pause'?UI.pause:UI.play, lbl=word+' – '+UI.demoName;   // the accessible name starts with the visible word (WCAG 2.5.3)
           btn.setAttribute('aria-label',lbl);btn.title=lbl;
           var bl=btn.querySelector('.st-l');if(bl)bl.textContent=word;
         }
@@ -1320,7 +1335,7 @@ function showStatus(type, html){
       if(e.shiftKey&&i<=0){e.preventDefault();f[f.length-1].focus();}else if(!e.shiftKey&&i===f.length-1){e.preventDefault();f[0].focus();}}});
 
 
-  /* the site's a11y widget calls this when "עצירת אנימציות" changes */
+  /* the site's a11y widget calls this when "stop animations" changes */
   window.OrdexScenes={sync:function(){scenes.forEach(function(s){s.still();});}};
 })();
 
@@ -1337,7 +1352,7 @@ function showStatus(type, html){
     document.body.classList.toggle('no-motion', !!state.motion);
     document.body.classList.toggle('ul-links', !!state.links);
     setPressed('contrast', state.hc); setPressed('motion', state.motion); setPressed('links', state.links);
-    if(window.OrdexScenes) window.OrdexScenes.sync();  // "עצירת אנימציות" on/off: scenes jump to the final frame / replay
+    if(window.OrdexScenes) window.OrdexScenes.sync();  // "stop animations" on/off: scenes jump to the final frame / replay
     try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){}
   }
 
