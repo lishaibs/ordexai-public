@@ -400,6 +400,18 @@ h2{font-size:clamp(1.6rem,3.4vw,2.5rem);font-weight:800;margin-bottom:1rem;color
 .ic-av .ok svg{width:9px;height:9px}
 .ba-pain{margin-top:.75rem;display:flex;align-items:center;gap:.5rem;font-size:.88rem;font-weight:800;color:var(--amber-ink);background:var(--amber-bg);border:1px solid #efcf93;border-radius:12px;padding:.55rem .8rem;transition:opacity .4s,transform .45s}
 .ba2.ph-proc:not(.done) .ba-pain{opacity:.45}
+/* manual typing: the strip types itself out (caret + tapping keyboard) while all the "before" rows share one amber highlight */
+.hl{display:none}
+.ba-pain{transition:opacity .4s,transform .45s,box-shadow .35s,border-color .35s}
+.ba2:has(.hl.on) .ic,.ba2:has(.hl.on) .ba-pain{border-color:var(--amber);box-shadow:0 0 0 3px rgba(232,165,58,.24),var(--shadow)}
+.typed .k{position:relative}
+.anim .typed .k:not(.on){color:transparent}
+.anim .typed .k.on + .k:not(.on)::before,.anim .ba-pain.on .typed:not(:has(.k.on)) .k:first-child::before{content:'';position:absolute;inset-inline-start:-1px;top:.1em;bottom:.1em;width:2px;border-radius:1px;background:var(--amber-ink);animation:caret .7s steps(1) infinite}
+@keyframes caret{50%{opacity:0}}
+.kb{display:inline-flex}
+.kb.on svg{animation:kbtap .14s ease-in-out infinite alternate}
+@keyframes kbtap{to{transform:translateY(1.5px) scale(.94)}}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
 .af .erp{width:100%;box-shadow:var(--shadow-md)}
 .af .erp-tbl td{height:31px}
 .af .erp-tbl tr.r.on td{animation:rowlit 1.2s ease-out 1}
@@ -762,119 +774,119 @@ h1,h2,h3{font-family:'Plus Jakarta Sans','Heebo',sans-serif}
       <figure class="ba-p b4">
         <figcaption class="ba-label"><span><i class="ba-dot amber" aria-hidden="true"></i>Antes · Así llegan los pedidos</span><small>Todo el día, de cada cliente</small></figcaption>
         <div class="inbox">
-          <div class="ic src" data-at="0.2"><span class="focus" data-at="2.4" data-off="9.3" aria-hidden="true"></span><span class="ic-av" style="--c:var(--c-wa)" aria-hidden="true">P<span class="ok" data-at="7.6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></span><div class="ic-b"><div class="ic-t"><b>Pizzería Roma</b><span class="ch" style="--c:var(--c-wa)">Mensaje</span><time>07:40</time></div><p>Buen día, para mañana <span class="tok q" data-at="1.7">2 bidones</span> de <span class="tok p" data-at="1.78">aceite</span>, <span class="tok q" data-at="1.86">4 cajas</span> de <span class="tok p" data-at="1.94">envases 750</span> y <span class="tok q" data-at="2.02">6 latas</span> de <span class="tok p" data-at="2.1">tomate</span></p></div></div>
-          <div class="ic" data-at="0.5"><span class="focus" data-at="9.6" data-off="16.5" aria-hidden="true"></span><span class="ic-av" style="--c:var(--c-voice)" aria-hidden="true">E<span class="ok" data-at="14.8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></span><div class="ic-b"><div class="ic-t"><b>Panadería La Espiga</b><span class="ch" style="--c:var(--c-voice)">Audio</span><time>09:20</time></div><p><span class="wave" aria-hidden="true"><i style="height:5px"></i><i style="height:9px"></i><i style="height:13px"></i><i style="height:7px"></i><i style="height:11px"></i><i style="height:6px"></i><i style="height:14px"></i><i style="height:8px"></i><i style="height:10px"></i><i style="height:5px"></i><i style="height:12px"></i><i style="height:7px"></i></span>Mensaje de voz · 0:32</p></div></div>
-          <div class="ic" data-at="0.8"><span class="focus" data-at="16.8" data-off="23.7" aria-hidden="true"></span><span class="ic-av" style="--c:var(--c-photo)" aria-hidden="true">B<span class="ok" data-at="22"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></span><div class="ic-b"><div class="ic-t"><b>Burger Station</b><span class="ch" style="--c:var(--c-photo)">Foto</span><time>13:05</time></div><p>📷 Lista escrita a mano</p></div></div>
-          <div class="ic" data-at="1.1"><span class="focus" data-at="24" data-off="30.9" aria-hidden="true"></span><span class="ic-av" style="--c:var(--c-agent)" aria-hidden="true">M<span class="ok" data-at="29.2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></span><div class="ic-b"><div class="ic-t"><b>Martín, preventista</b><span class="ch" style="--c:var(--c-agent)">Preventista</span><time>16:50</time></div><p>Parrilla del Centro pidió 2 cajas más de envases</p></div></div>
+          <div class="ic src" data-at="0.2"><span class="focus" data-at="3.4" data-off="10.3" aria-hidden="true"></span><span class="ic-av" style="--c:var(--c-wa)" aria-hidden="true">P<span class="ok" data-at="8.6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></span><div class="ic-b"><div class="ic-t"><b>Pizzería Roma</b><span class="ch" style="--c:var(--c-wa)">Mensaje</span><time>07:40</time></div><p>Buen día, para mañana <span class="tok q" data-at="1.7">2 bidones</span> de <span class="tok p" data-at="1.78">aceite</span>, <span class="tok q" data-at="1.86">4 cajas</span> de <span class="tok p" data-at="1.94">envases 750</span> y <span class="tok q" data-at="2.02">6 latas</span> de <span class="tok p" data-at="2.1">tomate</span></p></div></div>
+          <div class="ic" data-at="0.5"><span class="focus" data-at="10.6" data-off="17.5" aria-hidden="true"></span><span class="ic-av" style="--c:var(--c-voice)" aria-hidden="true">E<span class="ok" data-at="15.8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></span><div class="ic-b"><div class="ic-t"><b>Panadería La Espiga</b><span class="ch" style="--c:var(--c-voice)">Audio</span><time>09:20</time></div><p><span class="wave" aria-hidden="true"><i style="height:5px"></i><i style="height:9px"></i><i style="height:13px"></i><i style="height:7px"></i><i style="height:11px"></i><i style="height:6px"></i><i style="height:14px"></i><i style="height:8px"></i><i style="height:10px"></i><i style="height:5px"></i><i style="height:12px"></i><i style="height:7px"></i></span>Mensaje de voz · 0:32</p></div></div>
+          <div class="ic" data-at="0.8"><span class="focus" data-at="17.8" data-off="24.7" aria-hidden="true"></span><span class="ic-av" style="--c:var(--c-photo)" aria-hidden="true">B<span class="ok" data-at="23"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></span><div class="ic-b"><div class="ic-t"><b>Burger Station</b><span class="ch" style="--c:var(--c-photo)">Foto</span><time>13:05</time></div><p>📷 Lista escrita a mano</p></div></div>
+          <div class="ic" data-at="1.1"><span class="focus" data-at="25" data-off="31.9" aria-hidden="true"></span><span class="ic-av" style="--c:var(--c-agent)" aria-hidden="true">M<span class="ok" data-at="30.2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></span><div class="ic-b"><div class="ic-t"><b>Martín, preventista</b><span class="ch" style="--c:var(--c-agent)">Preventista</span><time>16:50</time></div><p>Parrilla del Centro pidió 2 cajas más de envases</p></div></div>
         </div>
-        <p class="ba-pain" data-at="1.4"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></svg>Y alguien tipea todo a mano</p>
+        <i class="hl" data-at="1.3" data-off="3.3" aria-hidden="true"></i><p class="ba-pain" data-at="1.3"><span class="kb" data-at="1.45" data-off="2.75"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></svg></span><span class="sr-only">Y alguien tipea todo a mano</span><span class="typed" aria-hidden="true"><span class="k" data-at="1.45">Y</span><span class="k" data-at="1.5"> </span><span class="k" data-at="1.55">a</span><span class="k" data-at="1.59">l</span><span class="k" data-at="1.64">g</span><span class="k" data-at="1.69">u</span><span class="k" data-at="1.74">i</span><span class="k" data-at="1.79">e</span><span class="k" data-at="1.84">n</span><span class="k" data-at="1.88"> </span><span class="k" data-at="1.93">t</span><span class="k" data-at="1.98">i</span><span class="k" data-at="2.03">p</span><span class="k" data-at="2.08">e</span><span class="k" data-at="2.12">a</span><span class="k" data-at="2.17"> </span><span class="k" data-at="2.22">t</span><span class="k" data-at="2.27">o</span><span class="k" data-at="2.32">d</span><span class="k" data-at="2.36">o</span><span class="k" data-at="2.41"> </span><span class="k" data-at="2.46">a</span><span class="k" data-at="2.51"> </span><span class="k" data-at="2.56">m</span><span class="k" data-at="2.61">a</span><span class="k" data-at="2.65">n</span><span class="k" data-at="2.7">o</span></span></p>
       </figure>
 
-      <div class="seam" aria-hidden="true"><span class="seam-b"><i class="think" data-at="2.6" data-off="6.1"></i><i class="think" data-at="9.8" data-off="13.3"></i><i class="think" data-at="17" data-off="20.5"></i><i class="think" data-at="24.2" data-off="27.7"></i><img src="../assets/ordexai-logo.png" alt="" width="34" height="21"></span></div>
+      <div class="seam" aria-hidden="true"><span class="seam-b"><i class="think" data-at="3.6" data-off="7.1"></i><i class="think" data-at="10.8" data-off="14.3"></i><i class="think" data-at="18" data-off="21.5"></i><i class="think" data-at="25.2" data-off="28.7"></i><img src="../assets/ordexai-logo.png" alt="" width="34" height="21"></span></div>
 
       <figure class="ba-p af">
-        <span class="sweep" data-at="6.3" data-off="7.6" aria-hidden="true"></span>
-        <span class="sweep" data-at="13.5" data-off="14.8" aria-hidden="true"></span>
-        <span class="sweep" data-at="20.7" data-off="22" aria-hidden="true"></span>
-        <span class="sweep" data-at="27.9" data-off="29.2" aria-hidden="true"></span>
+        <span class="sweep" data-at="7.3" data-off="8.6" aria-hidden="true"></span>
+        <span class="sweep" data-at="14.5" data-off="15.8" aria-hidden="true"></span>
+        <span class="sweep" data-at="21.7" data-off="23" aria-hidden="true"></span>
+        <span class="sweep" data-at="28.9" data-off="30.2" aria-hidden="true"></span>
         <figcaption class="ba-label"><span><i class="ba-dot green" aria-hidden="true"></i>Después · Así se cargan</span><small>Automático, con tus códigos</small></figcaption>
         <div class="erp-stage">
-          <div class="erp lv2 sum" data-at="30.6">
+          <div class="erp lv2 sum" data-at="31.6">
             <div class="erp-bar"><span>Pedidos cargados hoy</span><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
             <div class="erp-fields">
-              <div class="erp-f"><span class="lb">Fecha de entrega</span><div><span class="fill erp-date" data-at="30.8">19/10/2026</span></div></div>
-              <div class="erp-f"><span class="lb">Total</span><div><span class="fill" data-at="30.8">4 pedidos · 10 líneas</span></div></div>
+              <div class="erp-f"><span class="lb">Fecha de entrega</span><div><span class="fill erp-date" data-at="31.8">19/10/2026</span></div></div>
+              <div class="erp-f"><span class="lb">Total</span><div><span class="fill" data-at="31.8">4 pedidos · 10 líneas</span></div></div>
             </div>
             <div class="erp-tw"><table class="erp-tbl">
               <thead><tr><th class="c-k">Pedido</th><th>Cliente</th><th class="c-src">Origen</th><th class="c-q">Líneas</th></tr></thead>
-              <tbody><tr class="r" data-at="31"><td class="c-k">10482</td><td>Pizzería Roma</td><td class="c-src">Mensaje</td><td class="c-q">3</td></tr><tr class="r" data-at="31.2"><td class="c-k">10483</td><td>Panadería La Espiga</td><td class="c-src">Audio</td><td class="c-q">3</td></tr><tr class="r" data-at="31.4"><td class="c-k">10484</td><td>Burger Station</td><td class="c-src">Foto</td><td class="c-q">3</td></tr><tr class="r" data-at="31.6"><td class="c-k">10485</td><td>Parrilla del Centro</td><td class="c-src">Preventista</td><td class="c-q">1</td></tr></tbody>
+              <tbody><tr class="r" data-at="32"><td class="c-k">10482</td><td>Pizzería Roma</td><td class="c-src">Mensaje</td><td class="c-q">3</td></tr><tr class="r" data-at="32.2"><td class="c-k">10483</td><td>Panadería La Espiga</td><td class="c-src">Audio</td><td class="c-q">3</td></tr><tr class="r" data-at="32.4"><td class="c-k">10484</td><td>Burger Station</td><td class="c-src">Foto</td><td class="c-q">3</td></tr><tr class="r" data-at="32.6"><td class="c-k">10485</td><td>Parrilla del Centro</td><td class="c-src">Preventista</td><td class="c-q">1</td></tr></tbody>
             </table></div>
-            <div class="erp-foot"><span class="fill" data-at="31.9">Origen: WhatsApp · OrdexAI</span><span class="zero fill" data-at="31.9">0 tipeos a mano</span></div>
-            <div class="stamp" data-at="32.3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>4 pedidos cargados en el sistema</div>
+            <div class="erp-foot"><span class="fill" data-at="32.9">Origen: WhatsApp · OrdexAI</span><span class="zero fill" data-at="32.9">0 tipeos a mano</span></div>
+            <div class="stamp" data-at="33.3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>4 pedidos cargados en el sistema</div>
           </div>
-          <div class="erp ord" data-at="6.3" data-off="9.3" aria-hidden="true">
-            <div class="erp-bar"><span>Pedido de cliente <span class="fill" data-at="6.45">10482</span></span><span class="dots"><i></i><i></i><i></i></span></div>
+          <div class="erp ord" data-at="7.3" data-off="10.3" aria-hidden="true">
+            <div class="erp-bar"><span>Pedido de cliente <span class="fill" data-at="7.45">10482</span></span><span class="dots"><i></i><i></i><i></i></span></div>
             <div class="erp-fields">
-              <div class="erp-f"><span class="lb">Cliente</span><div><span class="fill" data-at="6.45">Pizzería Roma</span></div></div>
-              <div class="erp-f"><span class="lb">Fecha de entrega</span><div><span class="fill erp-date" data-at="6.45">19/10/2026</span></div></div>
+              <div class="erp-f"><span class="lb">Cliente</span><div><span class="fill" data-at="7.45">Pizzería Roma</span></div></div>
+              <div class="erp-f"><span class="lb">Fecha de entrega</span><div><span class="fill erp-date" data-at="7.45">19/10/2026</span></div></div>
             </div>
             <div class="erp-tw"><table class="erp-tbl">
               <thead><tr><th class="c-k">Código</th><th>Descripción</th><th class="c-q">Cant.</th><th class="c-u">Unidad</th></tr></thead>
-              <tbody><tr class="r" data-at="6.65"><td class="c-k">30110</td><td>Aceite de girasol · bidón 20 L</td><td class="c-q">2</td><td class="c-u">bidón</td></tr><tr class="r" data-at="6.85"><td class="c-k">52750</td><td>Envases 750 cc con tapa</td><td class="c-q">4</td><td class="c-u">caja</td></tr><tr class="r" data-at="7.05"><td class="c-k">30245</td><td>Tomate triturado · lata 2,5 kg</td><td class="c-q">6</td><td class="c-u">lata</td></tr></tbody>
+              <tbody><tr class="r" data-at="7.65"><td class="c-k">30110</td><td>Aceite de girasol · bidón 20 L</td><td class="c-q">2</td><td class="c-u">bidón</td></tr><tr class="r" data-at="7.85"><td class="c-k">52750</td><td>Envases 750 cc con tapa</td><td class="c-q">4</td><td class="c-u">caja</td></tr><tr class="r" data-at="8.05"><td class="c-k">30245</td><td>Tomate triturado · lata 2,5 kg</td><td class="c-q">6</td><td class="c-u">lata</td></tr></tbody>
             </table></div>
-            <div class="erp-foot"><span class="fill" data-at="7.3">Origen: WhatsApp · OrdexAI</span><span class="zero fill" data-at="7.3">0 tipeos a mano</span></div>
-            <div class="stamp" data-at="7.6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Pedido cargado</div>
+            <div class="erp-foot"><span class="fill" data-at="8.3">Origen: WhatsApp · OrdexAI</span><span class="zero fill" data-at="8.3">0 tipeos a mano</span></div>
+            <div class="stamp" data-at="8.6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Pedido cargado</div>
           </div>
-          <div class="erp ord" data-at="13.5" data-off="16.5" aria-hidden="true">
-            <div class="erp-bar"><span>Pedido de cliente <span class="fill" data-at="13.65">10483</span></span><span class="dots"><i></i><i></i><i></i></span></div>
+          <div class="erp ord" data-at="14.5" data-off="17.5" aria-hidden="true">
+            <div class="erp-bar"><span>Pedido de cliente <span class="fill" data-at="14.65">10483</span></span><span class="dots"><i></i><i></i><i></i></span></div>
             <div class="erp-fields">
-              <div class="erp-f"><span class="lb">Cliente</span><div><span class="fill" data-at="13.65">Panadería La Espiga</span></div></div>
-              <div class="erp-f"><span class="lb">Fecha de entrega</span><div><span class="fill erp-date" data-at="13.65">19/10/2026</span></div></div>
+              <div class="erp-f"><span class="lb">Cliente</span><div><span class="fill" data-at="14.65">Panadería La Espiga</span></div></div>
+              <div class="erp-f"><span class="lb">Fecha de entrega</span><div><span class="fill erp-date" data-at="14.65">19/10/2026</span></div></div>
             </div>
             <div class="erp-tw"><table class="erp-tbl">
               <thead><tr><th class="c-k">Código</th><th>Descripción</th><th class="c-q">Cant.</th><th class="c-u">Unidad</th></tr></thead>
-              <tbody><tr class="r" data-at="13.85"><td class="c-k">41020</td><td>Harina 000 · bolsa 25 kg</td><td class="c-q">3</td><td class="c-u">bolsa</td></tr><tr class="r" data-at="14.05"><td class="c-k">41310</td><td>Levadura fresca · 1 kg</td><td class="c-q">5</td><td class="c-u">u.</td></tr><tr class="r" data-at="14.25"><td class="c-k">30110</td><td>Aceite de girasol · bidón 20 L</td><td class="c-q">1</td><td class="c-u">bidón</td></tr></tbody>
+              <tbody><tr class="r" data-at="14.85"><td class="c-k">41020</td><td>Harina 000 · bolsa 25 kg</td><td class="c-q">3</td><td class="c-u">bolsa</td></tr><tr class="r" data-at="15.05"><td class="c-k">41310</td><td>Levadura fresca · 1 kg</td><td class="c-q">5</td><td class="c-u">u.</td></tr><tr class="r" data-at="15.25"><td class="c-k">30110</td><td>Aceite de girasol · bidón 20 L</td><td class="c-q">1</td><td class="c-u">bidón</td></tr></tbody>
             </table></div>
-            <div class="erp-foot"><span class="fill" data-at="14.5">Origen: WhatsApp · OrdexAI</span><span class="zero fill" data-at="14.5">0 tipeos a mano</span></div>
-            <div class="stamp" data-at="14.8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Pedido cargado</div>
+            <div class="erp-foot"><span class="fill" data-at="15.5">Origen: WhatsApp · OrdexAI</span><span class="zero fill" data-at="15.5">0 tipeos a mano</span></div>
+            <div class="stamp" data-at="15.8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Pedido cargado</div>
           </div>
-          <div class="erp ord" data-at="20.7" data-off="23.7" aria-hidden="true">
-            <div class="erp-bar"><span>Pedido de cliente <span class="fill" data-at="20.85">10484</span></span><span class="dots"><i></i><i></i><i></i></span></div>
+          <div class="erp ord" data-at="21.7" data-off="24.7" aria-hidden="true">
+            <div class="erp-bar"><span>Pedido de cliente <span class="fill" data-at="21.85">10484</span></span><span class="dots"><i></i><i></i><i></i></span></div>
             <div class="erp-fields">
-              <div class="erp-f"><span class="lb">Cliente</span><div><span class="fill" data-at="20.85">Burger Station</span></div></div>
-              <div class="erp-f"><span class="lb">Fecha de entrega</span><div><span class="fill erp-date" data-at="20.85">19/10/2026</span></div></div>
+              <div class="erp-f"><span class="lb">Cliente</span><div><span class="fill" data-at="21.85">Burger Station</span></div></div>
+              <div class="erp-f"><span class="lb">Fecha de entrega</span><div><span class="fill erp-date" data-at="21.85">19/10/2026</span></div></div>
             </div>
             <div class="erp-tw"><table class="erp-tbl">
               <thead><tr><th class="c-k">Código</th><th>Descripción</th><th class="c-q">Cant.</th><th class="c-u">Unidad</th></tr></thead>
-              <tbody><tr class="r" data-at="21.05"><td class="c-k">61204</td><td>Pan de hamburguesa · x12</td><td class="c-q">8</td><td class="c-u">paq.</td></tr><tr class="r" data-at="21.25"><td class="c-k">72010</td><td>Papas fritas congeladas · 2,5 kg</td><td class="c-q">6</td><td class="c-u">bolsa</td></tr><tr class="r" data-at="21.45"><td class="c-k">38150</td><td>Kétchup · 3 kg</td><td class="c-q">2</td><td class="c-u">u.</td></tr></tbody>
+              <tbody><tr class="r" data-at="22.05"><td class="c-k">61204</td><td>Pan de hamburguesa · x12</td><td class="c-q">8</td><td class="c-u">paq.</td></tr><tr class="r" data-at="22.25"><td class="c-k">72010</td><td>Papas fritas congeladas · 2,5 kg</td><td class="c-q">6</td><td class="c-u">bolsa</td></tr><tr class="r" data-at="22.45"><td class="c-k">38150</td><td>Kétchup · 3 kg</td><td class="c-q">2</td><td class="c-u">u.</td></tr></tbody>
             </table></div>
-            <div class="erp-foot"><span class="fill" data-at="21.7">Origen: WhatsApp · OrdexAI</span><span class="zero fill" data-at="21.7">0 tipeos a mano</span></div>
-            <div class="stamp" data-at="22"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Pedido cargado</div>
+            <div class="erp-foot"><span class="fill" data-at="22.7">Origen: WhatsApp · OrdexAI</span><span class="zero fill" data-at="22.7">0 tipeos a mano</span></div>
+            <div class="stamp" data-at="23"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Pedido cargado</div>
           </div>
-          <div class="erp ord" data-at="27.9" data-off="30.8" aria-hidden="true">
-            <div class="erp-bar"><span>Pedido de cliente <span class="fill" data-at="28.05">10485</span></span><span class="dots"><i></i><i></i><i></i></span></div>
+          <div class="erp ord" data-at="28.9" data-off="31.8" aria-hidden="true">
+            <div class="erp-bar"><span>Pedido de cliente <span class="fill" data-at="29.05">10485</span></span><span class="dots"><i></i><i></i><i></i></span></div>
             <div class="erp-fields">
-              <div class="erp-f"><span class="lb">Cliente</span><div><span class="fill" data-at="28.05">Parrilla del Centro</span></div></div>
-              <div class="erp-f"><span class="lb">Fecha de entrega</span><div><span class="fill erp-date" data-at="28.05">19/10/2026</span></div></div>
+              <div class="erp-f"><span class="lb">Cliente</span><div><span class="fill" data-at="29.05">Parrilla del Centro</span></div></div>
+              <div class="erp-f"><span class="lb">Fecha de entrega</span><div><span class="fill erp-date" data-at="29.05">19/10/2026</span></div></div>
             </div>
             <div class="erp-tw"><table class="erp-tbl">
               <thead><tr><th class="c-k">Código</th><th>Descripción</th><th class="c-q">Cant.</th><th class="c-u">Unidad</th></tr></thead>
-              <tbody><tr class="r" data-at="28.25"><td class="c-k">52750</td><td>Envases 750 cc con tapa</td><td class="c-q">2</td><td class="c-u">caja</td></tr><tr class="r blank"><td class="c-k"></td><td></td><td class="c-q"></td><td class="c-u"></td></tr><tr class="r blank"><td class="c-k"></td><td></td><td class="c-q"></td><td class="c-u"></td></tr></tbody>
+              <tbody><tr class="r" data-at="29.25"><td class="c-k">52750</td><td>Envases 750 cc con tapa</td><td class="c-q">2</td><td class="c-u">caja</td></tr><tr class="r blank"><td class="c-k"></td><td></td><td class="c-q"></td><td class="c-u"></td></tr><tr class="r blank"><td class="c-k"></td><td></td><td class="c-q"></td><td class="c-u"></td></tr></tbody>
             </table></div>
-            <div class="erp-foot"><span class="fill" data-at="28.9">Origen: WhatsApp · OrdexAI</span><span class="zero fill" data-at="28.9">0 tipeos a mano</span></div>
-            <div class="stamp" data-at="29.2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Pedido cargado</div>
+            <div class="erp-foot"><span class="fill" data-at="29.9">Origen: WhatsApp · OrdexAI</span><span class="zero fill" data-at="29.9">0 tipeos a mano</span></div>
+            <div class="stamp" data-at="30.2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Pedido cargado</div>
           </div>
           <div class="proc-wrap" aria-hidden="true">
-            <div class="proc" data-at="2.7" data-off="6.3">
+            <div class="proc" data-at="3.7" data-off="7.3">
               <div class="proc-h"><span class="proc-logo"><img src="../assets/ordexai-logo.png" alt="" width="30" height="19"></span><span><b>OrdexAI está procesando el pedido</b><small>Pizzería Roma · Mensaje</small></span></div>
               <ol class="proc-steps">
-                <li data-at="3.3"><i></i><span>Identifica productos y cantidades<small><bdi>2 bidones de aceite · 4 cajas de envases · 6 latas de tomate</bdi></small></span></li>
-                <li data-at="4.3"><i></i><span>Los asocia a tus códigos<small><bdi>30110 · 52750 · 30245</bdi></small></span></li>
-                <li data-at="5.3"><i></i><span>Crea el pedido en el sistema<small>Pedido <bdi>10482</bdi> · Pizzería Roma</small></span></li>
+                <li data-at="4.3"><i></i><span>Identifica productos y cantidades<small><bdi>2 bidones de aceite · 4 cajas de envases · 6 latas de tomate</bdi></small></span></li>
+                <li data-at="5.3"><i></i><span>Los asocia a tus códigos<small><bdi>30110 · 52750 · 30245</bdi></small></span></li>
+                <li data-at="6.3"><i></i><span>Crea el pedido en el sistema<small>Pedido <bdi>10482</bdi> · Pizzería Roma</small></span></li>
               </ol>
             </div>
-            <div class="proc" data-at="9.9" data-off="13.5">
+            <div class="proc" data-at="10.9" data-off="14.5">
               <div class="proc-h"><span class="proc-logo"><img src="../assets/ordexai-logo.png" alt="" width="30" height="19"></span><span><b>OrdexAI está procesando el pedido</b><small>Panadería La Espiga · Audio</small></span></div>
               <ol class="proc-steps">
-                <li data-at="10.5"><i></i><span>Transcribe el audio<small><bdi>«3 bolsas de harina, 5 de levadura y un bidón de aceite»</bdi></small></span></li>
-                <li data-at="11.5"><i></i><span>Los asocia a tus códigos<small><bdi>41020 · 41310 · 30110</bdi></small></span></li>
-                <li data-at="12.5"><i></i><span>Crea el pedido en el sistema<small>Pedido <bdi>10483</bdi> · Panadería La Espiga</small></span></li>
+                <li data-at="11.5"><i></i><span>Transcribe el audio<small><bdi>«3 bolsas de harina, 5 de levadura y un bidón de aceite»</bdi></small></span></li>
+                <li data-at="12.5"><i></i><span>Los asocia a tus códigos<small><bdi>41020 · 41310 · 30110</bdi></small></span></li>
+                <li data-at="13.5"><i></i><span>Crea el pedido en el sistema<small>Pedido <bdi>10483</bdi> · Panadería La Espiga</small></span></li>
               </ol>
             </div>
-            <div class="proc" data-at="17.1" data-off="20.7">
+            <div class="proc" data-at="18.1" data-off="21.7">
               <div class="proc-h"><span class="proc-logo"><img src="../assets/ordexai-logo.png" alt="" width="30" height="19"></span><span><b>OrdexAI está procesando el pedido</b><small>Burger Station · Foto</small></span></div>
               <ol class="proc-steps">
-                <li data-at="17.7"><i></i><span>Lee la lista escrita a mano<small><bdi>8 paquetes de pan · 6 bolsas de papas · 2 kétchup</bdi></small></span></li>
-                <li data-at="18.7"><i></i><span>Los asocia a tus códigos<small><bdi>61204 · 72010 · 38150</bdi></small></span></li>
-                <li data-at="19.7"><i></i><span>Crea el pedido en el sistema<small>Pedido <bdi>10484</bdi> · Burger Station</small></span></li>
+                <li data-at="18.7"><i></i><span>Lee la lista escrita a mano<small><bdi>8 paquetes de pan · 6 bolsas de papas · 2 kétchup</bdi></small></span></li>
+                <li data-at="19.7"><i></i><span>Los asocia a tus códigos<small><bdi>61204 · 72010 · 38150</bdi></small></span></li>
+                <li data-at="20.7"><i></i><span>Crea el pedido en el sistema<small>Pedido <bdi>10484</bdi> · Burger Station</small></span></li>
               </ol>
             </div>
-            <div class="proc" data-at="24.3" data-off="27.9">
+            <div class="proc" data-at="25.3" data-off="28.9">
               <div class="proc-h"><span class="proc-logo"><img src="../assets/ordexai-logo.png" alt="" width="30" height="19"></span><span><b>OrdexAI está procesando el pedido</b><small>Martín, preventista · Preventista</small></span></div>
               <ol class="proc-steps">
-                <li data-at="24.9"><i></i><span>Identifica al cliente en el mensaje del preventista<small><bdi>Parrilla del Centro · 2 cajas de envases</bdi></small></span></li>
-                <li data-at="25.9"><i></i><span>Los asocia a tus códigos<small><bdi>52750</bdi></small></span></li>
-                <li data-at="26.9"><i></i><span>Crea el pedido en el sistema<small>Pedido <bdi>10485</bdi> · Parrilla del Centro</small></span></li>
+                <li data-at="25.9"><i></i><span>Identifica al cliente en el mensaje del preventista<small><bdi>Parrilla del Centro · 2 cajas de envases</bdi></small></span></li>
+                <li data-at="26.9"><i></i><span>Los asocia a tus códigos<small><bdi>52750</bdi></small></span></li>
+                <li data-at="27.9"><i></i><span>Crea el pedido en el sistema<small>Pedido <bdi>10485</bdi> · Parrilla del Centro</small></span></li>
               </ol>
             </div>
           </div>
@@ -1328,7 +1340,7 @@ function showStatus(type, html){
   }
 
   var hero=document.getElementById('heroScene'); if(hero)scenes.push(Scene(hero,{B:[0,4.3],thr:0.15}));
-  var ba=document.getElementById('baScene'); if(ba)scenes.push(Scene(ba,{B:[0,33.5],PH:[['ph-proc',2.4]],thr:0.5,loop:4,btn:'baPlay'}));
+  var ba=document.getElementById('baScene'); if(ba)scenes.push(Scene(ba,{B:[0,34.5],PH:[['ph-proc',3.4]],thr:0.5,loop:4,btn:'baPlay'}));
   var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){scenes.forEach(function(s){s.relayout();});},150);});
 
   /* ---------- film modal (a page may have no film: the English page, for now) ---------- */
