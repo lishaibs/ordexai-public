@@ -12,8 +12,11 @@ const STEP = 7.2;    // seconds per order
 const f = n => +n.toFixed(2);
 const check = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>';
 const wave = '<span class="wave" aria-hidden="true"><i style="height:5px"></i><i style="height:9px"></i><i style="height:13px"></i><i style="height:7px"></i><i style="height:11px"></i><i style="height:6px"></i><i style="height:14px"></i><i style="height:8px"></i><i style="height:10px"></i><i style="height:5px"></i><i style="height:12px"></i><i style="height:7px"></i></span>';
-// the strip's sentence, one span per character, typed out across TYPE
-const typed = text => { const ch = [...text], dt = (TYPE[1] - TYPE[0]) / ch.length; return ch.map((c, i) => `<span class="k" data-at="${f(TYPE[0] + i * dt)}">${c === ' ' ? ' ' : c}</span>`).join(''); };
+// the strip's sentence, one span per character, typed out between a and b. It is retyped for every order:
+// one copy per round, stacked in one place; a copy shows from its start until the next round starts.
+const TYPE_LEN = TYPE[1] - TYPE[0];
+const typedCopy = (text, a, b, on, off) => { const ch = [...text], dt = (b - a) / ch.length;
+  return `<span class="typed" data-at="${f(on)}"${off != null ? ` data-off="${f(off)}"` : ''}>` + ch.map((c, i) => `<span class="k" data-at="${f(a + i * dt)}">${c}</span>`).join('') + '</span>'; };
 const tok = (cls, at, text) => `<span class="tok ${cls}" data-at="${at}">${text}</span>`;
 
 const LANG = {
@@ -110,6 +113,7 @@ function render(lang, { assets = 'assets/' } = {}) {
     });
   });
   const SUM = T0 + ORDERS.length * STEP - 0.6;
+  const rounds = [TYPE[0], ...ORDERS.map(o => o.focus[0] + 0.3)];   // the strip retypes with every order
   const END = f(SUM + 2.9);
   const logo = assets + 'ordexai-logo.png';
   const dates = '<span class="fill erp-date" data-at="%">19/10/2026</span>';
@@ -162,7 +166,7 @@ function render(lang, { assets = 'assets/' } = {}) {
         <div class="inbox">
 ${ORDERS.map(card).join('\n')}
         </div>
-        <i class="hl" data-at="1.3" data-off="${f(T0 - 0.1)}" aria-hidden="true"></i><p class="ba-pain" data-at="1.3"><span class="kb" data-at="${TYPE[0]}" data-off="${TYPE[1]}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></svg></span><span class="sr-only">${L.pain}</span><span class="typed" aria-hidden="true">${typed(L.pain)}</span></p>
+        <i class="hl" data-at="1.3" data-off="${f(T0 - 0.1)}" aria-hidden="true"></i><p class="ba-pain" data-at="1.3"><span class="kb"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></svg></span><span class="sr-only">${L.pain}</span><span class="typed-wrap" aria-hidden="true">${rounds.map((r, i) => typedCopy(L.pain, r, r + TYPE_LEN, i ? r - 0.05 : 1.3, rounds[i + 1] != null ? rounds[i + 1] - 0.05 : null)).join('')}</span></p>
       </figure>
 
       <div class="seam" aria-hidden="true"><span class="seam-b">${ORDERS.map(o => `<i class="think" data-at="${f(o.think[0])}" data-off="${f(o.think[1])}"></i>`).join('')}<img src="${logo}" alt="" width="34" height="21"></span></div>
