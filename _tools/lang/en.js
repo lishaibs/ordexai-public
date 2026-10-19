@@ -73,8 +73,8 @@ const DICT = [
   ['ועוד', 'and more'],
   ['יש לכם מערכת?', 'Have a system?'],
   ['ההזמנה נקלטת ישר במערכת שלכם.', 'The order is entered straight into your system.'],
-  ['רווחית', 'Rivhit'],
-  ['פריוריטי', 'Priority'],
+  ['רווחית', 'NetSuite'],
+  ['פריוריטי', 'Dynamics 365'],
   ['אין מערכת?', 'No system?'],
   ['רשימת ליקוט ב-PDF, וקובץ Excel/CSV מוכנים להזנה.', 'A PDF picking list, plus an Excel/CSV file ready to import.'],
   ['רוצים לראות את זה על ההזמנות שלכם?', 'Want to see it on your own orders?'],
@@ -160,7 +160,7 @@ module.exports = {
   afterPrivacyLine: null,
   faq3: '<p>With a catalog, whether a link or inside WhatsApp Business, customers pick the products themselves, and anyone who keeps texting is still left for you to type. OrdexAI also gives you an order page link, but it also takes orders written the usual way, as text, voice notes or photos, and matches them to your SKUs.</p>',
   exampleNote: 'The names, codes and quantities in this section are illustrative examples.',
-  systems: ['Comax', 'SAP'],
+  systems: ['Sage', 'Acumatica'],   // replaces Comax, SAP: mid-market ERPs common in the US and UK (with NetSuite, Dynamics 365 above)
   css: '',
   head: {
     title: 'OrdexAI — Take WhatsApp orders without manual typing | For distributors',
