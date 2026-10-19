@@ -404,6 +404,8 @@ h2{font-size:clamp(1.6rem,3.4vw,2.5rem);font-weight:800;margin-bottom:1rem;color
 .hl{display:none}
 .ba-pain{transition:opacity .4s,transform .45s,box-shadow .35s,border-color .35s}
 .ba2:has(.hl.on) .ic,.ba2:has(.hl.on) .ba-pain{border-color:var(--amber);box-shadow:0 0 0 3px rgba(232,165,58,.24),var(--shadow)}
+/* while OrdexAI processes an order, the strip lights up with that order's row (same green ring), instead of dimming */
+.ba2.ph-proc:has(.focus.on):not(.done) .ba-pain{opacity:1;border-color:var(--wa);box-shadow:0 0 0 2px var(--wa),0 0 0 6px rgba(37,211,102,.16)}
 .typed .k{position:relative}
 .anim .typed .k:not(.on){color:transparent}
 .anim .typed .k.on + .k:not(.on)::before,.anim .ba-pain.on .typed:not(:has(.k.on)) .k:first-child::before{content:'';position:absolute;inset-inline-start:-1px;top:.1em;bottom:.1em;width:2px;border-radius:1px;background:var(--amber-ink);animation:caret .7s steps(1) infinite}
