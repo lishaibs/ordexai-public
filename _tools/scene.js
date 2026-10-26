@@ -108,7 +108,7 @@ function render(lang, { assets = 'assets/' } = {}) {
   const ORDERS = L.orders.map((o, k) => {
     const S = T0 + k * STEP;
     return Object.assign({}, o, {
-      focus: [S, S + 6.9], think: [S + 0.2, S + 3.7], proc: [S + 0.3, S + 3.9], steps: [S + 0.9, S + 1.9, S + 2.9],
+      focus: [S, k === L.orders.length - 1 ? S + 6.9 : S + STEP], think: [S + 0.2, S + 3.7], proc: [S + 0.3, S + 3.9], steps: [S + 0.9, S + 1.9, S + 2.9],
       win: [S + 3.9, k === L.orders.length - 1 ? S + 6.8 : S + 6.9], fill: S + 4.05, rowAt: [S + 4.25, S + 4.45, S + 4.65], foot: S + 4.9, done: S + 5.2,
     });
   });
@@ -163,6 +163,7 @@ function render(lang, { assets = 'assets/' } = {}) {
   const html = `    <div class="ba2" id="baScene" role="group" aria-label="${L.group}">
       <figure class="ba-p b4">
         <figcaption class="ba-label"><span><i class="ba-dot amber" aria-hidden="true"></i>${L.before}</span><small>${L.beforeSmall}</small></figcaption>
+        <div class="inbox-dots" aria-hidden="true">${ORDERS.map(o => `<span class="idot" style="--c:var(--${o.c})"><span class="cur" data-at="${f(o.focus[0])}" data-off="${f(o.focus[1])}"></span>${o.av}<span class="ok" data-at="${f(o.done)}">${check}</span></span>`).join('')}</div>
         <div class="inbox">
 ${ORDERS.map(card).join('\n')}
         </div>
