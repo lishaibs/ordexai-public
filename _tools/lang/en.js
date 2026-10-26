@@ -88,6 +88,7 @@ const DICT = [
   ['מחלבות רם', 'Sunrise Foods'],
   ['טלפון/וואטסאפ', 'Phone / WhatsApp'],
   ['אישר/ה את מדיניות הפרטיות', 'Agreed to the privacy policy'],
+  ['לא נוח לדבר? השאירו פרטים', 'Can’t talk now? Leave your details'],
   ['דברו איתי', 'Talk to me'],
   ['הפרטים ישמשו רק כדי לחזור אליכם, ולא יועברו לצד שלישי לצורכי שיווק. פרטים נוספים ב',
    'Your details are used only to get back to you and are never shared with third parties for marketing. More in our '],

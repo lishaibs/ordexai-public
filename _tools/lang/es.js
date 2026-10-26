@@ -78,6 +78,7 @@ const DICT = [
   ['מחלבות רם', 'Distribuidora Del Plata'],
   ['טלפון/וואטסאפ', 'WhatsApp o teléfono'],
   ['אישר/ה את מדיניות הפרטיות', 'Aceptó la política de privacidad y la transferencia internacional de sus datos'],
+  ['לא נוח לדבר? השאירו פרטים', '¿Ahora no podés hablar? Dejanos tus datos'],
   ['דברו איתי', 'Quiero que me contacten'],
   ['הפרטים ישמשו רק כדי לחזור אליכם, ולא יועברו לצד שלישי לצורכי שיווק. פרטים נוספים ב',
    'Usamos tus datos solo para responderte. No los vendemos ni los cedemos a terceros con fines de marketing. Más información en la '],

@@ -694,7 +694,33 @@ body.hc .ic,body.hc .ben:not(.feat),body.hc .sys-c,body.hc .ba2,body.hc .ba-p,bo
 .js .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){ .js .reveal{opacity:1;transform:none;transition:none} }
 body.no-motion .reveal{opacity:1!important;transform:none!important}
-  
+  /* phones: a shorter page — compact benefit cards, one sideways row of industries,
+   the two system cards side by side, and the contact form folded behind a button (WhatsApp stays the main action) */
+.mform-open{display:none}
+@media (max-width:560px){
+  .bens{gap:.7rem}
+  .ben{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:.9rem;row-gap:.2rem;text-align:start;align-items:start;padding:1.05rem 1.1rem}
+  .ben-i{grid-row:span 2;margin:0;width:40px;height:40px;border-radius:12px}
+  .ben-i svg{width:21px;height:21px}
+  .ben h3{font-size:1.1rem;align-self:center}
+  .ben p{font-size:.93rem;line-height:1.55}
+  .vchips{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding:2px 16px 4px;
+    -webkit-mask-image:linear-gradient(to right,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%)}
+  .vchips::-webkit-scrollbar{display:none}
+  .vchips li{flex:0 0 auto;white-space:nowrap}
+  .sys2{grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem}
+  .sys-c{padding:.95rem .65rem 1rem;gap:.45rem}
+  .sys-i{width:36px;height:36px;border-radius:11px}
+  .sys-i svg{width:19px;height:19px}
+  .sys-c h3{font-size:.98rem}
+  .sys-c p{font-size:.84rem;line-height:1.45;margin-bottom:.55rem}
+  .erps,.files{gap:.3rem}
+  .erps span{font-size:.76rem;padding:.2rem .45rem}
+  .js .mform-open{display:flex;align-items:center;justify-content:center;width:100%;max-width:420px;margin:1.1rem auto 0;padding:.85rem 1.2rem;border-radius:50px;border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff;font:inherit;font-weight:700;font-size:.98rem;cursor:pointer}
+  .js #demo:not(.form-open) .mform{display:none}
+  #demo.form-open .mform-open{display:none}
+}
+
 /* ================= LTR page: mirror + Latin display face (from _tools/build-langs.js) ================= */
 h1,h2,h3{font-family:'Plus Jakarta Sans','Heebo',sans-serif}
 .hero h1{letter-spacing:-1px}
@@ -989,6 +1015,7 @@ h1,h2,h3{font-family:'Plus Jakarta Sans','Heebo',sans-serif}
     </div>
 
     <div class="or-sep reveal" aria-hidden="true"><span>o</span></div>
+    <button type="button" class="mform-open" id="mformOpen" aria-expanded="false" aria-controls="contactForm">¿Ahora no podés hablar? Dejanos tus datos</button>
 
     <!-- MICRO-FORM: submits to info@ordexai.com via FormSubmit (works on static hosting) -->
     <form class="mform reveal" id="contactForm" novalidate>
@@ -1141,6 +1168,19 @@ document.querySelectorAll('[data-pick]').forEach(a=>a.addEventListener('click',(
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!list.hidden) setOpen(false,true); });
   document.addEventListener('click',function(e){ if(!list.hidden&&!wrap.contains(e.target)) setOpen(false); });
   wrap.addEventListener('focusout',function(e){ if(!list.hidden&&e.relatedTarget&&!wrap.contains(e.relatedTarget)) setOpen(false); });
+})();
+
+/* ===== Phones: open the folded contact form; make the sideways industries row reachable by keyboard when it scrolls ===== */
+(function(){
+  var btn=document.getElementById('mformOpen'), form=document.getElementById('contactForm'), sec=document.getElementById('demo');
+  if(btn&&form&&sec) btn.addEventListener('click',function(){
+    sec.classList.add('form-open'); btn.setAttribute('aria-expanded','true');
+    var first=form.querySelector('.field input'); if(first) first.focus();
+  });
+  document.querySelectorAll('.vchips').forEach(function(u){
+    function sync(){ if(u.scrollWidth>u.clientWidth+1) u.setAttribute('tabindex','0'); else u.removeAttribute('tabindex'); }
+    sync(); window.addEventListener('resize',sync);
+  });
 })();
 
 /* ===== Scroll reveal ===== */
