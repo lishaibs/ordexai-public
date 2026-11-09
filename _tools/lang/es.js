@@ -158,7 +158,7 @@ module.exports = {
   css: '.legal-line{margin-top:.6rem;font-size:.72rem;color:var(--ink3);line-height:1.5}',
   head: {
     title: 'OrdexAI — Pedidos por WhatsApp sin tipear | Para distribuidoras',
-    desc: 'Tus clientes piden por WhatsApp como siempre, en texto, audio o foto. OrdexAI entiende cada pedido, lo asocia a tus códigos y lo carga directo en tu sistema. Sin apps y sin tipear a mano.',
+    desc: 'Tus clientes piden por WhatsApp en texto, audio o foto. OrdexAI asocia cada producto a tus códigos y lo carga en tu sistema. Sin apps y sin tipear a mano.',
     ogTitle: 'OrdexAI — Tus clientes piden como siempre. OrdexAI hace el resto.',
     ogDesc: 'Pedidos por WhatsApp en texto, audio o foto: entendidos, confirmados con el cliente y cargados en tu sistema. Para distribuidoras.',
     ogImage: 'assets/og-image-es.jpg',

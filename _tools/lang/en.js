@@ -165,7 +165,7 @@ module.exports = {
   css: '',
   head: {
     title: 'OrdexAI — Take WhatsApp orders without manual typing | For distributors',
-    desc: 'Your customers keep ordering on WhatsApp, by text, voice note or photo. OrdexAI understands each order, matches every item to your SKUs and enters it straight into your system. No app, no manual typing.',
+    desc: 'Customers keep ordering on WhatsApp by text, voice or photo. OrdexAI matches every item to your SKUs and enters it into your system. No app, no manual typing.',
     ogTitle: 'OrdexAI — Your customers order as usual. OrdexAI does the rest.',
     ogDesc: 'WhatsApp orders by text, voice note or photo: understood, confirmed with the customer and entered into your system. For distributors.',
     ogImage: 'assets/og-image-en.jpg',
